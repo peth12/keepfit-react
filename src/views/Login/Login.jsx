@@ -1,4 +1,4 @@
-import { NavbarLandingPage } from "../../components/NavbarLandingPage";
+import { NavbarLandingPage } from "../../components/NavbarLogin";
 import "./Login.css";
 
 export const Login = () => {
@@ -11,7 +11,7 @@ export const Login = () => {
         {/* section 2 */}
         <div className="right h-[100%] bg-white w-[100%]">
           <div className="flex justify-center items-center w-[100%] h-[100%]">
-            <div className="flex-col">
+            <div className="flex-col ">
               <h1 className="text-primary text-[48px] italic font-bold text-center">
                 Login
               </h1>
