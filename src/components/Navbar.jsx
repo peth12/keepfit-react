@@ -1,36 +1,32 @@
 import React from "react";
+import { AiOutlineMenu } from "react-icons/ai";
 
 export const Navbar = () => {
   return (
-    <nav>
-      <div className="navbar bg-base-100">
-        <div className="navbar-start">
-          <img className="w-32" src="logo.webp" alt="" />
+    <nav className="flex justify-center">
+
+      <div className="navbar bg-primary-focus justify-between lg:px-10 px-3">
+        <AiOutlineMenu size={30} className="text-white flex lg:hidden " />
+        <div className="">
+          <h1 className="text-[30px] font-bold italic">
+            Keep<span className="text-white">Fit</span>
+          </h1>
         </div>
+
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 text-lg font-bold text-primary-focus">
+          <ul className="menu menu-horizontal px-1 text-xl font-bold text-white">
             <li>
-              <a>Home</a>
-            </li>
-            <li tabIndex={0}>
-              <details>
-                <summary>Dashboard</summary>
-                <ul className="p-2">
-                  <li>
-                    <a>History</a>
-                  </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
-                </ul>
-              </details>
+              <a href="">Dashboard</a>
             </li>
             <li>
               <a>Activity</a>
             </li>
+            <li>
+              <a>History</a>
+            </li>
           </ul>
         </div>
-        <div className="navbar-end">
+        <div className="">
           <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
@@ -44,37 +40,8 @@ export const Navbar = () => {
               <li>
                 <a className="justify-between">Profile</a>
               </li>
-              <li>
-                <a>Settings</a>
-              </li>
               <li className="text-red-600">
                 <a>Logout</a>
-              </li>
-              <li tabIndex={0}>
-                <details className="flex lg:hidden">
-                  <summary>Page</summary>
-                  <ul className="p-2">
-                    <li>
-                      <a>Home</a>
-                    </li>
-                    <li>
-                      <details >
-                        <summary>DashBoard</summary>
-                        <ul className="p-2">
-                          <li>
-                            <a>History</a>
-                          </li>
-                          <li>
-                            <a>History</a>
-                          </li>
-                        </ul>
-                      </details>
-                    </li>
-                    <li>
-                      <a>Activity</a>
-                    </li>
-                  </ul>
-                </details>
               </li>
             </ul>
           </div>
