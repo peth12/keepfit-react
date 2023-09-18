@@ -7,6 +7,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { Dashboard } from "./views/Dashboard/Dashboard.jsx";
 import SignUp from "./views/SignUp/SignUp.jsx";
 import Activity from "./views/Activity/Activity.jsx";
+import History from "./views/History/History.jsx";
 
 const router = createBrowserRouter([
   {
@@ -26,9 +27,13 @@ const router = createBrowserRouter([
     element: <Dashboard />,
   },
   {
-    path: '/acticity',
-    element: <Activity/>
-  }
+    path: "/activity",
+    element: <Activity />,
+  },
+  {
+    path: "/history",
+    element: <History/>
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
