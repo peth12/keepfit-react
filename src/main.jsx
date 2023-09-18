@@ -8,7 +8,7 @@ import { Dashboard } from "./views/Dashboard/Dashboard.jsx";
 import SignUp from "./views/SignUp/SignUp.jsx";
 import Activity from "./views/Activity/Activity.jsx";
 import History from "./views/History/History.jsx";
-
+import User from "./views/User/User.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -33,7 +33,10 @@ const router = createBrowserRouter([
   {
     path: "/history",
     element: <History/>
-  },
+  },{
+    path: '/user',
+    element: <User/>
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
