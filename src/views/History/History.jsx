@@ -45,7 +45,7 @@ function History() {
       </div>
 
         {/* History Infomation */}
-        <div className="m-10 text-slate-800">
+        <div className="m-10 text-slate-800 font-bold italic">
           <p>Date: 8/9/2023</p>
           <p>Kilometers: 3.12</p>
           <p>Average pace: 8.21</p>
@@ -78,7 +78,7 @@ function History() {
       </div>
 
         {/* History Infomation */}
-        <div className="m-10 text-slate-800">
+        <div className="m-10 text-slate-800 font-bold italic">
           <p>Date: 8/9/2023</p>
           <p>Kilometers: 3.12</p>
           <p>Average pace: 8.21</p>
@@ -111,7 +111,7 @@ function History() {
       </div>
 
         {/* History Infomation */}
-        <div className="m-10 text-slate-800">
+        <div className="m-10 text-slate-800 font-bold italic">
           <p>Date: 8/9/2023</p>
           <p>Kilometers: 3.12</p>
           <p>Average pace: 8.21</p>
