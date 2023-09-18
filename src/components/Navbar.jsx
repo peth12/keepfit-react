@@ -4,7 +4,7 @@ export const Navbar = () => {
   return (
     <nav className="flex justify-center">
 
-      <div className="navbar bg-primary-focus justify-between lg:px-10 px-3">
+      <div className="navbar justify-between lg:px-10 px-3 fixed">
         <AiOutlineMenu size={30} className="text-white flex lg:hidden " />
         <div className="">
           <h1 className="text-[30px] font-bold italic">

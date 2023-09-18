@@ -7,7 +7,7 @@ import { Login } from "./views/Login/Login";
 function App() {
   return (
     <>
-      <Login />
+      <h1>Hello</h1>
     </>
   );
 }

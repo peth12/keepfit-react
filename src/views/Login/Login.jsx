@@ -5,14 +5,15 @@ export const Login = () => {
   return (
     <>
       <NavbarLandingPage />
-      <div className="left flex h-[100vh]">
+      <div className=" flex h-[100vh]">
         {/* section 1 */}
-        <div className="h-[100%] w-[100%]"></div>
+        <div className="left hidden md:block h-[100%] w-[100%]"></div>
         {/* section 2 */}
         <div className="right h-[100%] bg-white w-[100%]">
-          <div className="flex justify-center items-center w-[100%] h-[100%]">
-            <div className="flex-col ">
-              <h1 className="text-primary text-[48px] italic font-bold text-center">
+          <div className="flex justify-center items-center w-[100%] h-[100%] ">
+            <div className="flex-col">
+
+              <h1 className=" text-[80px] text-primary  italic font-bold text-center py-3">
                 Login
               </h1>
               <div className="form-control">
@@ -25,7 +26,7 @@ export const Login = () => {
                   className="input input-bordered w-80"
                 />
               </div>
-              <div className="form-control">
+              <div className="form-control py-3">
                 <label className="label">
                   <span className="label-text">Password</span>
                 </label>
