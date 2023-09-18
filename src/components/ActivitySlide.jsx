@@ -4,7 +4,6 @@ import { useData } from "./ActivityData";
 const ActivitySlide = () => {
   const { activityList } = useData();
   const [imgIndex, setImgIndex] = useState(0);
-  
   console.log(activityList);
   const goToPrevious = () => {
     setImgIndex((prevIndex) =>
@@ -20,10 +19,10 @@ const ActivitySlide = () => {
 
   return (
     <div className="px-6 mt-8">
-      <div className="carousel w-full h-96 rounded-box relative">
+      <div className="carousel w-full rounded-box relative" style={{ height: '500px' }}>
         <img
           src={activityList[imgIndex].activity}
-          className="w-full h-full absolute top-0 left-0"
+          className="w-full h-full object-cover absolute top-0 left-0"
           alt={`Slide ${imgIndex + 1}`}
         />
         <div className="absolute flex justify-between items-center w-full h-full px-3">
