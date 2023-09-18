@@ -17,6 +17,7 @@ export const NavbarLandingPage = () => {
             <button className="bg-white p-2 rounded-xl px-3 font-bold">
               Sign Up
             </button>
+            
           </div>
         </div>
       </div>

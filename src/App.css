@@ -5,3 +5,10 @@
   padding: 0px;
   font-family: 'Poppins', sans-serif;
 }
+.tooltip:hover .tooltip-text{
+  padding: 7px;
+
+}
+.icon{
+  border-radius: 50%;
+}
