@@ -5,10 +5,10 @@ function History() {
   return (
     <Layout>
       {/* Choose history type */}
-      <div className="bg-amber-600 mt-5 flex  text-white rounded-full m-5 ">
+      <div className="bg-amber-500 mt-5 flex  text-white rounded-full m-5 ">
         <ul className="menu menu-horizontal px-1 text-xl font-bold text-white gap-10 pl-10">
           <li>
-            <a href="">All</a>
+            <a href="">All </a>
           </li>
           <li>
             <a>Run</a>
