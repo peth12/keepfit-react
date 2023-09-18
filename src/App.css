@@ -1,14 +1,42 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,800;1,400;1,500;1,600;1,800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,800;1,400;1,500;1,600;1,800&display=swap");
 
-*{
+* {
   margin: 0px;
   padding: 0px;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
-.tooltip:hover .tooltip-text{
-  padding: 7px;
 
+.tooltip:hover .tooltip-text {
+  padding: 7px;
 }
-.icon{
+.icon {
   border-radius: 50%;
+}
+
+.nav-item:hover {
+  color: white;
+  width: fit-content;
+  border-bottom: 3px solid white;
+}
+
+.createAccountSuggest {
+  color: coral;
+}
+
+.createAccountSuggest:hover {
+  color: coral;
+  width: fit-content;
+  border-bottom: 3px solid coral;
+}
+
+.right {
+  box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+.activity-card-box-in-activitypage {
+  box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.75);
 }

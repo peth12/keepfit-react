@@ -28,21 +28,21 @@ function History() {
       {/* Card */}
       <div className=" glass mt-5 bg-slate-100  text-white rounded-lg m-5 p-5 flex justify-between drop-shadow-md ">
         {/* icon */}
-      <div className=" m-5 flex justify-center flex-col">
-        <img
-          src="https://i.pinimg.com/564x/cd/46/86/cd46868fc84c9c1fd5927fe0e1a3eadd.jpg"
-          alt=""
-          className="h-20 w-20 icon flex flex-col "
-        />
+        <div className=" m-5 flex justify-center flex-col">
+          <img
+            src="https://i.pinimg.com/564x/cd/46/86/cd46868fc84c9c1fd5927fe0e1a3eadd.jpg"
+            alt=""
+            className="h-20 w-20 icon flex flex-col "
+          />
         </div>
         {/* Card image */}
-      <div className=" m-5 flex justify-center flex-col ">  
-        <img
-          src="https://i.pinimg.com/474x/34/b8/e8/34b8e8b08f42719fc2ef59199cfb995b.jpg"
-          alt=""
-          className="h-40 drop-shadow-md rounded-lg"
-        />
-      </div>
+        <div className=" m-5 flex justify-center flex-col ">
+          <img
+            src="https://i.pinimg.com/474x/34/b8/e8/34b8e8b08f42719fc2ef59199cfb995b.jpg"
+            alt=""
+            className="h-40 drop-shadow-md rounded-lg"
+          />
+        </div>
 
         {/* History Infomation */}
         <div className="m-10 text-slate-800 font-bold italic">
@@ -61,21 +61,21 @@ function History() {
       {/* Card */}
       <div className=" glass mt-5 bg-slate-100  text-white rounded-lg m-5 p-5 flex justify-between drop-shadow-md ">
         {/* icon */}
-      <div className=" m-5 flex justify-center flex-col">
-        <img
-          src="https://i.pinimg.com/564x/c4/f1/e9/c4f1e9e8dd5ab21c9a062cd5b6f0e5f9.jpg"
-          alt=""
-          className="h-20 w-20 icon flex flex-col "
-        />
+        <div className=" m-5 flex justify-center flex-col">
+          <img
+            src="https://i.pinimg.com/564x/c4/f1/e9/c4f1e9e8dd5ab21c9a062cd5b6f0e5f9.jpg"
+            alt=""
+            className="h-20 w-20 icon flex flex-col "
+          />
         </div>
         {/* Card image */}
-      <div className=" m-5 flex justify-center flex-col ">  
-        <img
-          src="https://i.pinimg.com/474x/34/b8/e8/34b8e8b08f42719fc2ef59199cfb995b.jpg"
-          alt=""
-          className="h-40 drop-shadow-md rounded-lg"
-        />
-      </div>
+        <div className=" m-5 flex justify-center flex-col ">
+          <img
+            src="https://i.pinimg.com/474x/34/b8/e8/34b8e8b08f42719fc2ef59199cfb995b.jpg"
+            alt=""
+            className="h-40 drop-shadow-md rounded-lg"
+          />
+        </div>
 
         {/* History Infomation */}
         <div className="m-10 text-slate-800 font-bold italic">
@@ -94,21 +94,21 @@ function History() {
       {/* Card */}
       <div className=" glass mt-5 bg-slate-100  text-white rounded-lg m-5 p-5 flex justify-between drop-shadow-md ">
         {/* icon */}
-      <div className=" m-5 flex justify-center flex-col">
-        <img
-          src="https://i.pinimg.com/564x/b3/3b/c7/b33bc7c826b7acb5dc34b868f49f9819.jpg"
-          alt=""
-          className="h-20 w-20 icon flex flex-col "
-        />
+        <div className=" m-5 flex justify-center flex-col">
+          <img
+            src="https://i.pinimg.com/564x/b3/3b/c7/b33bc7c826b7acb5dc34b868f49f9819.jpg"
+            alt=""
+            className="h-20 w-20 icon flex flex-col "
+          />
         </div>
         {/* Card image */}
-      <div className=" m-5 flex justify-center flex-col ">  
-        <img
-          src="https://i.pinimg.com/474x/34/b8/e8/34b8e8b08f42719fc2ef59199cfb995b.jpg"
-          alt=""
-          className="h-40 drop-shadow-md rounded-lg"
-        />
-      </div>
+        <div className=" m-5 flex justify-center flex-col ">
+          <img
+            src="https://i.pinimg.com/474x/34/b8/e8/34b8e8b08f42719fc2ef59199cfb995b.jpg"
+            alt=""
+            className="h-40 drop-shadow-md rounded-lg"
+          />
+        </div>
 
         {/* History Infomation */}
         <div className="m-10 text-slate-800 font-bold italic">
@@ -122,11 +122,7 @@ function History() {
           <a href="#">🟡</a>
           <a href="#">🔴</a>
         </div>
-
-        
       </div>
-
-      
     </Layout>
   );
 }

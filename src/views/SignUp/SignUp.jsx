@@ -1,21 +1,19 @@
-import { Link } from "react-router-dom";
+import React from "react";
+import "./Signup.css"
 import { NavbarLandingPage } from "../../components/NavbarLogin";
-import "./Login.css";
-
-export const Login = () => {
+const SignUp = () => {
   return (
     <>
       <NavbarLandingPage />
-      <div className=" flex h-[100vh]">
+      <div className="left flex h-[100vh]">
         {/* section 1 */}
-        <div className="left hidden md:block h-[100%] w-[100%]"></div>
+        <div className="h-[100%] w-[100%]"></div>
         {/* section 2 */}
         <div className="right h-[100%] bg-white w-[100%]">
-          <div className="flex justify-center items-center w-[100%] h-[100%] ">
-            <div className="flex-col">
-
-              <h1 className=" text-[80px] text-primary  italic font-bold text-center py-3">
-                Login
+          <div className="flex justify-center items-center w-[100%] h-[100%]">
+            <div className="flex-col ">
+              <h1 className="text-primary text-[48px] italic font-bold text-center">
+                Sign up
               </h1>
               <div className="form-control">
                 <label className="label">
@@ -27,7 +25,7 @@ export const Login = () => {
                   className="input input-bordered w-80"
                 />
               </div>
-              <div className="form-control py-3">
+              <div className="form-control">
                 <label className="label">
                   <span className="label-text">Password</span>
                 </label>
@@ -37,9 +35,9 @@ export const Login = () => {
                   className="input input-bordered w-80"
                 />
               </div>
-              <p className="">No account? <Link to={"signup"} className="createAccountSuggest">Create one!</Link></p>
+              <p></p>
               <button className="btn-primary w-80 rounded-md p-1 text-[24px] font-semibold text-white mt-4">
-                Login
+                Sign up
               </button>
             </div>
           </div>
@@ -48,3 +46,5 @@ export const Login = () => {
     </>
   );
 };
+
+export default SignUp;
