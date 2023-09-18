@@ -3,9 +3,10 @@ import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
 import { Login } from "./views/Login/Login.jsx";
-import { SignUp } from "./views/SignUp/SignUp.jsx";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { Dashboard } from "./views/Dashboard/Dashboard.jsx";
+import SignUp from "./views/SignUp/SignUp.jsx";
+import Activity from "./views/Activity/Activity.jsx";
 
 const router = createBrowserRouter([
   {
@@ -19,9 +20,14 @@ const router = createBrowserRouter([
   {
     path: "/signup",
     element: <SignUp />,
-  },{
-    path: '/dashboard',
-    element:  <Dashboard/>
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard />,
+  },
+  {
+    path: '/acticity',
+    element: <Activity/>
   }
 ]);
 
