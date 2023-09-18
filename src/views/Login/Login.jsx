@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { NavbarLandingPage } from "../../components/NavbarLogin";
 import "./Login.css";
 
@@ -35,7 +36,7 @@ export const Login = () => {
                   className="input input-bordered w-80"
                 />
               </div>
-              <p></p>
+              <p className="">No account? <Link to={"signup"} className="createAccountSuggest">Create one!</Link></p>
               <button className="btn-primary w-80 rounded-md p-1 text-[24px] font-semibold text-white mt-4">
                 Login
               </button>

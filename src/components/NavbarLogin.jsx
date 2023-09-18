@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export const NavbarLandingPage = () => {
   return (
@@ -10,13 +11,17 @@ export const NavbarLandingPage = () => {
               Keep<span className="text-white">Fit</span>
             </h1>
           </div>
-          <div className="nav-end">
-            <button className="bg-white p-2 rounded-xl px-3 mx-5 font-bold">
-              Login
-            </button>
-            <button className="bg-white p-2 rounded-xl px-3 font-bold">
-              Sign Up
-            </button>
+          <div className="nav-end flex">
+            <div className="login">
+              <Link to={"/"}>
+                <button className="p-2  px-3 mx-5 font-bold  nav-item">
+                  Login
+                </button>
+              </Link>
+            </div>
+            <Link to={"/SignUp"}>
+              <button className=" p-2  px-3 font-bold nav-item">Sign up</button>
+            </Link>
           </div>
         </div>
       </div>

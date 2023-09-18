@@ -1,0 +1,10 @@
+.left {
+    background-image: url('image-login.webp');
+    background-repeat: no-repeat, repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.right{
+
+}
