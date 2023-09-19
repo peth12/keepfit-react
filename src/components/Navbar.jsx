@@ -1,10 +1,10 @@
 import { AiOutlineMenu } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 export const Navbar = () => {
   return (
     <nav className="flex justify-center">
-
-      <div className="navbar justify-between lg:px-10 px-3 fixed">
+      <div className="navbar justify-between lg:px-10 px-3 fixed z-10 bg-primary">
         <AiOutlineMenu size={30} className="text-white flex lg:hidden " />
         <div className="">
           <h1 className="text-[30px] font-bold italic">
@@ -15,13 +15,19 @@ export const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 text-xl font-bold text-white">
             <li>
-              <a href="">Dashboard</a>
+              <Link to={"/dashboard"}>
+                <a href="">Dashboard</a>
+              </Link>
             </li>
             <li>
-              <a>Activity</a>
+              <Link to={"/activity"}>
+                <a>Activity</a>
+              </Link>
             </li>
             <li>
-              <a>History</a>
+              <Link to={"/history"}>
+                <a>History</a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -37,10 +43,14 @@ export const Navbar = () => {
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <a className="justify-between">Profile</a>
+                <Link to={"/user"}>
+                  <a className="justify-between">Profile</a>
+                </Link>
               </li>
               <li className="text-red-600">
-                <a>Logout</a>
+                <Link to={"/Login"}>
+                  <a>Logout</a>
+                </Link>
               </li>
             </ul>
           </div>
