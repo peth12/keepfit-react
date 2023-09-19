@@ -30,12 +30,15 @@ const AddActivityButton = () => {
 
   return (
     <div>
+      <div className="px-5 pt-5">
+
       <button
-        className="btn btn-primary hover:bg-blue-700 hover:text-white font-bold py-2 px-5 rounded w-full drop-shadow-m mx-6"
+        className="btn btn-primary hover:bg-blue-700 hover:text-white font-bold py-2 px-5 rounded w-full drop-shadow-m"
         onClick={toggleFormVisibility}
       >
         Add Activity <AiFillPlusCircle />
       </button>
+      </div>
 
       {isFormVisible && (
         <div className="fixed inset-0 flex items-center justify-center z-50">
@@ -158,6 +161,7 @@ const AddActivityButton = () => {
         <div className="flex justify-end mx-6 mt-3">
         <button className="btn btn-primary  hover:bg-blue-700 hover:text-white font-bold py-2 px-4 rounded w-full drop-shadow-m">Add Activity +</button>
 
+        </div>
         </div>
       )}
     </div>
