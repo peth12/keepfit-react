@@ -23,9 +23,9 @@ const ActivityCard = () => {
                   <h1>
                     <strong>{activity.name}</strong>
                   </h1>
-                  <p>{activity.description}</p>
+                  <p className="hidden md:block">{activity.description}</p>
                   <div className="card-actions justify-end drop-shadow-xl">
-                    <button className="btn btn-primary">Do Now</button>
+                    <button className="btn btn-primary">Do it Now!</button>
                   </div>
                 </div>
               </div>
