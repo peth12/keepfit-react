@@ -33,7 +33,7 @@ function History() {
 
       {/* Choose history type */}
       <div
-        className=" bg-slate-500  text-slate-200 flex justify-between mt-10 rounded-lg m-5   
+        className=" bg-slate-500  text-slate-200 flex justify-between mt-24 rounded-lg m-5   
       "
       >
         <a className="btn btn-ghost normal-case text-xl ">All</a>
