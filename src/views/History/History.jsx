@@ -33,7 +33,7 @@ function History() {
 
       {/* Choose history type */}
       <div
-        className=" bg-slate-500  text-slate-200 flex justify-between mt-24 rounded-lg m-5   
+        className=" bg-slate-400  text-slate-100 flex justify-between mt-24 rounded-lg m-5   
       "
       >
         <a className="btn btn-ghost normal-case text-xl ">All</a>
@@ -44,7 +44,7 @@ function History() {
       </div>
 
       {/* Card */}
-      <div className=" glass mt-5 bg-slate-200  text-white rounded-lg m-5 p-5 flex justify-between drop-shadow-md ">
+      <div className=" glass mt-5  text-white rounded-lg m-5 p-5 flex justify-between drop-shadow-md ">
         {/* icon */}
         <div className=" m-5 flex justify-center flex-col">
           <FaRunning className="text-slate-900 " size={50} />
@@ -53,7 +53,7 @@ function History() {
         {/* Card image */}
         <div className="flex justify-center flex-col ">
           <img
-            src="https://i.pinimg.com/564x/03/fa/5c/03fa5cfe676edfa41f6cfd41c408056a.jpg"
+            src="https://i.pinimg.com/564x/51/83/33/5183331b94eb09c31eaf59bc0ac60797.jpg"
             alt=""
             className="h-40  drop-shadow-md rounded-lg w-40 "
           />
@@ -100,7 +100,7 @@ function History() {
     
 
       {/* Card */}
-      <div className=" glass mt-5 bg-slate-200  text-white rounded-lg m-5 p-5 flex justify-between drop-shadow-md ">
+      <div className=" glass mt-5   text-white rounded-lg m-5 p-5 flex justify-between drop-shadow-md ">
         {/* icon */}
         <div className=" m-5 flex justify-center flex-col">
           <TbSwimming className="text-slate-900 " size={50} />
@@ -154,7 +154,7 @@ function History() {
       </div>
 
       {/* Card */}
-      <div className=" glass mt-5 bg-slate-200  text-white rounded-lg m-5 p-5 flex justify-between drop-shadow-md ">
+      <div className=" glass mt-5   text-white rounded-lg m-5 p-5 flex justify-between drop-shadow-md ">
         {/* icon */}
         <div className=" m-5 flex justify-center flex-col">
           <FaBicycle className="text-slate-900 " size={50} />
