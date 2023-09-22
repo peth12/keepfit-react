@@ -4,15 +4,18 @@ import ActivitySlide from "../../components/ActivitySlide";
 import ActivityCard from "../../components/ActivityCard";
 import ActivityData from "../../components/ActivityData";
 import AddActivityButton from "../../components/AddActivityButton";
-import "./activity.css"
+import "./activity.css";
 
 const Activity = () => {
   return (
     <Layout>
       <ActivityData>
+        <AddActivityButton />
+
+        <div className="xl:container xl:mx-auto">
         <ActivitySlide />
-        <AddActivityButton/>
-        <ActivityCard />
+          <ActivityCard />
+        </div>
       </ActivityData>
     </Layout>
   );

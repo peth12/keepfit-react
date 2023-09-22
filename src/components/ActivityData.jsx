@@ -34,6 +34,12 @@ const ActivityData = ({children}) => {
             "https://images.everydayhealth.com/images/swimming-overview-guide-1440x810.jpg?sfvrsn=d3b9ee_1",
             description:"Full-body workout with low impact on joints."
         },
+                {
+            name:"Running",
+          activity:
+            "https://honehealth.com/wp-content/uploads/2023/01/Muscles_Worked-Running-1.webp",
+            description:"Cardiovascular exercise for stamina and mental clarity."
+        },
       ]);
     return(
         <>
