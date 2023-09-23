@@ -1,9 +1,9 @@
 import React from "react";
 import { Layout } from "../../components/Layout";
-import ActivitySlide from "../../components/ActivitySlide";
-import ActivityCard from "../../components/ActivityCard";
-import ActivityData from "../../components/ActivityData";
-import AddActivityButton from "../../components/AddActivityButton";
+import ActivitySlide from "../../components/ActivityComponent/ActivitySlide";
+import ActivityCard from "../../components/ActivityComponent/ActivityCard";
+import ActivityData from "../../components/ActivityComponent/ActivityData";
+import AddActivityButton from "../../components/ActivityComponent/AddActivityButton";
 import "./activity.css";
 
 const Activity = () => {
@@ -13,7 +13,7 @@ const Activity = () => {
         <AddActivityButton />
 
         <div className="xl:container xl:mx-auto">
-        <ActivitySlide />
+          <ActivitySlide />
           <ActivityCard />
         </div>
       </ActivityData>
