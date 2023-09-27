@@ -21,7 +21,7 @@ const ActivityCard = () => {
                 </figure>
                 <div className="card-body shadow-xl rounded-2xl activity-card-box-in-activitypage ">
                   <h1>
-                    <strong className="text-[30px] font-bold bg-white px-10 p-1 rounded-full">{activity.name}</strong>
+                    <strong className="text-[30px] font-bold ">{activity.name}</strong>
                   </h1>
                   <p className="text-white text-[18px] hidden md:block pt-5">{activity.description}</p>
                   <div className="card-actions justify-end drop-shadow-xl">
