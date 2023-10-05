@@ -35,7 +35,7 @@ const AddActivityButton = () => {
             className=" flex flex-col justify-center items-center btn btn-primary drop-shadow-xl text-white text-[20px] font-bold py-2 px-5 rounded-full  me-20 mt-[650px] w-[100px] h-[100px] fixed z-50"
             onClick={toggleFormVisibility}
           >
-            Add ja<AiFillPlusCircle/>
+            Add<AiFillPlusCircle/>
           </button>
         </div>
       </div>
