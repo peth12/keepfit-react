@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 export const Navbar = () => {
   return (
-    <nav className="flex justify-center mb-2">
-      <div style={{"box-shadow": "0px 4px 50px rgba(255, 137.70, 0, 0.50)"}} className="navbar justify-between lg:px-10 px-3 z-10 bg-white">
+    <nav className="flex justify-center ">
+      <div style={{"box-shadow": "0px 4px 50px rgba(255, 137.70, 0, 0.30)"}} className="navbar justify-between lg:px-10 px-3 z-10 bg-white fixed">
         <AiOutlineMenu size={30} className="text-white flex lg:hidden " />
         <div className="">
           <h1 className="text-[30px] font-bold italic">

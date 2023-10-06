@@ -1,13 +1,11 @@
 import React, { createContext, useState, useContext } from "react";
-import Activity from "../../views/Activity/Activity";
 
 const DataContext = createContext()
 const ActivityData = ({children}) => {
     const [activityList, setActivityList] = useState([
         {
             name:"Yoga",
-          activity:
-            "https://static01.nyt.com/images/2016/12/06/well/move/yoga-for-everyone_promo/yoga-for-everyone_promo-superJumbo-v2.jpg",
+          activity:"https://assets.beartai.com/uploads/2023/06/Spiderman-in.jpg",
             description:"This activity might be slow-moving, but it's the perfect way to restore your internal balance"
         },
         {
