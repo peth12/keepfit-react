@@ -1,126 +1,112 @@
 import React from "react";
 import { Layout } from "../../components/Layout";
+import { TbTrash } from "react-icons/tb";
+import { TbPencil } from "react-icons/tb";
+import { FaRunning } from "react-icons/fa";
+import { TbSwimming } from "react-icons/tb";
+import { FaBicycle } from "react-icons/fa6";
+import { VscChevronRight } from "react-icons/vsc";
+import { VscChevronDown } from "react-icons/vsc";
+import { AiFillEdit } from "react-icons/ai";
 
 function History() {
   return (
     <Layout>
       {/* Choose history type */}
-      <div className="bg-amber-500 mt-5 flex  text-white rounded-full m-5 ">
-        <ul className="menu menu-horizontal px-1 text-xl font-bold text-white gap-10 pl-10">
-          <li>
-            <a href="">All </a>
-          </li>
-          <li>
-            <a>Run</a>
-          </li>
-          <li>
-            <a>Swim</a>
-          </li>
-          <li>
-            <a>Walk</a>
-          </li>
-          <li>
-            <a>Bicycle</a>
-          </li>
-        </ul>
+      <div
+        className="hidden bg-primary  text-slate-100 flex justify-between mt-24 rounded-lg m-5 lg:flex   
+      "
+      >
+        <a className="btn btn-ghost normal-case lg:text-xl ">All</a>
+        <a className="btn btn-ghost normal-case lg:text-xl">Run</a>
+        <a className="btn btn-ghost normal-case lg:text-xl">Swim</a>
+        <a className="btn btn-ghost normal-case lg:text-xl">Walk</a>
+        <a className="btn btn-ghost normal-case lg:text-xl">Bicycle</a>
+        <a className="btn btn-ghost normal-case lg:text-xl">
+          <VscChevronRight />
+        </a>
       </div>
 
-      {/* Card */}
-      <div className=" glass mt-5 bg-slate-100  text-white rounded-lg m-5 p-5 flex justify-between drop-shadow-md ">
-        {/* icon */}
-        <div className=" m-5 flex justify-center flex-col">
-          <img
-            src="https://i.pinimg.com/564x/cd/46/86/cd46868fc84c9c1fd5927fe0e1a3eadd.jpg"
-            alt=""
-            className="h-20 w-20 icon flex flex-col "
-          />
-        </div>
-        {/* Card image */}
-        <div className=" m-5 flex justify-center flex-col ">
-          <img
-            src="https://i.pinimg.com/474x/34/b8/e8/34b8e8b08f42719fc2ef59199cfb995b.jpg"
-            alt=""
-            className="h-40 drop-shadow-md rounded-lg"
-          />
-        </div>
-
-        {/* History Infomation */}
-        <div className="m-10 text-slate-800 font-bold italic">
-          <p>Date: 8/9/2023</p>
-          <p>Kilometers: 3.12</p>
-          <p>Average pace: 8.21</p>
-          <p>Time: 32.04</p>
-        </div>
-        {/* Delete and Edit Button */}
-        <div>
-          <a href="#">🟡</a>
-          <a href="#">🔴</a>
+      <div className="flex justify-end lg:hidden me-5">
+        <div className=" dropdown dropdown-end mt-24">
+          <label tabIndex={0} className=" ">
+            <div className="btn btn-primary text-white ">
+              Type <VscChevronDown />
+            </div>
+          </label>
+          <ul
+            tabIndex={0}
+            className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+          >
+            <li>
+              <a>Item 1</a>
+            </li>
+            <li>
+              <a>Item 2</a>
+            </li>
+          </ul>
         </div>
       </div>
-
       {/* Card */}
-      <div className=" glass mt-5 bg-slate-100  text-white rounded-lg m-5 p-5 flex justify-between drop-shadow-md ">
+      <div className=" glass mt-5 flex flex-col text-white rounded-lg m-5 p-1 lg:p-5 lg:flex-row justify-between drop-shadow-md">
         {/* icon */}
-        <div className=" m-5 flex justify-center flex-col">
-          <img
-            src="https://i.pinimg.com/564x/c4/f1/e9/c4f1e9e8dd5ab21c9a062cd5b6f0e5f9.jpg"
-            alt=""
-            className="h-20 w-20 icon flex flex-col "
-          />
-        </div>
-        {/* Card image */}
-        <div className=" m-5 flex justify-center flex-col ">
-          <img
-            src="https://i.pinimg.com/474x/34/b8/e8/34b8e8b08f42719fc2ef59199cfb995b.jpg"
-            alt=""
-            className="h-40 drop-shadow-md rounded-lg"
-          />
+        <div className=" m-5 flex justify-center hidden lg:flex lg:justify-center flex-col border-solid">
+          <FaRunning className="text-slate-900 text-20 lg:text-5xl " />
         </div>
 
+        {/* Card image */}
+        <div className="flex justify-center  flex-col hidden lg:flex ">
+          <img
+            src="https://i.pinimg.com/564x/51/83/33/5183331b94eb09c31eaf59bc0ac60797.jpg"
+            alt=""
+            className="h-40  drop-shadow-md rounded-lg w-40 "
+          />
+        </div>
+        {/* Description */}
+        <div className="text-slate-700 lg:w-72 border border-red-500 w-100 lg:ml-2">
+          <div className="">
+            <p className="text-sm font-bold ps-5">Activity Name</p>
+            <p className=" lg:text-2xl ">Running</p>
+
+            <p className="text-sm font-bold ps-5">Description</p>
+            <p className=" lg:text-2xl  ">
+              "Happiness is running with friends.
+            </p>
+          </div>
+        </div>
         {/* History Infomation */}
-        <div className="m-10 text-slate-800 font-bold italic">
-          <p>Date: 8/9/2023</p>
-          <p>Kilometers: 3.12</p>
-          <p>Average pace: 8.21</p>
-          <p>Time: 32.04</p>
+        <div className=" text-slate-700  lg:gap-20 lg:gap-10 gap-5 flex flex-row border border-blue-500 ps-5 mt-2">
+          <div className="">
+            <div className=" w-30">
+              <p className="text-sm">Date </p>
+              <p className="font-bold lg:text-2xl">08/09/2023</p>
+            </div>
+            <div className=" mt-3">
+              <p className="text-sm">Distance</p>
+              <p className="font-bold lg:text-2xl">3.12 km</p>
+            </div>
+          </div>
+
+          <div className=" ">
+            <div className=" w-30">
+              <p className="text-sm">Average Pace</p>
+              <p className="font-bold lg:text-2xl">8.21 /km</p>
+            </div>
+            <div className=" mt-3">
+              <p className="text-sm">Duration</p>
+              <p className="font-bold lg:text-2xl">32.04 min</p>
+            </div>
+          </div>
         </div>
         {/* Delete and Edit Button */}
-        <div>
-          <a href="#">🟡</a>
-          <a href="#">🔴</a>
-        </div>
-      </div>
+        <div className="text-2xl ml-5 text-end">
+          <a href="#" className="tooltip  tooltip-primary" data-tip="Edit">
+            <TbPencil className="text-slate-900" />
+          </a>
 
-      {/* Card */}
-      <div className=" glass mt-5 bg-slate-100  text-white rounded-lg m-5 p-5 flex justify-between drop-shadow-md ">
-        {/* icon */}
-        <div className=" m-5 flex justify-center flex-col">
-          <img
-            src="https://i.pinimg.com/564x/b3/3b/c7/b33bc7c826b7acb5dc34b868f49f9819.jpg"
-            alt=""
-            className="h-20 w-20 icon flex flex-col "
-          />
-        </div>
-        {/* Card image */}
-        <div className=" m-5 flex justify-center flex-col ">
-          <img
-            src="https://i.pinimg.com/474x/34/b8/e8/34b8e8b08f42719fc2ef59199cfb995b.jpg"
-            alt=""
-            className="h-40 drop-shadow-md rounded-lg"
-          />
-        </div>
-
-        {/* History Infomation */}
-        <div className="m-10 text-slate-800 font-bold italic">
-          <p>Date: 8/9/2023</p>
-          <p>Kilometers: 3.12</p>
-          <p>Average pace: 8.21</p>
-          <p>Time: 32.04</p>
-        </div>
-        {/* Delete and Edit Button */}
-        <div>
-          <a href="#">🟡</a>
-          <a href="#">🔴</a>
+          <a href="#" className="tooltip " data-tip="Delete">
+            <TbTrash className="text-slate-900" />
+          </a>
         </div>
       </div>
     </Layout>

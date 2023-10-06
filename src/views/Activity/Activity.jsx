@@ -1,17 +1,17 @@
 import React from "react";
 import { Layout } from "../../components/Layout";
-import ActivitySlide from "../../components/ActivitySlide";
-import ActivityCard from "../../components/ActivityCard";
-import ActivityData from "../../components/ActivityData";
-import AddActivityButton from "../../components/AddActivityButton";
+import {ActivityCard, ActivityData, ActivitySlide,AddActivityButton } from '../../components'
+import "./activity.css";
 
 const Activity = () => {
   return (
     <Layout>
       <ActivityData>
-        <ActivitySlide />
-        <AddActivityButton/>
-        <ActivityCard />
+        <AddActivityButton />
+        <div className="xl:container xl:mx-auto pt-[75px]">
+          <ActivitySlide />
+          <ActivityCard />
+        </div>
       </ActivityData>
     </Layout>
   );
