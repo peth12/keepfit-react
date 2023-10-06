@@ -1,13 +1,11 @@
 import React, { createContext, useState, useContext } from "react";
-import Activity from "../views/Activity/Activity";
 
 const DataContext = createContext()
 const ActivityData = ({children}) => {
     const [activityList, setActivityList] = useState([
         {
             name:"Yoga",
-          activity:
-            "https://static01.nyt.com/images/2016/12/06/well/move/yoga-for-everyone_promo/yoga-for-everyone_promo-superJumbo-v2.jpg",
+          activity:"https://assets.beartai.com/uploads/2023/06/Spiderman-in.jpg",
             description:"This activity might be slow-moving, but it's the perfect way to restore your internal balance"
         },
         {
@@ -33,6 +31,12 @@ const ActivityData = ({children}) => {
           activity:
             "https://images.everydayhealth.com/images/swimming-overview-guide-1440x810.jpg?sfvrsn=d3b9ee_1",
             description:"Full-body workout with low impact on joints."
+        },
+                {
+            name:"Running",
+          activity:
+            "https://honehealth.com/wp-content/uploads/2023/01/Muscles_Worked-Running-1.webp",
+            description:"Cardiovascular exercise for stamina and mental clarity."
         },
       ]);
     return(

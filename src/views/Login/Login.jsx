@@ -18,11 +18,11 @@ export const Login = () => {
               </h1>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Email or Username</span>
+                  <span className="label-text">Email</span>
                 </label>
                 <input
                   type="text"
-                  placeholder="Enter Email or Username"
+                  placeholder="Enter Email"
                   className="input input-bordered w-80"
                 />
               </div>
@@ -36,7 +36,7 @@ export const Login = () => {
                   className="input input-bordered w-80"
                 />
               </div>
-              <p className="">
+              <p className="text-end py-2">
                 No account?{" "}
                 <Link to={"signup"} className="createAccountSuggest">
                   Create one!

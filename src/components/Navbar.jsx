@@ -3,17 +3,17 @@ import { Link } from "react-router-dom";
 
 export const Navbar = () => {
   return (
-    <nav className="flex justify-center">
-      <div className="navbar justify-between lg:px-10 px-3 fixed z-10 bg-primary">
+    <nav className="flex justify-center ">
+      <div style={{"box-shadow": "0px 4px 50px rgba(255, 137.70, 0, 0.30)"}} className="navbar justify-between lg:px-10 px-3 z-10 bg-white fixed">
         <AiOutlineMenu size={30} className="text-white flex lg:hidden " />
         <div className="">
           <h1 className="text-[30px] font-bold italic">
-            Keep<span className="text-white">Fit</span>
+            Keep<span className="text-primary">Fit</span>
           </h1>
         </div>
 
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 text-xl font-bold text-white">
+          <ul className="menu menu-horizontal px-1 text-xl font-bold text-[#252525]">
             <li>
               <Link to={"/dashboard"}>
                 <a href="">Dashboard</a>

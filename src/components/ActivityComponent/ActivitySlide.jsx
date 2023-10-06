@@ -19,8 +19,8 @@ const ActivitySlide = () => {
 
   return (
 
-    <div className="px-6">
-      <div className="carousel w-full rounded-box relative mt-24" style={{ height: '500px' }}>
+    <div className="px-8">
+      <div className="carousel w-full rounded-box relative " style={{ height: '500px' }}>
 
         <img
           src={activityList[imgIndex].activity}

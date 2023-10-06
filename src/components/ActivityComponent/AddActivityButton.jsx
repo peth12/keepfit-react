@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { AiFillPlusCircle } from "react-icons/ai";
 
 const AddActivityButton = () => {
-
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [time, setTime] = useState({
     hours: "00",
@@ -31,13 +30,14 @@ const AddActivityButton = () => {
   return (
     <div>
       <div className="px-5 pt-5">
-
-      <button
-        className="btn btn-primary hover:bg-blue-700 hover:text-white font-bold py-2 px-5 rounded w-full drop-shadow-m"
-        onClick={toggleFormVisibility}
-      >
-        Add Activity <AiFillPlusCircle />
-      </button>
+        <div className="w-screen flex justify-end ">
+          <button
+            className=" flex flex-col justify-center items-center btn btn-primary drop-shadow-xl text-white text-[20px] font-bold py-2 px-5 rounded-full  me-20 mt-[650px] w-[100px] h-[100px] fixed z-50"
+            onClick={toggleFormVisibility}
+          >
+            Add ja<AiFillPlusCircle/>
+          </button>
+        </div>
       </div>
 
       {isFormVisible && (
@@ -157,11 +157,7 @@ const AddActivityButton = () => {
               </div>
             </form>
           </div>
-    return(
-        <div className="flex justify-end mx-6 mt-3">
-        <button className="btn btn-primary  hover:bg-blue-700 hover:text-white font-bold py-2 px-4 rounded w-full drop-shadow-m">Add Activity +</button>
-
-        </div>
+          
         </div>
       )}
     </div>
