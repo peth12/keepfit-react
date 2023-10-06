@@ -11,21 +11,21 @@ const ActivityCard = () => {
     );
   //activity-card-box-in-activitypage
     return (
-      <div className=" m-5 ">
+      <div className=" p-5 ">
         {rows.map((row, rowIndex) => (
           <div key={rowIndex} className="flex ">
             {row.map((activity, index) => (
-              <div key={index} className="card w-1/3 bg-base-100  image-full p-4 ">
+              <div key={index} className="card w-1/3 bg-base-100  image-full  p-3">
                 <figure>
                   <img src={activity.activity} alt={activity.name} />
                 </figure>
-                <div className="card-body drop-shadow-xl rounded-2xl activity-card-box-in-activitypage ">
+                <div className="card-body shadow-xl rounded-2xl activity-card-box-in-activitypage ">
                   <h1>
-                    <strong>{activity.name}</strong>
+                    <strong className="max-text-[30px] font-bold bg-white px-10 p-1 rounded-full">{activity.name}</strong>
                   </h1>
-                  <p className="hidden md:block">{activity.description}</p>
+                  <p className="text-white text-[18px] hidden md:block pt-5">{activity.description}</p>
                   <div className="card-actions justify-end drop-shadow-xl">
-                    <button className="btn btn-primary">Do it Now!</button>
+                    <button className="btn btn-white  w-auto font-bold text-lg hover:bg-red-500 hover:text-white hover:border-none">Do it Now!</button>
                   </div>
                 </div>
               </div>

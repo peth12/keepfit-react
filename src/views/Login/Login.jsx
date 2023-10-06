@@ -1,11 +1,27 @@
 import { Link } from "react-router-dom";
 import { NavbarLandingPage } from "../../components/NavbarLogin";
+import { useState } from "react";
+import toast, { Toaster } from 'react-hot-toast';
 import "./Login.css";
 
 export const Login = () => {
+  const [userName, setUserName] = useState('')
+  const [password, setPassword] = useState('')
+  
+
+  const notify = () => toast.success('Successfully toasted!')
+  const checkData = () => {
+    if(userName == ""){
+    
+      notify()
+      
+    }
+  }
   return (
+
+
     <>
-      <NavbarLandingPage />
+      {/* <NavbarLandingPage /> */}
       <div className=" flex h-[100vh]">
         {/* section 1 */}
         <div className="left hidden md:block h-[100%] w-[100%]"></div>
@@ -18,12 +34,13 @@ export const Login = () => {
               </h1>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Email or Username</span>
+                  <span className="label-text">Email</span>
                 </label>
                 <input
                   type="text"
-                  placeholder="Enter Email or Username"
+                  placeholder="Enter Email"
                   className="input input-bordered w-80"
+                  onChange={(e)=> setUserName(e.target.value())}
                 />
               </div>
               <div className="form-control py-3">
@@ -31,22 +48,24 @@ export const Login = () => {
                   <span className="label-text">Password</span>
                 </label>
                 <input
-                  type="text"
+                  type="password"
                   placeholder="Enter password"
                   className="input input-bordered w-80"
+                  onChange={(e)=> setPassword(e.target.value())}
                 />
               </div>
-              <p className="">
+              <p className="text-end py-2">
                 No account?{" "}
-                <Link to={"signup"} className="createAccountSuggest">
+                <Link to={"/signUp"} className="createAccountSuggest">
                   Create one!
                 </Link>
               </p>
-              <Link to={"/activity"}>
-                <button className="btn-primary w-80 rounded-md p-1 text-[24px] font-semibold text-white mt-4">
+              {/* <Link to={"/activity"}> */}
+                <button onClick={() =>checkData()} className="btn-primary w-80 rounded-md p-1 text-[24px] font-semibold text-white mt-4">
                   Login
                 </button>
-              </Link>
+                <Toaster />
+              {/* </Link> */}
             </div>
           </div>
         </div>
