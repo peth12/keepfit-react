@@ -1,22 +1,11 @@
 import { Link } from "react-router-dom";
 import { NavbarLandingPage } from "../../components/NavbarLogin";
 import { useState } from "react";
-import toast, { Toaster } from 'react-hot-toast';
 import "./Login.css";
 
 export const Login = () => {
-  const [userName, setUserName] = useState('')
-  const [password, setPassword] = useState('')
-  
 
-  const notify = () => toast.success('Successfully toasted!')
-  const checkData = () => {
-    if(userName == ""){
-    
-      notify()
-      
-    }
-  }
+  
   return (
 
 
@@ -40,7 +29,7 @@ export const Login = () => {
                   type="text"
                   placeholder="Enter Email"
                   className="input input-bordered w-80"
-                  onChange={(e)=> setUserName(e.target.value())}
+           
                 />
               </div>
               <div className="form-control py-3">
@@ -51,7 +40,7 @@ export const Login = () => {
                   type="password"
                   placeholder="Enter password"
                   className="input input-bordered w-80"
-                  onChange={(e)=> setPassword(e.target.value())}
+          
                 />
               </div>
               <p className="text-end py-2">
@@ -60,12 +49,12 @@ export const Login = () => {
                   Create one!
                 </Link>
               </p>
-              {/* <Link to={"/activity"}> */}
-                <button onClick={() =>checkData()} className="btn-primary w-80 rounded-md p-1 text-[24px] font-semibold text-white mt-4">
+              <Link to={"/activity"}>
+                <button  className="btn-primary w-80 rounded-md p-1 text-[24px] font-semibold text-white mt-4">
                   Login
                 </button>
-                <Toaster />
-              {/* </Link> */}
+           
+              </Link>
             </div>
           </div>
         </div>
