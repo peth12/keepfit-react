@@ -2,17 +2,9 @@ import React, { useState } from "react";
 import toast, { Toaster } from 'react-hot-toast';
 import "./Signup.css";
 const SignUp = () => {
-  const [height, setHeight] = useState()
 
-  const notify = () => toast.error('error toasted!')
-
-  if(height < 0){
-    notify()
-    setHeight(0)
-  }
   return (
     <>
-    <Toaster/>
       {/* <NavbarLandingPage /> */}
       <div className=" flex min-h-[100vh]">
         {/* section 1 */}
@@ -92,7 +84,6 @@ const SignUp = () => {
                     type="number"
                     placeholder="Enter Height"
                     className="input input-bordered w-[9.5rem] text-secondary h-10"
-                    onChange={(e)=> setHeight(e.target.value)}
                   />
                 </div>
 
