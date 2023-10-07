@@ -8,7 +8,6 @@ import { Dashboard } from "./views/Dashboard/Dashboard.jsx";
 import SignUp from "./views/SignUp/SignUp.jsx";
 import Activity from "./views/Activity/Activity.jsx";
 import History from "./views/History/History.jsx";
-import User from "./views/User/User.jsx";
 import Profile from "./views/User/Profile.jsx";
 const router = createBrowserRouter([
   {
