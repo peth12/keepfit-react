@@ -27,6 +27,11 @@ const User = () => {
                                     <button className="btn btn-primary text-white" onClick={() => document.getElementById('my_modal_5').showModal()}>Edit<AiFillEdit /></button>
                                     <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
                                         <div className="modal-box">
+
+                                             {/* Close Button */}
+                                            <form method="dialog">
+                                                <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                                            </form>
                                             <h3 className="font-bold text-2xl ">Edit your profile</h3>
 
                                             {/* Edit profile photo */}
@@ -74,13 +79,13 @@ const User = () => {
                                             </div>
                                             <div className="form-control w-full pt-3">
                                                 <label className="label">
-                                                    <span className="label-text text-primary font-semibold text-[16px]">Weight (Kg)</span>
+                                                    <span className="label-text text-primary font-semibold text-[16px]">Weight (kg)</span>
                                                 </label>
                                                 <input type="text" placeholder="Weight" className="input input-bordered w-full" />
                                             </div>
                                             <div className="form-control w-full pt-3">
                                                 <label className="label">
-                                                    <span className="label-text text-primary font-semibold text-[16px]">Height (Cm)</span>
+                                                    <span className="label-text text-primary font-semibold text-[16px]">Height (cm)</span>
                                                 </label>
                                                 <input type="text" placeholder="Height" className="input input-bordered w-full" />
                                             </div>
@@ -106,8 +111,12 @@ const User = () => {
                                         </div>
                                     </dialog>
                                 </div>
+
+
+
+                                {/* Show data */}
                                 <label className="label">
-                                    <span className="label-text text-primary font-bold text-lg">First Name : </span>
+                                    <span className="label-text text-primary font-bold text-lg">First Name</span>
                                 </label>
                                 <div className="bg-white text-start ps-2 p-2 rounded-md">
                                     <h1>First Name</h1>

@@ -9,6 +9,7 @@ import SignUp from "./views/SignUp/SignUp.jsx";
 import Activity from "./views/Activity/Activity.jsx";
 import History from "./views/History/History.jsx";
 import User from "./views/User/User.jsx";
+import Profile from "./views/User/Profile.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -35,7 +36,7 @@ const router = createBrowserRouter([
     element: <History/>
   },{
     path: '/user',
-    element: <User/>
+    element: <Profile/>
   }
 ]);
 
