@@ -15,7 +15,7 @@ function History() {
     <Layout>
       {/* Choose history type */}
       <div
-        className="hidden bg-primary  text-slate-100 flex justify-between mt-24 rounded-lg m-5 lg:flex   
+        className="hidden bg-primary text-slate-100 flex justify-between mt-24 rounded-lg m-5 lg:flex   
       "
       >
         <a className="btn btn-ghost normal-case lg:text-xl">All</a>
@@ -58,7 +58,7 @@ function History() {
         </div>
       </div>
       {/* Card */}
-      <div className=" glass mt-5 flex flex-col text-white rounded-lg m-5 p-1 lg:p-5 lg:flex-row justify-between drop-shadow-md">
+      <div className=" glass mt-5 flex flex-col text-white rounded-lg m-5 p-1 lg:p-5 lg:flex-row justify-between drop-shadow-md  transform transition-transform hover:scale-105 shadow-lg">
         {/* icon */}
         <div className=" m-5 flex justify-center hidden lg:flex lg:justify-center flex-col border-solid">
           <FaRunning className="text-slate-900 text-20 lg:text-5xl " />
@@ -110,14 +110,17 @@ function History() {
         </div>
         {/* Delete and Edit Button */}
         {/* Edit */}
-        <div className="text-2xl ml-5 text-end">
+        <div className=" text-2xl ml-5 text-end  lg:justify-end lg:flex items-end">
           <button
             className=" text-white"
             onClick={() => document.getElementById("my_modal_5").showModal()}
           >
-            <a href="#" className="tooltip " data-tip="Edit">
-              <TbPencil className="text-slate-900" />
-            </a>
+            <button className="hidden lg:block btn btn-sm bg-primary text-white  lg:w-24 me-2 ">
+              Edit
+            </button>
+            <div className="lg:hidden text-black ">
+              <TbPencil />
+            </div>
           </button>
           <dialog
             id="my_modal_5"
@@ -235,7 +238,7 @@ function History() {
               <div className="modal-action w-full">
                 <form method="dialog">
                   {/* if there is a button in form, it will close the modal */}
-                  <button className="btn btn-primary text-white w-80 lg:w-16">
+                  <button className="btn btn-primary text-white w-80 lg:w-32">
                     Save
                   </button>
                 </form>
@@ -248,9 +251,12 @@ function History() {
             className=""
             onClick={() => document.getElementById("my_modal_1").showModal()}
           >
-            <a href="#" className="tooltip " data-tip="Delete">
-              <TbTrash className="text-slate-900" />
-            </a>
+            <button className="hidden lg:block btn btn-sm bg-red-600 text-white lg:w-24 ">
+              Delete
+            </button>
+            <div className="lg:hidden text-black ">
+              <TbTrash />
+            </div>
           </button>
           <dialog
             id="my_modal_1"
@@ -278,7 +284,7 @@ function History() {
                 <div className="text-center">
                   <form method="dialog ">
                     {/* if there is a button in form, it will close the modal */}
-                    <button className="btn bg-green-500 text-white  w-72 lg:w-32">
+                    <button className="btn bg-green-500 text-white  w-72 lg:w-32 lg:me-2">
                       Cancel
                     </button>
                     <button className="btn bg-red-600 text-white  w-72 lg:w-32 ">
