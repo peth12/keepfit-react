@@ -1,11 +1,16 @@
 import { Link } from "react-router-dom";
 import { NavbarLandingPage } from "../../components/NavbarLogin";
+import { useState } from "react";
 import "./Login.css";
 
 export const Login = () => {
+
+  
   return (
+
+
     <>
-      <NavbarLandingPage />
+      {/* <NavbarLandingPage /> */}
       <div className=" flex h-[100vh]">
         {/* section 1 */}
         <div className="left hidden md:block h-[100%] w-[100%]"></div>
@@ -24,6 +29,7 @@ export const Login = () => {
                   type="text"
                   placeholder="Enter Email"
                   className="input input-bordered w-80"
+           
                 />
               </div>
               <div className="form-control py-3">
@@ -31,21 +37,23 @@ export const Login = () => {
                   <span className="label-text">Password</span>
                 </label>
                 <input
-                  type="text"
+                  type="password"
                   placeholder="Enter password"
                   className="input input-bordered w-80"
+          
                 />
               </div>
               <p className="text-end py-2">
                 No account?{" "}
-                <Link to={"signup"} className="createAccountSuggest">
+                <Link to={"/signUp"} className="createAccountSuggest">
                   Create one!
                 </Link>
               </p>
               <Link to={"/activity"}>
-                <button className="btn-primary w-80 rounded-md p-1 text-[24px] font-semibold text-white mt-4">
+                <button  className="btn-primary w-80 rounded-md p-1 text-[24px] font-semibold text-white mt-4">
                   Login
                 </button>
+           
               </Link>
             </div>
           </div>

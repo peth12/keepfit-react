@@ -157,12 +157,7 @@ const AddActivityButton = () => {
               </div>
             </form>
           </div>
-          return(
-          <div className="flex justify-end mx-6 mt-3">
-            <button className="btn btn-primary  hover:bg-blue-700 hover:text-white font-bold py-2 px-4 rounded w-full drop-shadow-m">
-              Add Activity +
-            </button>
-          </div>
+          
         </div>
       )}
     </div>

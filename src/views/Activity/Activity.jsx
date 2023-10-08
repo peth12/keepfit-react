@@ -1,9 +1,6 @@
 import React from "react";
 import { Layout } from "../../components/Layout";
-import ActivitySlide from "../../components/ActivityComponent/ActivitySlide";
-import ActivityCard from "../../components/ActivityComponent/ActivityCard";
-import ActivityData from "../../components/ActivityComponent/ActivityData";
-import AddActivityButton from "../../components/ActivityComponent/AddActivityButton";
+import {ActivityCard, ActivityData, ActivitySlide,AddActivityButton } from '../../components'
 import "./activity.css";
 
 const Activity = () => {
@@ -11,8 +8,7 @@ const Activity = () => {
     <Layout>
       <ActivityData>
         <AddActivityButton />
-
-        <div className="xl:container xl:mx-auto">
+        <div className="xl:container xl:mx-auto pt-[75px]">
           <ActivitySlide />
           <ActivityCard />
         </div>
