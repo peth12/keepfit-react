@@ -35,7 +35,7 @@ const ActivityCard = () => {
                   <h2 className="text-2xl font-bold mt-5 underline-offset-8 underline">
                     {activity.name}
                   </h2>
-                  <p className="text-gray-600 h-fit mt-12">
+                  <p className="text-gray-600 h-fit mt-4">
                     {activity.description}
                   </p>
                 </div>
