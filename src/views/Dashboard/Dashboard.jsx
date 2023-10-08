@@ -1,7 +1,7 @@
 import React from "react";
 import { Layout } from "../../components/Layout";
 import "./Dashboard.css";
-import {UserCard, DurationStackCard} from '../../components'
+import {UserCard, DurationStackCard, NewChart , ColumnChart} from '../../components'
 export const Dashboard = () => {
   return (
     <Layout>
@@ -18,10 +18,21 @@ export const Dashboard = () => {
               <div className="col-span-12 row-span-3 lg:col-span-6 lg:row-span-5">
                 <DurationStackCard/>
               </div>
-              <div className="col-span-12 row-span-2 lg:col-span-6 lg:row-span-5 bg-red-400"></div>
+              
+              <div className="col-span-12 row-span-2 lg:col-span-6 lg:row-span-5 bg-red-400 border-4 border-primary rounded-2xl overflow-hidden">
+              
+              </div>
             </div>
           </div>
-          <div className="col-span-6 row-span-3 bg-green-500"></div>
+          <div className=" col-span-6 row-span-3 grid grid-cols-6 grid-rows-3 gap-3 ">
+            <div className="col-span-6 lg:col-span-2 row-span-3  grid items-center border-4 border-primary overflow-hidden rounded-xl p-3">
+            <NewChart />
+            </div>
+            <div className="col-span-6 lg:col-span-4 row-span-3 grid items-center border-4 border-primary overflow-hidden rounded-xl p-3">
+            <ColumnChart/>
+            </div>
+            
+          </div>
         </div>
       </div>
     </Layout>

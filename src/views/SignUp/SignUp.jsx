@@ -1,18 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Signup.css";
-import { NavbarLandingPage } from "../../components/NavbarLogin";
 const SignUp = () => {
+
   return (
     <>
-      <NavbarLandingPage />
-      <div className=" flex h-[100vh]">
+      {/* <NavbarLandingPage /> */}
+      <div className=" flex min-h-[100vh]">
         {/* section 1 */}
-        <div className="left hidden md:block h-[100%] w-[100%]"></div>
+        <div className="left hidden md:block min-h-[100%] w-[100%]"></div>
         {/* section 2 */}
-        <div className="right h-[100%] bg-white w-[100%]">
-          <div className="flex justify-center items-center w-[100%] h-[100%] ">
+        <div className="right min-h-[100%] bg-white w-[100%]">
+          <div className="flex justify-center items-center w-[100%] min-h-[100%]">
             <div className="flex-col">
-              <h1 className=" text-[70px] text-primary  italic font-bold text-center py-3">
+              <h1 className=" text-[70px] text-primary italic font-bold text-center">
                 Sign Up
               </h1>
               <div className="form-control">
@@ -22,21 +22,21 @@ const SignUp = () => {
                 <input
                   type="text"
                   placeholder="Enter Firstname"
-                  className="input input-bordered w-80"
+                  className="input input-bordered w-80 h-10"
                 />
               </div>
-              <div className="form-control py-3">
+              <div className="form-control">
                 <label className="label">
                   <span className="label-text text-primary font-semibold text-[16px]">LastName</span>
                 </label>
                 <input
                   type="password"
                   placeholder="Enter Lastname"
-                  className="input input-bordered w-80"
+                  className="input input-bordered w-80 h-10"
                 />
               </div>
               <div className="flex justify-between">
-                <div className="form-control py-3">
+                <div className="form-control">
                   <label className="label">
                     <span className="label-text text-primary font-semibold text-[16px]">Date of Birth</span>
                   </label>
@@ -47,13 +47,13 @@ const SignUp = () => {
                   />
                 </div>
 
-                <div className="form-control py-3">
+                <div className="form-control">
                   <label className="label">
                     <span className="label-text text-primary font-semibold text-[16px]">
                       Gender
                     </span>
                   </label>
-                  <select className="select select-bordered text-gray-400">
+                  <select className="select select-bordered text-gray-400 ">
                     <option disabled selected>
                       None
                     </option>
@@ -65,24 +65,24 @@ const SignUp = () => {
               </div>
 
               <div className="flex justify-between">
-                <div className="form-control py-3">
+                <div className="form-control">
                   <label className="label">
                     <span className="label-text text-primary font-semibold text-[16px]">Weigth</span>
                   </label>
                   <input
                     type="number"
                     placeholder="Enter Weigth"
-                    className="input input-bordered w-[9.5rem] text-secondary"
+                    className="input input-bordered w-[9.5rem] text-secondary h-10" 
                   />
                 </div>
-                <div className="form-control py-3">
+                <div className="form-control">
                   <label className="label">
                     <span className="label-text text-primary font-semibold text-[16px]">Height</span>
                   </label>
                   <input
                     type="number"
                     placeholder="Enter Height"
-                    className="input input-bordered w-[9.5rem] text-secondary"
+                    className="input input-bordered w-[9.5rem] text-secondary h-10"
                   />
                 </div>
 
@@ -98,7 +98,7 @@ const SignUp = () => {
                   className="input input-bordered w-80"
                 />
               </div>
-              <div className="form-control py-3">
+              <div className="form-control pb-4">
                 <label className="label">
                   <span className="label-text text-primary font-semibold text-[16px]">Password</span>
                 </label>
@@ -110,7 +110,7 @@ const SignUp = () => {
               </div>
 
               {/* <Link to={"/activity"}> */}
-              <button className="btn-primary w-80 rounded-md p-1 text-[24px] font-semibold text-white mt-4">
+              <button className="btn-primary w-80 rounded-md p-1 text-[24px] font-semibold text-white">
                 Sign Up
               </button>
 
