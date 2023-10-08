@@ -5,36 +5,30 @@ const ActivityData = ({children}) => {
     const [activityList, setActivityList] = useState([
         {
             name:"Yoga",
-          activity:"https://assets.beartai.com/uploads/2023/06/Spiderman-in.jpg",
+          imgUrl:"https://content.jdmagicbox.com/comp/coimbatore/76/0422p422std2200276/catalogue/isha-foundation-registered-office--singanallur-coimbatore-yoga-classes-0vsccfhxoy.jpg?clr=",
             description:"This activity might be slow-moving, but it's the perfect way to restore your internal balance"
         },
         {
             name:"Boxing",
-          activity:
+            imgUrl:
             "https://titleboxingclub.com/wp-content/uploads/2022/07/FirstClass_Hero.jpg",
             description:"High-intensity combat sport for strength and agility."
         },
         {
             name:"Cycling",
-          activity:
+            imgUrl:
             "https://blog-images-1.pharmeasy.in/2020/10/26184910/shutterstock_192451625-1.jpg",
             description:"Leg strength and cardio on two wheels."
         },
         {
-            name:"Running",
-          activity:
-            "https://honehealth.com/wp-content/uploads/2023/01/Muscles_Worked-Running-1.webp",
-            description:"Cardiovascular exercise for stamina and mental clarity."
-        },
-        {
             name:"Swimming",
-          activity:
+            imgUrl:
             "https://images.everydayhealth.com/images/swimming-overview-guide-1440x810.jpg?sfvrsn=d3b9ee_1",
             description:"Full-body workout with low impact on joints."
         },
                 {
             name:"Running",
-          activity:
+            imgUrl:
             "https://honehealth.com/wp-content/uploads/2023/01/Muscles_Worked-Running-1.webp",
             description:"Cardiovascular exercise for stamina and mental clarity."
         },

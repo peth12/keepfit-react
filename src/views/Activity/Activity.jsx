@@ -9,7 +9,7 @@ const Activity = () => {
       <ActivityData>
         <AddActivityButton />
         <div className="xl:container xl:mx-auto pt-[75px]">
-          <ActivitySlide />
+          {/* <ActivitySlide /> */}
           <ActivityCard />
         </div>
       </ActivityData>
