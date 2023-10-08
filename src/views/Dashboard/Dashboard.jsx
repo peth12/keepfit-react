@@ -18,7 +18,7 @@ export const Dashboard = () => {
               <div className="col-span-12 row-span-3 lg:col-span-6 lg:row-span-5">
                 <DurationStackCard/>
               </div>
-              <p>eiei</p>
+              
               <div className="col-span-12 row-span-2 lg:col-span-6 lg:row-span-5 bg-red-400 border-4 border-primary rounded-2xl overflow-hidden">
               
               </div>
