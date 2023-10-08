@@ -1,17 +1,22 @@
 import { React, useState } from "react";
 import { Layout } from "../../components/Layout";
+import {FaUserAstronaut} from 'react-icons/fa'
 import "./User.css";
 
 const Profile = () => {
 
   return (
     <Layout>
-      <div className="container-xl px-4 mt-28">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="md:col-span-1">
+      <div className="xl:container xl:mx-auto">
+      <div className="px-4 mt-28">
+        <div className="grid grid-cols-2 gap-4">
+          <div className="col-span-2 rounded-xl shadow-lg">
             {/* Profile picture card */}
-            <div className="bg-white rounded-lg shadow-md p-4">
-              <div className="text-lg font-black">Profile Picture</div>
+            <div className="bg-white rounded-lg shadow-md p-4 pb-10">
+              <div className="text-xl font-black flex">
+              <strong className=" bg-primary rounded-full text-white px-10 p-2 flex gap-x-5">My Profile <FaUserAstronaut/> </strong>
+              
+              </div>
               <div className="text-center mt-4">
                 {/* Profile picture image */}
                 <img
@@ -20,21 +25,25 @@ const Profile = () => {
                   alt=""
                 />
                 {/* Profile picture help block */}
-                <div className="text-xs text-gray-500 mb-4">
+                <div className="text-xs text-gray-500 my-10 ">
                   JPG or PNG no larger than 5 MB
                 </div>
                 {/* Profile picture upload button */}
-                <label className="bg-primary hover:bg-primary-focus duration-150 text-white font-semibold py-2 px-4 rounded cursor-pointer">
-                  <input type="file" className="hidden" /> Upload new image
+                <label className="bg-primary hover:bg-primary-focus duration-150 text-white font-semibold py-2 px-4 rounded cursor-pointer ">
+                  <input type="file" className="hidden " /> Upload new image
                 </label>
               </div>
 
             </div>
           </div>
-          <div className="md:col-span-1">
+          <div className="col-span-2 mb-10 rounded-xl shadow-lg">
             {/* Account details card */}
             <div className="bg-white rounded-lg shadow-md p-4">
-              <div className="text-lg font-black">Account Details</div>
+              
+              {/* <div className="text-lg font-black">
+              <strong className=" bg-primary rounded-full text-white px-10 p-2 ">Account Details</strong>
+              </div>
+               */}
 
               {/* Form */}
               <form className="mt-4">
@@ -166,6 +175,7 @@ const Profile = () => {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </Layout>
   );

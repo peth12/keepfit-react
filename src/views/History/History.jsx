@@ -61,6 +61,7 @@ function History() {
           </ul>
         </div>
       </div>
+      <div className="xl:container xl:mx-auto">
       {/* Card */}
       <div className=" glass mt-5 flex flex-col text-white rounded-lg m-5 p-1 lg:p-5 lg:flex-row justify-between drop-shadow-md  transform transition-transform hover:scale-[101%] shadow-xl ">
         {/* icon */}
@@ -555,6 +556,7 @@ function History() {
             <TbTrash className="text-slate-900" />
           </a> */}
         </div>
+      </div>
       </div>
     </Layout>
   );
