@@ -4,11 +4,19 @@ import { useState } from "react";
 import "./Login.css";
 
 export const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
-  
+  const handleLogin = () => {
+    if (email === "testja@hotmail.com" && password === 123456) {
+      setError("");
+      console.log("Login successful!");
+    } else {
+      setError("Invalid email or password");
+    }
+  };
   return (
-
-
     <>
       {/* <NavbarLandingPage /> */}
       <div className=" flex h-[100vh]">
@@ -29,7 +37,7 @@ export const Login = () => {
                   type="text"
                   placeholder="Enter Email"
                   className="input input-bordered w-80"
-           
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div className="form-control py-3">
@@ -40,7 +48,7 @@ export const Login = () => {
                   type="password"
                   placeholder="Enter password"
                   className="input input-bordered w-80"
-          
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
               <p className="text-end py-2">
@@ -49,12 +57,14 @@ export const Login = () => {
                   Create one!
                 </Link>
               </p>
-              <Link to={"/activity"}>
-                <button  className="btn-primary w-80 rounded-md p-1 text-[24px] font-semibold text-white mt-4">
-                  Login
-                </button>
-           
-              </Link>
+
+              <button
+                className="btn-primary w-80 rounded-md p-1 text-[24px] font-semibold text-white mt-4"
+                onClick={handleLogin}
+              >
+                Login
+              </button>
+              {error && <p style={{ color: "red" }}>{error}</p>}
             </div>
           </div>
         </div>
