@@ -1,4 +1,6 @@
 import { AiOutlineMenu } from "react-icons/ai";
+import { FaMedal  } from "react-icons/fa";
+import { FaChartPie, FaDumbbell } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
 export const Navbar = () => {
@@ -19,11 +21,13 @@ export const Navbar = () => {
             <li >
               <Link to={"/dashboard"}>
                 <a className="text-lg">Dashboard</a>
+                
               </Link>
             </li>
             <li>
               <Link to={"/activity"}>
                 <a className="text-lg">Work Out</a>
+
               </Link>
             </li>
             <li>
@@ -44,16 +48,21 @@ export const Navbar = () => {
             <li >
               <Link to={"/dashboard"}>
                 <a href="">Dashboard</a>
+                <FaChartPie/>
               </Link>
             </li>
-            <li>
+            <li className="px-20">
               <Link to={"/activity"}>
                 <a>Work Out</a>
+                {/* <FaDumbbell/> */}
+                <FaDumbbell />
+                
               </Link>
             </li>
             <li>
               <Link to={"/history"}>
                 <a>My Activity</a>
+                <FaMedal />
               </Link>
             </li>
           </ul>
