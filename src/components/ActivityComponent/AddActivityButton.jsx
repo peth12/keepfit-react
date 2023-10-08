@@ -31,9 +31,7 @@ const AddActivityButton = () => {
     <div>
       {/* Add button */}
       <button
-        className={`fixed bottom-10 right-10 flex justify-center items-center btn btn-primary drop-shadow-xl text-white text-[20px] font-bold py-2 px-5 rounded-full w-[100px] h-[100px] ${
-          isFormVisible ? "hidden" : "block"
-        }`}
+        className="fixed bottom-10 right-10 flex justify-center items-center btn btn-primary drop-shadow-xl text-white text-[20px] font-bold py-2 px-5 rounded-full w-[100px] h-[100px]"
         onClick={toggleFormVisibility}
       >
         Add <AiFillPlusCircle />
@@ -41,7 +39,18 @@ const AddActivityButton = () => {
 
       {isFormVisible && (
         <div className="fixed inset-0 flex items-center justify-center z-50">
-          {/* ... Form content ... */}
+          <div className="absolute inset-0 bg-black opacity-50"></div>
+          <div className="relative z-10 bg-white p-8 rounded-lg shadow-lg">
+            <span
+              className="absolute top-0 right-0 mt-2 mr-2 text-gray-500 cursor-pointer"
+              onClick={toggleFormVisibility}
+            >
+              &times;
+            </span>
+            <form onSubmit={handleSubmit}>
+              {/* ... Form content ... */}
+            </form>
+          </div>
         </div>
       )}
     </div>
