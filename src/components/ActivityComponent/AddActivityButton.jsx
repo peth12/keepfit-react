@@ -29,7 +29,7 @@ const AddActivityButton = () => {
 
   return (
     <div>
-      <div className="px-5 pt-5">
+      {/* <div className="px-5 pt-5">
         <div className="w-screen flex justify-end ">
           <button
             className=" flex flex-col justify-center items-center btn btn-primary drop-shadow-xl text-white text-[20px] font-bold py-2 px-5 rounded-full  me-20 mt-[650px] w-[100px] h-[100px] fixed z-50"
@@ -38,7 +38,7 @@ const AddActivityButton = () => {
             Add<AiFillPlusCircle/>
           </button>
         </div>
-      </div>
+      </div> */}
 
       {isFormVisible && (
         <div className="fixed inset-0 flex items-center justify-center z-50">
