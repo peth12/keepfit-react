@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { Layout } from "../../components/Layout";
 import {
   ActivityCard,
@@ -8,15 +8,25 @@ import {
 } from "../../components";
 import "./activity.css";
 import TempoShow from "../../components/ActivityComponent/TempoShow";
+import AddActivityForm from "../../components/ActivityComponent/AddActivityForm";
 
 const Activity = () => {
+  const [isFormVisible, setIsFormVisible] = useState(false);
+
+  const toggleFormVisibility = () => {
+    setIsFormVisible(!isFormVisible);
+  };
+
   return (
     <Layout>
       <ActivityData>
         {/* <AddActivityButton /> */}
         <div className="xl:container xl:mx-auto pt-[75px]">
           {/* <ActivitySlide /> */}
-          <ActivityCard />
+          <ActivityCard toggleFormVisibility={toggleFormVisibility} />
+          {isFormVisible && (
+        <AddActivityForm toggleFormVisibility={toggleFormVisibility} />
+      )}
         </div>
         <div>
           {/* <TempoShow /> */}
