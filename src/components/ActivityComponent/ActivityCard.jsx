@@ -2,7 +2,7 @@ import React from "react";
 import { useData } from "./ActivityData";
 import AddActivityButton from "./AddActivityButton";
 
-const ActivityCard = () => {
+const ActivityCard = ({toggleFormVisibility}) => {
   const { activityList } = useData();
 
   const numRows = Math.ceil(activityList.length / 3);
@@ -40,7 +40,7 @@ const ActivityCard = () => {
                     {activity.description}
                   </p>
                   <div className="flex justify-end">
-                  <AddActivityButton defaultActivityName={activity.name}/>
+                  <AddActivityButton defaultActivityName={activity.name} toggleFormVisibility={toggleFormVisibility}/>
                   </div>
                   
                 </div>
