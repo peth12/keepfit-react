@@ -13,7 +13,7 @@ const Activity = () => {
   return (
     <Layout>
       <ActivityData>
-        <AddActivityButton />
+        {/* <AddActivityButton /> */}
         <div className="xl:container xl:mx-auto pt-[75px]">
           {/* <ActivitySlide /> */}
           <ActivityCard />

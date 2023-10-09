@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { AiFillPlusCircle } from "react-icons/ai";
 
-const AddActivityButton = () => {
+const AddActivityButton = ({defaultActivityName}) => {
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [activityData, setActivityData] = useState({
     name: "",
     description: "",
-    type: "Yoga",
+    type: defaultActivityName,
     duration: "",
     date: "",
   });
@@ -33,10 +33,10 @@ const AddActivityButton = () => {
     <div>
       {/* Add button */}
       <button
-        className="fixed bottom-10 right-10 flex justify-center items-center btn btn-primary drop-shadow-xl text-white text-[20px] font-bold py-2 px-5 rounded-full w-fit h-[100px]"
+        className="flex justify-end items-center btn btn-primary drop-shadow-xl text-white text-[20px] font-bold py-2 px-5 rounded-lg w-fit h-[20px]"
         onClick={toggleFormVisibility}
       >
-        Add Activity <AiFillPlusCircle />
+        Do It Now
       </button>
 
       {isFormVisible && (
@@ -85,7 +85,7 @@ const AddActivityButton = () => {
                 >
                   <option value="Yoga">Yoga</option>
                   <option value="Cycling">Cycling</option>
-                  <option value="Swim">Swim</option>
+                  <option value="Swimming">Swim</option>
                   <option value="Walk">Walk</option>
                   <option value="Running">Running</option>
                 </select>
@@ -121,6 +121,7 @@ const AddActivityButton = () => {
                 >
                   Add Activity
                 </button>
+  
               </div>
             </form>
           </div>
