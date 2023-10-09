@@ -18,15 +18,8 @@ const ActivitySlide = () => {
   };
 
   return (
-
-<<<<<<< Updated upstream:src/components/ActivityComponent/ActivitySlide.jsx
-    <div className="px-8">
+    <div className="px-8 mt-8">
       <div className="carousel w-full rounded-box relative " style={{ height: '500px' }}>
-=======
-    <div className="px-6" style={{width:"1140 px"}}>
-      <div className="carousel w-full rounded-box relative mt-24" style={{ height: '500px' ,width:"1140 px"}}>
->>>>>>> Stashed changes:src/components/ActivitySlide.jsx
-
         <img
           src={activityList[imgIndex].activity}
           className="w-full h-full object-cover absolute top-0 left-0"

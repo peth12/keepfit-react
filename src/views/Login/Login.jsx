@@ -1,25 +1,22 @@
 import { Link } from "react-router-dom";
 import { NavbarLandingPage } from "../../components/NavbarLogin";
 import { useState } from "react";
-import toast, { Toaster } from 'react-hot-toast';
 import "./Login.css";
 
 export const Login = () => {
-  const [userName, setUserName] = useState('')
-  const [password, setPassword] = useState('')
-  
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
-  const notify = () => toast.success('Successfully toasted!')
-  const checkData = () => {
-    if(userName == ""){
-    
-      notify()
-      
+  const handleLogin = () => {
+    if (email === "testja@hotmail.com" && password === 123456) {
+      setError("");
+      console.log("Login successful!");
+    } else {
+      setError("Invalid email or password");
     }
-  }
+  };
   return (
-
-
     <>
       {/* <NavbarLandingPage /> */}
       <div className=" flex h-[100vh]">
@@ -40,7 +37,7 @@ export const Login = () => {
                   type="text"
                   placeholder="Enter Email"
                   className="input input-bordered w-80"
-                  onChange={(e)=> setUserName(e.target.value())}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div className="form-control py-3">
@@ -51,7 +48,7 @@ export const Login = () => {
                   type="password"
                   placeholder="Enter password"
                   className="input input-bordered w-80"
-                  onChange={(e)=> setPassword(e.target.value())}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
               <p className="text-end py-2">
@@ -60,12 +57,14 @@ export const Login = () => {
                   Create one!
                 </Link>
               </p>
-              {/* <Link to={"/activity"}> */}
-                <button onClick={() =>checkData()} className="btn-primary w-80 rounded-md p-1 text-[24px] font-semibold text-white mt-4">
-                  Login
-                </button>
-                <Toaster />
-              {/* </Link> */}
+
+              <button
+                className="btn-primary w-80 rounded-md p-1 text-[24px] font-semibold text-white mt-4"
+                onClick={handleLogin}
+              >
+                Login
+              </button>
+              {error && <p style={{ color: "red" }}>{error}</p>}
             </div>
           </div>
         </div>
