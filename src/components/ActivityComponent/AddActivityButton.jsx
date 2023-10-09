@@ -3,10 +3,12 @@ import { AiFillPlusCircle } from "react-icons/ai";
 
 const AddActivityButton = () => {
   const [isFormVisible, setIsFormVisible] = useState(false);
-  const [time, setTime] = useState({
-    hours: "00",
-    minutes: "00",
-    seconds: "00",
+  const [activityData, setActivityData] = useState({
+    name: "",
+    description: "",
+    type: "Yoga",
+    duration: "",
+    date: "",
   });
 
   const toggleFormVisibility = () => {
@@ -15,14 +17,14 @@ const AddActivityButton = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const formattedTime = `${time.hours}:${time.minutes}:${time.seconds}`;
-    // Handle form submission here with formattedTime
+    // Handle the form submission here
+    console.log(activityData);
   };
 
-  const handleTimeChange = (e) => {
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setTime({
-      ...time,
+    setActivityData({
+      ...activityData,
       [name]: value,
     });
   };
@@ -31,10 +33,10 @@ const AddActivityButton = () => {
     <div>
       {/* Add button */}
       <button
-        className="fixed bottom-10 right-10 flex justify-center items-center btn btn-primary drop-shadow-xl text-white text-[20px] font-bold py-2 px-5 rounded-full w-[100px] h-[100px]"
+        className="fixed bottom-10 right-10 flex justify-center items-center btn btn-primary drop-shadow-xl text-white text-[20px] font-bold py-2 px-5 rounded-full w-fit h-[100px]"
         onClick={toggleFormVisibility}
       >
-        Add <AiFillPlusCircle />
+        Add Activity <AiFillPlusCircle />
       </button>
 
       {isFormVisible && (
@@ -48,7 +50,78 @@ const AddActivityButton = () => {
               &times;
             </span>
             <form onSubmit={handleSubmit}>
-              {/* ... Form content ... */}
+              <div className="mb-4">
+                <label className="block text-gray-700 text-sm font-bold mb-2">
+                  Activity Name:
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  value={activityData.name}
+                  onChange={handleInputChange}
+                  className="form-input"
+                />
+              </div>
+              <div className="mb-4">
+                <label className="block text-gray-700 text-sm font-bold mb-2">
+                  Description:
+                </label>
+                <textarea
+                  name="description"
+                  value={activityData.description}
+                  onChange={handleInputChange}
+                  className="form-textarea"
+                ></textarea>
+              </div>
+              <div className="mb-4">
+                <label className="block text-gray-700 text-sm font-bold mb-2">
+                  Activity Type:
+                </label>
+                <select
+                  name="type"
+                  value={activityData.type}
+                  onChange={handleInputChange}
+                  className="form-select"
+                >
+                  <option value="Yoga">Yoga</option>
+                  <option value="Cycling">Cycling</option>
+                  <option value="Swim">Swim</option>
+                  <option value="Walk">Walk</option>
+                  <option value="Running">Running</option>
+                </select>
+              </div>
+              <div className="mb-4">
+                <label className="block text-gray-700 text-sm font-bold mb-2">
+                  Duration (minutes):
+                </label>
+                <input
+                  type="text"
+                  name="duration"
+                  value={activityData.duration}
+                  onChange={handleInputChange}
+                  className="form-input"
+                />
+              </div>
+              <div className="mb-4">
+                <label className="block text-gray-700 text-sm font-bold mb-2">
+                  Date:
+                </label>
+                <input
+                  type="date"
+                  name="date"
+                  value={activityData.date}
+                  onChange={handleInputChange}
+                  className="form-input"
+                />
+              </div>
+              <div className="text-center">
+                <button
+                  type="submit"
+                  className="btn btn-primary"
+                >
+                  Add Activity
+                </button>
+              </div>
             </form>
           </div>
         </div>
