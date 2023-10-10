@@ -9,6 +9,7 @@ import SignUp from "./views/SignUp/SignUp.jsx";
 import Activity from "./views/Activity/Activity.jsx";
 import History from "./views/History/History.jsx";
 import Profile from "./views/User/Profile.jsx";
+import { AddActivityButton } from "./components/index.js";
 const router = createBrowserRouter([
   {
     path: "/",

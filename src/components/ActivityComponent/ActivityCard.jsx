@@ -1,14 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { useData } from "./ActivityData";
+import AddActivityButton from "./AddActivityButton";
 
-const ActivityCard = () => {
+const ActivityCard = ({ toggleFormVisibility, setDefaultType, defaultType }) => {
   const { activityList } = useData();
+  const [activityName, setActivityName] = useState()
 
   const numRows = Math.ceil(activityList.length / 3);
 
   const rows = Array.from({ length: numRows }, (_, rowIndex) =>
     activityList.slice(rowIndex * 3, rowIndex * 3 + 3)
   );
+
+  const handleActivityClick = (activityName) => {
+      setDefaultType(activityName);
+      console.log(`Clicked on activity: ${activityName}`)
+      console.log(`Clicked on activity: ${defaultType}`)
+  };
 
   return (
     <div className="p-5 mt-12">
@@ -20,7 +28,7 @@ const ActivityCard = () => {
           {row.map((activity, index) => (
             <div
               key={index}
-              className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/4 px-2 mb-4"
+              className="w-full sm:w-2/3 md:w-2/3 lg:w-1/2 xl:w-1/4  mb-4"
               style={{ zIndex: 1 }}
             >
               <div className="card w-full h-[400px] bg-base-100 shadow-xl transform transition-transform hover:scale-105">
@@ -28,7 +36,7 @@ const ActivityCard = () => {
                   <img
                     src={activity.imgUrl}
                     alt={activity.name}
-                    className="w-96 h-44 object-cover"
+                    className="w-full h-44 object-cover"
                   />
                 </figure>
                 <div className="card-body p-4  text-orange">
@@ -38,6 +46,13 @@ const ActivityCard = () => {
                   <p className="text-gray-600 h-fit mt-4">
                     {activity.description}
                   </p>
+                  <div className="flex justify-end">
+                    <AddActivityButton
+                      activityName={activity.name}
+                      onClick={handleActivityClick}
+                      toggleFormVisibility={toggleFormVisibility}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
