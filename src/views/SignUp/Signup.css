@@ -5,6 +5,11 @@
     background-position: center;
 }
 
-.right{
-
+@Media screen and (max-width: 768px){
+    .right {
+        background-image: url('image-login.webp');
+        background-repeat: no-repeat, repeat;
+        background-size: cover;
+        background-position: center;
+    }
 }
