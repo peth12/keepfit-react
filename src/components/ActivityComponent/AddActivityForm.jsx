@@ -104,7 +104,6 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType }) => {
               className="form-input"
             />
           </div>
-  
           <div className="mb-4 flex justify-center">
             <label className=" bg-cyan-600  hover:bg-cyan-400 duration-150 text-white font-semibold py-2 px-4 rounded cursor-pointer items-center ">
             <input type="file" className="file-input file-input-bordered file-input-info w-full max-w-xs" /> Upload image
