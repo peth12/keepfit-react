@@ -5,6 +5,13 @@ import "./User.css";
 
 const Profile = () => {
 
+  const [isEditMode, setIsEditMode] = useState(false);
+
+    const toggleEditMode = () => {
+        setIsEditMode(!isEditMode);
+    };
+
+
   return (
     <Layout>
       <div className="xl:container xl:mx-auto">
@@ -25,13 +32,30 @@ const Profile = () => {
                   alt=""
                 />
                 {/* Profile picture help block */}
-                <div className="text-xs text-gray-500 my-10 ">
-                  JPG or PNG no larger than 5 MB
-                </div>
-                {/* Profile picture upload button */}
-                <label className="bg-primary hover:bg-primary-focus duration-150 text-white font-semibold py-2 px-4 rounded cursor-pointer ">
-                  <input type="file" className="hidden " /> Upload new image
-                </label>
+
+                {isEditMode ? (
+  <div className="text-xs text-gray-500 my-10">
+    JPG or PNG no larger than 5 MB
+  </div>
+) : null}
+
+                
+
+
+{/* Profile picture edit button */}
+                {isEditMode ? (
+  <label className="bg-primary hover:bg-primary-focus duration-150 text-white font-semibold py-2 px-4 rounded cursor-pointer">
+    <input type="file" className="hidden"/> Upload new image
+  </label>
+) : (
+  <button className="bg-primary hover:bg-primary-focus duration-150 text-white font-semibold py-2 px-4 rounded cursor-pointer" onClick={toggleEditMode}>
+    Edit my profile
+  </button>
+)}
+
+
+
+                
               </div>
 
             </div>
@@ -40,10 +64,6 @@ const Profile = () => {
             {/* Account details card */}
             <div className="bg-white rounded-lg shadow-md p-4">
               
-              {/* <div className="text-lg font-black">
-              <strong className=" bg-primary rounded-full text-white px-10 p-2 ">Account Details</strong>
-              </div>
-               */}
 
               {/* Form */}
               <form className="mt-4">
@@ -57,12 +77,23 @@ const Profile = () => {
                     >
                       First name
                     </label>
-                    <input
+
+
+
+                    {isEditMode ? (<input
                       className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:border-primary"
                       id="inputFirstName"
                       type="text"
                       placeholder="Enter your first name"
-                    />
+                    />) :(
+                      <p className="px-3 text-lg">Padtaraya</p>
+                    )}
+
+
+                    
+                  
+
+
                   </div>
                   {/* Form Group (last name) */}
                   <div>
@@ -72,12 +103,21 @@ const Profile = () => {
                     >
                       Last name
                     </label>
-                    <input
+
+
+
+                    {isEditMode ? (
+                      <input
                       className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:border-primary"
                       id="inputLastName"
                       type="text"
                       placeholder="Enter your last name"
                     />
+                    ):(
+                      <p className="px-3 text-lg">Chudchawinpond</p>
+                    )}
+                    
+                    
                   </div>
                 </div>
                 {/* Form Row */}
@@ -90,13 +130,23 @@ const Profile = () => {
                     >
                       Weight (kg)
                     </label>
-                    <input
+
+
+
+                    {isEditMode ? (<input
                       className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:border-primary"
                       id="inputWeight"
                       type="number"
                       min="0"
                       placeholder="Enter your weight"
-                    />
+                    />):(
+                      <p className="px-3 text-lg">15</p>
+                    )}
+                    
+                  
+
+
+
                   </div>
                   {/* Form Group (height) */}
                   <div>
@@ -106,17 +156,30 @@ const Profile = () => {
                     >
                       Height (cm)
                     </label>
-                    <input
+
+
+                    {isEditMode ? (<input
                       className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:border-primary"
                       id="inputHeight"
                       type="number"
                       min="0"
                       placeholder="Enter your Height"
-                    />
+                    />):(
+                      <p className="px-3 text-lg">189</p>
+                    )}
+
+
+
+                    
+                    
+
+
+
+
                   </div>
                 </div>
                 {/* Form Group (email address) */}
-                <div className="mb-4">
+                {/* <div className="mb-4">
                   <label
                     className="block text-sm font-semibold text-gray-600"
                     htmlFor="inputEmailAddress"
@@ -129,7 +192,11 @@ const Profile = () => {
                     type="email"
                     placeholder="Enter your email address"
                   />
-                </div>
+                </div> */}
+
+
+
+
                 {/* Form Row */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                   {/* Form Group (gender) */}
@@ -141,36 +208,78 @@ const Profile = () => {
                       Gender
                     </label>
 
-                    <select className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:border-primary">
+                    {isEditMode ? (<select className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:border-primary">
                       <option disabled selected>
                         None
                       </option>
                       <option>Female</option>
                       <option>Male</option>
                       <option>Not specified</option>
-                    </select>
+                    </select>):(
+                      <p className="px-3 text-lg">Male</p>
+                    )}
+
+                    
+
+                    
+
+
+
                   </div>
                   {/* Form Group (birthday) */}
                   <div>
-                    <label
-                      className="block text-sm font-semibold text-gray-600"
-                      htmlFor="inputBirthday"
-                    >
-                      Birthday
-                    </label>
-                    <input
-                      className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:border-primary"
-                      id="inputBirthday"
-                      type="date"
-                      name="birthday"
-                      placeholder="Enter your birthday"
-                    />
+
+
+                  {isEditMode ? (
+  <div>
+    <label
+      className="block text-sm font-semibold text-gray-600"
+      htmlFor="inputBirthday"
+    >
+      Birthday
+    </label>
+    <input
+      className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:border-primary"
+      id="inputBirthday"
+      type="date"
+      name="birthday"
+      placeholder="Enter your birthday"
+    />
+  </div>
+) : (
+  <div>
+    <label className="block text-sm font-semibold text-gray-600">Age</label>
+    <p className="px-3 text-lg">15</p>
+  </div>
+)}
+
+
+
+
+                    
+                    
                   </div>
                 </div>
+
+
+
+
+                
                 {/* Save changes button */}
-                <button className="btn btn-primary text-white font-semibold py-2 px-4 rounded">
+
+
+                {isEditMode ? (
+                  <button className="btn btn-primary text-white font-semibold py-2 px-4 rounded" onClick={toggleEditMode}>
                   Save changes
                 </button>
+                ):(
+<button className="btn btn-primary text-white font-semibold py-2 px-4 rounded hidden" onClick={toggleEditMode}>
+                  Save changes
+                </button>
+                )}
+
+
+                
               </form>
             </div>
           </div>
