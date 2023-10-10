@@ -1,15 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { useData } from "./ActivityData";
 import AddActivityButton from "./AddActivityButton";
 
-const ActivityCard = ({toggleFormVisibility}) => {
+const ActivityCard = ({ toggleFormVisibility, setDefaultType, defaultType }) => {
   const { activityList } = useData();
+  const [activityName, setActivityName] = useState()
 
   const numRows = Math.ceil(activityList.length / 3);
 
   const rows = Array.from({ length: numRows }, (_, rowIndex) =>
     activityList.slice(rowIndex * 3, rowIndex * 3 + 3)
   );
+
+  const handleActivityClick = (activityName) => {
+      setDefaultType(activityName);
+      console.log(`Clicked on activity: ${activityName}`)
+      console.log(`Clicked on activity: ${defaultType}`)
+  };
 
   return (
     <div className="p-5 mt-12">
@@ -40,9 +47,12 @@ const ActivityCard = ({toggleFormVisibility}) => {
                     {activity.description}
                   </p>
                   <div className="flex justify-end">
-                  <AddActivityButton defaultActivityName={activity.name} toggleFormVisibility={toggleFormVisibility}/>
+                    <AddActivityButton
+                      activityName={activity.name}
+                      onClick={handleActivityClick}
+                      toggleFormVisibility={toggleFormVisibility}
+                    />
                   </div>
-                  
                 </div>
               </div>
             </div>

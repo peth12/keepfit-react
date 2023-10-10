@@ -17,15 +17,17 @@ const Activity = () => {
     setIsFormVisible(!isFormVisible);
   };
 
+  const [defaultType, setDefaultType] = useState("test")
+
   return (
     <Layout>
       <ActivityData>
         {/* <AddActivityButton /> */}
         <div className="xl:container xl:mx-auto pt-[75px]">
           {/* <ActivitySlide /> */}
-          <ActivityCard toggleFormVisibility={toggleFormVisibility} />
+          <ActivityCard toggleFormVisibility={toggleFormVisibility} setDefaultType={setDefaultType} defaultType={defaultType} />
           {isFormVisible && (
-        <AddActivityForm toggleFormVisibility={toggleFormVisibility} />
+        <AddActivityForm toggleFormVisibility={toggleFormVisibility} defaultType={defaultType}/>
       )}
         </div>
         <div>
