@@ -56,7 +56,7 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType }) => {
             <input
               type="text"
               name="name"
-              placeholder="Moring Jogging, Basic Yoga etc..."
+              placeholder=" Morning Jogging, Basic Yoga ..."
               value={activityData.name}
               onChange={handleInputChange}
               className="form-input bg-slate-200 w-80 rounded-sm"
@@ -70,7 +70,7 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType }) => {
               name="description"
               value={activityData.description}
               onChange={handleInputChange}
-              placeholder="Tell us about your activity..."
+              placeholder=" Tell about your activity..."
               className="form-textarea bg-slate-200 w-80 rounded-sm"
             ></textarea>
           </div>
@@ -82,7 +82,7 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType }) => {
             <input
               type="text"
               name="duration"
-              placeholder="(only number here)"
+              placeholder=" only number here"
               value={activityData.duration}
               onChange={handleInputChange}
               className="form-input bg-slate-200 w-80 rounded-sm"
