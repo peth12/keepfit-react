@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useData } from "./ActivityData";
 import AddActivityButton from "./AddActivityButton";
 
-const ActivityCard = ({ toggleFormVisibility, setDefaultType, defaultType }) => {
+const ActivityCard = ({ toggleFormVisibility, setDefaultType, defaultType, setIcon }) => {
   const { activityList } = useData();
   const [activityName, setActivityName] = useState()
 

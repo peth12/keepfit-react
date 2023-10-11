@@ -4,10 +4,14 @@ import { useData } from "./ActivityData";
 const AddActivityForm = ({ toggleFormVisibility, defaultType }) => {
   const { activityList } = useData();
 
+  const selectedActivity = activityList.find(
+    (activity) => activity.name === defaultType
+  );
+
   const [activityData, setActivityData] = useState({
     name: "",
     description: "",
-    type: activityList.name,
+    type: defaultType,
     duration: "",
     date: "",
   });
@@ -39,6 +43,11 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType }) => {
         </span>
 
         <form onSubmit={handleSubmit}>
+          <div className="mb-6 flex justify-start items-center gap-3">
+            <div className="text-3xl font-bold underline underline-offset-auto">
+              {selectedActivity.name}
+            </div>
+          </div>
           <div className="mb-4">
             <label className="block text-gray-700 text-xl font-bold mb-2">
               Activity Name:
@@ -46,9 +55,10 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType }) => {
             <input
               type="text"
               name="name"
+              placeholder="Jogging, Muaythai etc..."
               value={activityData.name}
               onChange={handleInputChange}
-              className="form-input bg-slate-300 w-80 rounded-sm"
+              className="form-input bg-slate-200 w-80 rounded-sm"
             />
           </div>
           <div className="mb-4">
@@ -59,27 +69,11 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType }) => {
               name="description"
               value={activityData.description}
               onChange={handleInputChange}
-              className="form-textarea bg-slate-300 w-80 rounded-sm"
+              placeholder="Tell us about your activity..."
+              className="form-textarea bg-slate-200 w-80 rounded-sm"
             ></textarea>
           </div>
-          <div className="mb-4">
-            <label className="block text-gray-700 text-xl font-bold mb-2">
-              Activity Type:
-            </label>
-            <div>{defaultType}</div>
-            {/* <select
-                  name="type"
-                  value={defaultType}
-                  onChange={handleInputChange}
-                  className="form-select"
-                >
-                  <option value="Yoga">Yoga</option>
-                  <option value="Cycling">Cycling</option>
-                  <option value="Swimming">Swimming</option>
-                  <option value="Boxing">Boxing</option>
-                  <option value="Running">Running</option>
-                </select> */}
-          </div>
+
           <div className="mb-4">
             <label className="block text-gray-700 text-xl font-bold mb-2">
               Duration (minutes):
@@ -87,9 +81,10 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType }) => {
             <input
               type="text"
               name="duration"
+              placeholder="(only number here)"
               value={activityData.duration}
               onChange={handleInputChange}
-              className="form-input bg-slate-300 w-80 rounded-sm"
+              className="form-input bg-slate-200 w-80 rounded-sm"
             />
           </div>
           <div className="mb-4">
@@ -105,8 +100,12 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType }) => {
             />
           </div>
           <div className="mb-4 flex justify-center">
-            <label className=" bg-cyan-600  hover:bg-cyan-400 duration-150 text-white font-semibold py-2 px-4 rounded cursor-pointer items-center ">
-            <input type="file" className="file-input file-input-bordered file-input-info w-full max-w-xs" /> Upload image
+            <label className=" bg-cyan-600  hover-bg-cyan-400 duration-150 text-white font-semibold py-2 px-4 rounded cursor-pointer items-center ">
+              <input
+                type="file"
+                className="file-input file-input-bordered file-input-info w-full max-w-xs"
+              />{" "}
+              Upload image
             </label>
           </div>
           <div className="text-center">
@@ -114,8 +113,6 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType }) => {
               Add Activity
             </button>
           </div>
-          <div>{activityList.name}</div>
-          <div>{console.log(activityList.name)}</div>
         </form>
       </div>
     </div>

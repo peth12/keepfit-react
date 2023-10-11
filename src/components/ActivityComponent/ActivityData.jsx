@@ -1,5 +1,5 @@
 import React, { createContext, useState, useContext } from "react";
-
+import {BiSwim} from 'react-icons/bi'
 const DataContext = createContext();
 const ActivityData = ({ children }) => {
   const [activityList, setActivityList] = useState([
@@ -30,7 +30,7 @@ const ActivityData = ({ children }) => {
       imgUrl:
         "https://images.everydayhealth.com/images/swimming-overview-guide-1440x810.jpg?sfvrsn=d3b9ee_1",
       description: "Full-body workout with low impact on joints.",
-      icon: "https://www.creativefabrica.com/wp-content/uploads/2020/06/01/Swim-Icon-Graphics-4238028-1.png",
+      icon: <BiSwim/> ,
     },
     {
       name: "Running",
