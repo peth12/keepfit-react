@@ -4,6 +4,7 @@ import { useData } from "./ActivityData";
 const AddActivityForm = ({ toggleFormVisibility, defaultType }) => {
   const { activityList } = useData();
 
+
   const selectedActivity = activityList.find(
     (activity) => activity.name === defaultType
   );
@@ -33,7 +34,8 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType }) => {
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50">
       <div className="absolute inset-0 bg-black opacity-50"></div>
-      <div className="relative z-10 bg-white p-8 rounded-lg shadow-lg w-96 h-fit">
+
+      <div className="relative z-10 gradient-background p-8 rounded-lg shadow-lg w-96 h-fit">
         <span
           className="absolute top-0 right-0 m-2 text-gray-500 cursor-pointer p-2"
           onClick={toggleFormVisibility}
@@ -43,10 +45,9 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType }) => {
         </span>
 
         <form onSubmit={handleSubmit}>
-          <div className="mb-6 flex justify-start items-center gap-3">
-            <div className="text-3xl font-bold ">
-              {selectedActivity.name}
-            </div>
+          <div className="mb-7 flex justify-start items-center gap-3 ">
+            <div className="text-3xl text-white font-bold mb-1 text-center pb-1">{selectedActivity.name}</div>
+            <div>{selectedActivity.icon}</div>
           </div>
           <div className="mb-4">
             <label className="block text-gray-700 text-xl font-bold mb-2">
@@ -55,7 +56,7 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType }) => {
             <input
               type="text"
               name="name"
-              placeholder="Jogging, Muaythai etc..."
+              placeholder="Moring Jogging, Basic Yoga etc..."
               value={activityData.name}
               onChange={handleInputChange}
               className="form-input bg-slate-200 w-80 rounded-sm"
