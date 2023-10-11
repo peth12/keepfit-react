@@ -11,7 +11,7 @@ const SignUp = () => {
         {/* section 2 */}
         <div className="right min-h-[100%] bg-white w-[100%]">
           <div className="flex justify-center items-center w-[100%] min-h-[100%]">
-            <div className="flex-col">
+          <div className="glass  flex-col flex items-center px-14 pb-14 rounded-xl">
               <h1 className=" text-[70px] text-primary italic font-bold text-center">
                 Sign Up
               </h1>
