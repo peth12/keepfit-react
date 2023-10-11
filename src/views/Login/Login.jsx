@@ -1,15 +1,27 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { NavbarLandingPage } from "../../components/NavbarLogin";
 import { useState } from "react";
 import "./Login.css";
+
+
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const Navigate=useNavigate();
 
+  const mockupData = [
+    { email: "testja@hotmail.com", password: "123456" },
+    { email: "testja2@hotmail.com", password: "123a" },
+  ];
   const handleLogin = () => {
-    if (email === "testja@hotmail.com" && password === 123456) {
+    const user = mockupData.find(
+      (u) => u.email === email && u.password === password
+    );
+
+    if (user) {
       setError("");
+      Navigate("/dashboard");
       console.log("Login successful!");
     } else {
       setError("Invalid email or password");
