@@ -44,7 +44,7 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType }) => {
 
         <form onSubmit={handleSubmit}>
           <div className="mb-6 flex justify-start items-center gap-3">
-            <div className="text-3xl font-bold underline underline-offset-auto">
+            <div className="text-3xl font-bold ">
               {selectedActivity.name}
             </div>
           </div>
