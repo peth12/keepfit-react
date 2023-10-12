@@ -5,3 +5,9 @@
 .activity-container-body{
     width: 1140 px;
 }
+
+.gradient-background {
+    background: linear-gradient(0deg, #ffffff 84%, #ff9b05 12%); /* You can adjust the colors as needed */
+    /* Add other CSS properties for the container, like padding, margin, etc. */
+  }
+  
