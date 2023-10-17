@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useData } from "./ActivityData";
-
+import { BsImages } from "react-icons/bs";
 const AddActivityForm = ({ toggleFormVisibility, defaultType }) => {
   const { activityList } = useData();
 
@@ -93,32 +93,28 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType }) => {
             </div>
             <div className="flex justify-center items-center gap-4">
               <div className="">
-                <label className="block  text-xl font-bold">Date:</label>
+                <label className="block  text-xl font-bold ">Date:</label>
                 <input
                   type="date"
                   name="date"
                   value={activityData.date}
                   onChange={handleInputChange}
-                  className="input input-bordered  w-fit text-black h-10"
+                  className="input input-bordered  w-80 text-black h-10"
                 />
-              </div>
-              <div className="h-fit">
-              <div className="mb-2 text-gray-400 text-sm">(optional)</div>
-                <label className=" bg-cyan-600  hover-bg-cyan-400 duration-150 text-white font-semibold py-2 px-4 rounded cursor-pointer items-center ">
-                
-                  <input
-                    type="file"
-                    className="file-input file-input-bordered file-input-info w-fit max-w-xs h-10"
-                  />{" "}
-                  Upload image
-                </label>
-                
               </div>
             </div>
           </div>
-
+          <div className="flex w-80  hover:cursor-pointer hover:scale-110 mt-10">
+            <label className=" bg-cyan-600 hover:bg-cyan-300  w-80 flex gap-3  hover-bg-cyan-400 duration-150 text-white font-semibold py-2 px-4 rounded items-center ">
+              <input
+                type="file"
+                className="file-input file-input-bordered file-input-info h-10 w-80 hover:cursor-pointer"
+              />
+              <BsImages/> Upload image <div className="">(optional)</div>
+            </label>
+          </div>
           <div className="text-center mt-10">
-            <button type="submit" className="btn btn-primary text-white">
+            <button type="submit" className="btn bg-orange-400 text-white hover:bg-orange-300 hover:scale-110">
               Add Activity
             </button>
           </div>
