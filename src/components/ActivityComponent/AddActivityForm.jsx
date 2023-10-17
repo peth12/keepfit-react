@@ -105,13 +105,14 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType }) => {
               </div>
             </div>
             <div className="flex justify-center items-center gap-4 hover:cursor-pointer hover:scale-110 mt-10">
-              <label className="flex bg-cyan-600 hover:bg-cyan-300  w-80 gap-3 text-white font-semibold py-2 px-4 rounded items-center ">
+              <label className="flex bg-cyan-600 hover:bg-cyan-300 hover:cursor-pointer  w-80 gap-3 text-white font-semibold py-2 px-4 rounded items-center ">
                 <input
                   type="file"
                   name="file"
-                  className="file-input file-input-bordered file-input-info h-10 w-80 hover:cursor-pointer"
-                />
-                <BsImages /> Upload image <div className="">(optional)</div>
+                  className="file-input file-input-bordered file-input-info h-10 w-80 hover:cursor-pointer hidden"
+                ></input>
+                <BsImages /> Upload image <div className=" text-xs">(optional)</div>
+                
               </label>
             </div>
           </div>
@@ -119,7 +120,7 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType }) => {
           <div className="text-center mt-10">
             <button
               type="submit"
-              className="btn bg-orange-400 text-white hover:bg-orange-300 hover:scale-110"
+              className="btn bg-orange-400 text-white w-80 hover:bg-orange-300 hover:scale-110"
             >
               Add Activity
             </button>
