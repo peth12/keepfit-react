@@ -82,8 +82,9 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType }) => {
                 Duration (minutes):
               </label>
               <input
-                type="text"
+                type="number"
                 name="duration"
+                min={0}
                 placeholder=" only number here"
                 value={activityData.duration}
                 onChange={handleInputChange}
