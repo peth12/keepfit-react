@@ -162,7 +162,7 @@ function History() {
                   <input
                     type="text"
                     placeholder="Activity Name"
-                    className="input input-bordered w-full"
+                    className="input input-bordered w-full text-black"
                   />
                 </div>
                 <div className="form-control w-full pt-3">
@@ -174,7 +174,7 @@ function History() {
                   <input
                     type="text"
                     placeholder="Description"
-                    className="input input-bordered w-full"
+                    className="input input-bordered w-full text-black"
                   />
                 </div>
                 <div className="form-control w-full pt-3">
@@ -185,7 +185,7 @@ function History() {
                   </label>
                   <input
                     type="date"
-                    className="input input-bordered w-full text-gray-400"
+                    className="input input-bordered w-full text-gray-400 text-black"
                   />
                 </div>
                 <div className="form-control w-full pt-3">
@@ -197,7 +197,7 @@ function History() {
                   <input
                     type="text"
                     placeholder="Distance"
-                    className="input input-bordered w-full"
+                    className="input input-bordered w-full text-black"
                   />
                 </div>
                 <div className="form-control w-full pt-3">
@@ -209,11 +209,11 @@ function History() {
                   <input
                     type="text"
                     placeholder=" Activity Type"
-                    className="input input-bordered w-full"
+                    className="input input-bordered w-full text-black"
                   />
                 </div>
 
-                <div className="form-control w-full pt-3">
+                {/* <div className="form-control w-full pt-3">
                   <label className="label">
                     <span className="label-text text-primary font-semibold text-[16px]">
                       Dutation (Min)
@@ -230,6 +230,29 @@ function History() {
                     <option>25</option>
                     <option>30</option>
                   </select>
+                </div> */}
+                <div className="form-control w-full pt-3">
+                  <label className="label">
+                    <span className="label-text text-primary font-semibold text-[16px]">
+                      Duration
+                    </span>
+                  </label>
+                  <div className="flex gap-x-2">
+                    <input
+                      type="number"
+                      min={0}
+                      max={23}
+                      placeholder="Hours"
+                      className="input input-bordered w-full text-black"
+                    />
+                    <input
+                      type="number"
+                      placeholder="Minutes"
+                      min={0}
+                      max={59}
+                      className="input input-bordered w-full text-black "
+                    />
+                  </div>
                 </div>
 
                 <div className="modal-action w-full">
@@ -360,7 +383,7 @@ function History() {
             </button>
             <dialog
               id="my_modal_5"
-              className="modal modal-bottom sm:modal-middle"
+              className="modal modal-bottom sm:modal-middle "
             >
               <div className="modal-box">
                 <form method="dialog">
@@ -458,7 +481,10 @@ function History() {
                       Dutation (Min)
                     </span>
                   </label>
-                  <select className="select select-bordered text-gray-400">
+                  <select
+                    className="select select-bordered text-gray-400"
+                    type="number"
+                  >
                     <option disabled selected>
                       Duration
                     </option>
@@ -468,6 +494,7 @@ function History() {
                     <option>20</option>
                     <option>25</option>
                     <option>30</option>
+                    <option>35</option>
                   </select>
                 </div>
 
