@@ -42,14 +42,13 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType }) => {
         >
           &times;
         </span>
-
-        <form onSubmit={handleSubmit}>
-          <div className="mb-7 flex justify-start items-center gap-3 ">
-            <div className="text-3xl text-white font-bold mb-1 text-center pb-1">
-              {selectedActivity.name}
-            </div>
-            <div>{selectedActivity.icon}</div>
+        <div className="mb-7 flex justify-start items-center gap-3 ">
+          <div className="text-3xl text-white font-bold mb-1 text-center pb-1">
+            {selectedActivity.name}
           </div>
+          <div>{selectedActivity.icon}</div>
+        </div>
+        <form onSubmit={handleSubmit}>
           <div className="mb-4 text-orange-400">
             <div className="mb-4 ">
               <label className="block text-xl font-bold mb-2 mt-12">
@@ -93,7 +92,9 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType }) => {
             </div>
             <div className="flex justify-center items-center gap-4">
               <div className="">
-                <label className="block  text-xl font-bold ">Date:</label>
+                <label className="block  text-xl font-bold hover:cursor-pointer">
+                  Date:
+                </label>
                 <input
                   type="date"
                   name="date"
@@ -103,18 +104,23 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType }) => {
                 />
               </div>
             </div>
+            <div className="flex justify-center items-center gap-4 hover:cursor-pointer hover:scale-110 mt-10">
+              <label className="flex bg-cyan-600 hover:bg-cyan-300  w-80 gap-3 text-white font-semibold py-2 px-4 rounded items-center ">
+                <input
+                  type="file"
+                  name="file"
+                  className="file-input file-input-bordered file-input-info h-10 w-80 hover:cursor-pointer"
+                />
+                <BsImages /> Upload image <div className="">(optional)</div>
+              </label>
+            </div>
           </div>
-          <div className="flex w-80  hover:cursor-pointer hover:scale-110 mt-10">
-            <label className=" bg-cyan-600 hover:bg-cyan-300  w-80 flex gap-3  hover-bg-cyan-400 duration-150 text-white font-semibold py-2 px-4 rounded items-center ">
-              <input
-                type="file"
-                className="file-input file-input-bordered file-input-info h-10 w-80 hover:cursor-pointer"
-              />
-              <BsImages/> Upload image <div className="">(optional)</div>
-            </label>
-          </div>
+
           <div className="text-center mt-10">
-            <button type="submit" className="btn bg-orange-400 text-white hover:bg-orange-300 hover:scale-110">
+            <button
+              type="submit"
+              className="btn bg-orange-400 text-white hover:bg-orange-300 hover:scale-110"
+            >
               Add Activity
             </button>
           </div>
