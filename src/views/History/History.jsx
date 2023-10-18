@@ -11,6 +11,32 @@ import { AiFillEdit } from "react-icons/ai";
 import { GoAlertFill } from "react-icons/go";
 
 function History() {
+  const activity = [
+    {
+      icon: <FaRunning />,
+      img: "https://i.pinimg.com/564x/51/83/33/5183331b94eb09c31eaf59bc0ac60797.jpg",
+      activityName: "Running",
+      description: "Happiness is running with friends.",
+      date: "08/09/2023",
+      duration: "32.04 min",
+    },
+    {
+      icon: <FaRunning />,
+      img: "https://i.pinimg.com/236x/bf/30/95/bf30954c5e361c3ac9d1a030982a8ccd.jpg",
+      activityName: "Swim",
+      description: "Swim",
+      date: "08/09/2023",
+      duration: "55 mins",
+    },
+    {
+      icon: <FaRunning />,
+      img: "https://i.pinimg.com/736x/dc/b9/57/dcb95731d54a6500bd67c130ce2164dc.jpg",
+      activityName: "Boxing",
+      description: "punch helloehlehieleoehekehbeibebeiifee",
+      date: "03/10/2023",
+      duration: "10 mins",
+    },
+  ];
   return (
     <Layout>
       {/* Choose history type */}
@@ -63,511 +89,253 @@ function History() {
       </div>
       <div className="xl:container xl:mx-auto">
         {/* Card */}
-        <div className=" glass mt-5 flex flex-col text-white rounded-lg m-5 p-1 lg:p-5 lg:flex-row justify-between drop-shadow-md  transform transition-transform hover:scale-[101%] shadow-xl ">
-          {/* icon */}
-          <div className=" m-5  justify-center hidden lg:flex lg:justify-center flex-col border-solid">
-            <FaRunning className="text-slate-900 text-20 lg:text-5xl " />
-          </div>
-
-          {/* Card image */}
-          <div className="justify-center  flex-col hidden lg:flex ">
-            <img
-              src="https://i.pinimg.com/564x/51/83/33/5183331b94eb09c31eaf59bc0ac60797.jpg"
-              alt=""
-              className="h-40  drop-shadow-md rounded-lg w-40 "
-            />
-          </div>
-          {/* Description */}
-          <div className="text-slate-700 lg:w-72  w-100 lg:ml-2 ps-5">
-            <div className="">
-              <p className="text-sm ">Activity Name</p>
-              <p className=" lg:text-2xl font-bold ">Running</p>
-
-              <p className="text-sm mt-3">Description</p>
-              <p className=" lg:text-2xl font-bold ">
-                "Happiness is running with friends.
-              </p>
-            </div>
-          </div>
-          {/* History Infomation */}
-          <div className=" text-slate-700  lg:gap-10 gap-5 flex flex-row  ps-5 mt-2">
-            <div className="">
-              <div className=" w-30">
-                <p className="text-sm">Date </p>
-                <p className="font-bold lg:text-2xl">08/09/2023</p>
+        {activity.map((item, index) => (
+          <div
+            key={index}
+            className=" glass mt-5 flex flex-col text-white rounded-lg m-5 p-1 lg:p-5 lg:flex-row justify-between drop-shadow-md  transform transition-transform hover:scale-[101%] shadow-xl "
+          >
+            {/* icon */}
+            <div className=" m-5  justify-center hidden lg:flex lg:justify-center flex-col border-solid">
+              <div className="text-slate-900 text-20 lg:text-5xl ">
+                {item.icon}
               </div>
             </div>
 
-            <div className=" ">
+            {/* Card image */}
+            <div className="justify-center  flex-col hidden lg:flex h-40  drop-shadow-md rounded-lg w-40">
+              <img
+                src={item.img}
+                alt=""
+                className="h-40  drop-shadow-md rounded-lg w-40 "
+              />
+            </div>
+            {/* Description */}
+            <div className="text-slate-700 lg:max-w-72   w-100 lg:ml-2 ps-5">
+              <div className="">
+                <p className="text-sm ">Activity Name</p>
+                <p className=" lg:text-2xl font-bold ">{item.activityName}</p>
+
+                <p className="text-sm mt-3">Description</p>
+
+                <p className=" lg:text-2xl font-bold ">{item.description}</p>
+              </div>
+            </div>
+            {/* History Infomation */}
+            <div className=" text-slate-700  lg:gap-10 gap-5 flex flex-row  ps-5 mt-2">
+              <div className="">
+                <div className=" w-30">
+                  <p className="text-sm">Date </p>
+                  <p className="font-bold lg:text-2xl">{item.date}</p>
+                </div>
+              </div>
+
               <div className=" ">
-                <p className="text-sm">Duration</p>
-                <p className="font-bold lg:text-2xl">32.04 min</p>
+                <div className=" ">
+                  <p className="text-sm">Duration</p>
+                  <p className="font-bold lg:text-2xl">{item.duration}</p>
+                </div>
               </div>
             </div>
-          </div>
-          {/* Delete and Edit Button */}
-          {/* Edit */}
-          <div className=" text-2xl ml-5 text-end  lg:justify-end lg:flex items-end">
-            <button
-              className=" text-white"
-              onClick={() => document.getElementById("my_modal_5").showModal()}
-            >
-              <button className="hidden lg:block btn btn-sm bg-primary text-white  lg:w-24 me-2 ">
-                Edit
+            {/* Delete and Edit Button */}
+            {/* Edit */}
+            <div className=" text-2xl ml-5 text-end  lg:justify-end lg:flex items-end">
+              <button
+                className=" text-white"
+                onClick={() =>
+                  document.getElementById("my_modal_5").showModal()
+                }
+              >
+                <button className="hidden lg:block btn btn-sm bg-primary text-white  lg:w-24 me-2 ">
+                  Edit
+                </button>
+                <div className="lg:hidden text-black ">
+                  <TbPencil />
+                </div>
               </button>
-              <div className="lg:hidden text-black ">
-                <TbPencil />
-              </div>
-            </button>
-            <dialog
-              id="my_modal_5"
-              className="modal modal-bottom sm:modal-middle"
-            >
-              <div className="modal-box">
-                <form method="dialog">
-                  <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 bg-red-600">
-                    ✕
-                  </button>
-                </form>
+              <dialog
+                id="my_modal_5"
+                className="modal modal-bottom sm:modal-middle"
+              >
+                <div className="modal-box">
+                  <form method="dialog">
+                    <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 bg-red-600">
+                      ✕
+                    </button>
+                  </form>
 
-                {/* Edit profile photo */}
-                <div className="flex justify-center py-8">
-                  <img
-                    className="w-[200px] h-[200px] object-cover rounded-full border-4 border-primary"
-                    src="https://i.pinimg.com/564x/aa/b1/66/aab1668efa22babd2f1e883fd859846c.jpg"
-                    alt=""
-                  />
-
-                  {/* รูปไว้กด Edit */}
-                  <div className="w-[200px] h-[200px] group hover:bg-gray-200 opacity-60 rounded-full absolute flex justify-center items-center cursor-pointer transition duration-500">
+                  {/* Edit profile photo */}
+                  <div className="flex justify-center py-8">
                     <img
-                      type="file"
-                      className="hidden group-hover:block w-12"
-                      src="https://www.svgrepo.com/show/33565/upload.svg"
+                      className="w-[200px] h-[200px] object-cover rounded-full border-4 border-primary"
+                      src="https://i.pinimg.com/564x/aa/b1/66/aab1668efa22babd2f1e883fd859846c.jpg"
                       alt=""
                     />
 
-                    {/* ปุ่มไว้กด Upload photo */}
+                    {/* รูปไว้กด Edit */}
+                    <div className="w-[200px] h-[200px] group hover:bg-gray-200 opacity-60 rounded-full absolute flex justify-center items-center cursor-pointer transition duration-500">
+                      <img
+                        type="file"
+                        className="hidden group-hover:block w-12"
+                        src="https://www.svgrepo.com/show/33565/upload.svg"
+                        alt=""
+                      />
 
-                    <input type="file"></input>
+                      {/* ปุ่มไว้กด Upload photo */}
+
+                      <input type="file"></input>
+                    </div>
                   </div>
-                </div>
 
-                <div className="form-control w-full pt-3">
-                  <label className="label">
-                    <span className="label-text text-primary font-semibold text-[16px]">
-                      Activity Name
-                    </span>
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Activity Name"
-                    className="input input-bordered w-full text-black"
-                  />
-                </div>
-                <div className="form-control w-full pt-3">
-                  <label className="label">
-                    <span className="label-text text-primary font-semibold text-[16px]">
-                      Description
-                    </span>
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Description"
-                    className="input input-bordered w-full text-black"
-                  />
-                </div>
-                <div className="form-control w-full pt-3">
-                  <label className="label">
-                    <span className="label-text text-primary font-semibold text-[16px]">
-                      Date
-                    </span>
-                  </label>
-                  <input
-                    type="date"
-                    className="input input-bordered w-full text-gray-400 text-black"
-                  />
-                </div>
-                <div className="form-control w-full pt-3">
-                  <label className="label">
-                    <span className="label-text text-primary font-semibold text-[16px]">
-                      Distance (Kg)
-                    </span>
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Distance"
-                    className="input input-bordered w-full text-black"
-                  />
-                </div>
-                <div className="form-control w-full pt-3">
-                  <label className="label">
-                    <span className="label-text text-primary font-semibold text-[16px]">
-                      Activity Type
-                    </span>
-                  </label>
-                  <input
-                    type="text"
-                    placeholder=" Activity Type"
-                    className="input input-bordered w-full text-black"
-                  />
-                </div>
-
-                {/* <div className="form-control w-full pt-3">
-                  <label className="label">
-                    <span className="label-text text-primary font-semibold text-[16px]">
-                      Dutation (Min)
-                    </span>
-                  </label>
-                  <select className="select select-bordered text-gray-400">
-                    <option disabled selected>
-                      Duration
-                    </option>
-                    <option>5</option>
-                    <option>10</option>
-                    <option>15</option>
-                    <option>20</option>
-                    <option>25</option>
-                    <option>30</option>
-                  </select>
-                </div> */}
-                <div className="form-control w-full pt-3">
-                  <label className="label">
-                    <span className="label-text text-primary font-semibold text-[16px]">
-                      Duration
-                    </span>
-                  </label>
-                  <div className="flex gap-x-2">
+                  <div className="form-control w-full pt-3">
+                    <label className="label">
+                      <span className="label-text text-primary font-semibold text-[16px]">
+                        Activity Name
+                      </span>
+                    </label>
                     <input
-                      type="number"
-                      min={0}
-                      max={23}
-                      placeholder="Hours"
+                      type="text"
+                      placeholder="Activity Name"
                       className="input input-bordered w-full text-black"
                     />
+                  </div>
+                  <div className="form-control w-full pt-3">
+                    <label className="label">
+                      <span className="label-text text-primary font-semibold text-[16px]">
+                        Description
+                      </span>
+                    </label>
                     <input
-                      type="number"
-                      placeholder="Minutes"
-                      min={0}
-                      max={59}
-                      className="input input-bordered w-full text-black "
+                      type="text"
+                      placeholder="Description"
+                      className="input input-bordered w-full text-black"
                     />
                   </div>
-                </div>
+                  <div className="form-control w-full pt-3">
+                    <label className="label">
+                      <span className="label-text text-primary font-semibold text-[16px]">
+                        Date
+                      </span>
+                    </label>
+                    <input
+                      type="date"
+                      className="input input-bordered w-full  text-black"
+                    />
+                  </div>
+                  <div className="form-control w-full pt-3">
+                    <label className="label">
+                      <span className="label-text text-primary font-semibold text-[16px]">
+                        Distance (Kg)
+                      </span>
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="Distance"
+                      className="input input-bordered w-full text-black"
+                    />
+                  </div>
+                  <div className="form-control w-full pt-3">
+                    <label className="label">
+                      <span className="label-text text-primary font-semibold text-[16px]">
+                        Activity Type
+                      </span>
+                    </label>
+                    <input
+                      type="text"
+                      placeholder=" Activity Type"
+                      className="input input-bordered w-full text-black"
+                    />
+                  </div>
 
-                <div className="modal-action w-full">
-                  <form method="dialog">
-                    {/* if there is a button in form, it will close the modal */}
-                    <button className="btn btn-primary text-white w-80 lg:w-32">
-                      Save
-                    </button>
-                  </form>
-                </div>
-              </div>
-            </dialog>
-            {/* Open the modal using document.getElementById('ID').showModal() method */}
+                  <div className="form-control w-full pt-3">
+                    <label className="label">
+                      <span className="label-text text-primary font-semibold text-[16px]">
+                        Duration
+                      </span>
+                    </label>
+                    <div className="flex gap-x-2">
+                      <input
+                        type="number"
+                        min={0}
+                        max={23}
+                        placeholder="Hours"
+                        className="input input-bordered w-full text-black"
+                      />
+                      <input
+                        type="number"
+                        placeholder="Minutes"
+                        min={0}
+                        max={59}
+                        className="input input-bordered w-full text-black "
+                      />
+                    </div>
+                  </div>
 
-            <button
-              className=""
-              onClick={() => document.getElementById("my_modal_1").showModal()}
-            >
-              <button className="hidden lg:block btn btn-sm bg-red-600 text-white lg:w-24 ">
-                Delete
-              </button>
-              <div className="lg:hidden text-black ">
-                <TbTrash />
-              </div>
-            </button>
-            <dialog
-              id="my_modal_1"
-              className="modal text-black text-base text-start"
-            >
-              <div className="modal-box">
-                <form method="dialog">
-                  <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 bg-red-600 text-white">
-                    ✕
-                  </button>
-                </form>
-                <h3 className="font-bold text-lg text-center text-red ">
-                  Delete Activity
-                  <p className="text-center text-red-600 flex justify-center text-5xl">
-                    <GoAlertFill />
-                  </p>
-                </h3>
-
-                <img src="./assets/trash_ja.png" alt="" />
-                <p className="py-4 text-center">
-                  Deleting this activity will permanently remove it from your
-                  workout record. Are you sure you want to delete this activity?
-                </p>
-                <div className="modal-action">
-                  <div className="text-center">
-                    <form method="dialog ">
+                  <div className="modal-action w-full">
+                    <form method="dialog">
                       {/* if there is a button in form, it will close the modal */}
-                      <button className="btn bg-green-500 text-white  w-72 lg:w-32 lg:me-2">
-                        Cancel
-                      </button>
-                      <button className="btn bg-red-600 text-white  w-72 lg:w-32 ">
-                        Delete
+                      <button className="btn btn-primary text-white w-80 lg:w-32">
+                        Save
                       </button>
                     </form>
                   </div>
                 </div>
-              </div>
-            </dialog>
+              </dialog>
+              {/* Open the modal using document.getElementById('ID').showModal() method */}
 
-            {/* <a href="#" className="tooltip  tooltip-primary" data-tip="Edit">
-            <TbPencil className="text-slate-900" />
-          </a> */}
-
-            {/* <a href="#" className="tooltip " data-tip="Delete">
-            <TbTrash className="text-slate-900" />
-          </a> */}
-          </div>
-        </div>
-        <div className=" glass mt-5 flex flex-col text-white rounded-lg m-5 p-1 lg:p-5 lg:flex-row justify-between drop-shadow-md  transform transition-transform hover:scale-[101%] shadow-xl ">
-          {/* icon */}
-          <div className=" m-5  justify-center hidden lg:flex lg:justify-center flex-col border-solid">
-            <FaRunning className="text-slate-900 text-20 lg:text-5xl " />
-          </div>
-
-          {/* Card image */}
-          <div className="justify-center  flex-col hidden lg:flex ">
-            <img
-              src="https://i.pinimg.com/564x/7f/cd/ae/7fcdae698e6d7a8ae76c21864550d9c9.jpg"
-              alt=""
-              className="h-40  drop-shadow-md rounded-lg w-40 "
-            />
-          </div>
-          {/* Description */}
-          <div className="text-slate-700 lg:w-72  w-100 lg:ml-2 ps-5">
-            <div className="">
-              <p className="text-sm ">Activity Name</p>
-              <p className=" lg:text-2xl font-bold ">Running</p>
-
-              <p className="text-sm mt-3">Description</p>
-              <p className=" lg:text-2xl font-bold ">
-                "Happiness is running with friends.
-              </p>
-            </div>
-          </div>
-          {/* History Infomation */}
-          <div className=" text-slate-700  lg:gap-10 gap-5 flex flex-row  ps-5 mt-2">
-            <div className="">
-              <div className=" w-30">
-                <p className="text-sm">Date </p>
-                <p className="font-bold lg:text-2xl">08/09/2023</p>
-              </div>
-            </div>
-
-            <div className=" ">
-              <div className=" ">
-                <p className="text-sm">Duration</p>
-                <p className="font-bold lg:text-2xl">32.04 min</p>
-              </div>
-            </div>
-          </div>
-          {/* Delete and Edit Button */}
-          {/* Edit */}
-          <div className=" text-2xl ml-5 text-end  lg:justify-end lg:flex items-end">
-            <button
-              className=" text-white"
-              onClick={() => document.getElementById("my_modal_5").showModal()}
-            >
-              <button className="hidden lg:block btn btn-sm bg-primary text-white  lg:w-24 me-2 ">
-                Edit
+              <button
+                className=""
+                onClick={() =>
+                  document.getElementById("my_modal_1").showModal()
+                }
+              >
+                <button className="hidden lg:block btn btn-sm bg-red-600 text-white lg:w-24 ">
+                  Delete
+                </button>
+                <div className="lg:hidden text-black ">
+                  <TbTrash />
+                </div>
               </button>
-              <div className="lg:hidden text-black ">
-                <TbPencil />
-              </div>
-            </button>
-            <dialog
-              id="my_modal_5"
-              className="modal modal-bottom sm:modal-middle "
-            >
-              <div className="modal-box">
-                <form method="dialog">
-                  <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 bg-red-600">
-                    ✕
-                  </button>
-                </form>
-
-                {/* Edit profile photo */}
-                <div className="flex justify-center py-8">
-                  <img
-                    className="w-[200px] h-[200px] object-cover rounded-full border-4 border-primary"
-                    src="https://i.pinimg.com/564x/aa/b1/66/aab1668efa22babd2f1e883fd859846c.jpg"
-                    alt=""
-                  />
-
-                  {/* รูปไว้กด Edit */}
-                  <div className="w-[200px] h-[200px] group hover:bg-gray-200 opacity-60 rounded-full absolute flex justify-center items-center cursor-pointer transition duration-500">
-                    <img
-                      type="file"
-                      className="hidden group-hover:block w-12"
-                      src="https://www.svgrepo.com/show/33565/upload.svg"
-                      alt=""
-                    />
-
-                    {/* ปุ่มไว้กด Upload photo */}
-
-                    <input type="file"></input>
-                  </div>
-                </div>
-
-                <div className="form-control w-full pt-3">
-                  <label className="label">
-                    <span className="label-text text-primary font-semibold text-[16px]">
-                      Activity Name
-                    </span>
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Activity Name"
-                    className="input input-bordered w-full"
-                  />
-                </div>
-                <div className="form-control w-full pt-3">
-                  <label className="label">
-                    <span className="label-text text-primary font-semibold text-[16px]">
-                      Description
-                    </span>
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Description"
-                    className="input input-bordered w-full"
-                  />
-                </div>
-                <div className="form-control w-full pt-3">
-                  <label className="label">
-                    <span className="label-text text-primary font-semibold text-[16px]">
-                      Date
-                    </span>
-                  </label>
-                  <input
-                    type="date"
-                    className="input input-bordered w-full text-gray-400"
-                  />
-                </div>
-                <div className="form-control w-full pt-3">
-                  <label className="label">
-                    <span className="label-text text-primary font-semibold text-[16px]">
-                      Distance (Kg)
-                    </span>
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Distance"
-                    className="input input-bordered w-full"
-                  />
-                </div>
-                <div className="form-control w-full pt-3">
-                  <label className="label">
-                    <span className="label-text text-primary font-semibold text-[16px]">
-                      Activity Type
-                    </span>
-                  </label>
-                  <input
-                    type="text"
-                    placeholder=" Activity Type"
-                    className="input input-bordered w-full"
-                  />
-                </div>
-
-                <div className="form-control w-full pt-3">
-                  <label className="label">
-                    <span className="label-text text-primary font-semibold text-[16px]">
-                      Dutation (Min)
-                    </span>
-                  </label>
-                  <select
-                    className="select select-bordered text-gray-400"
-                    type="number"
-                  >
-                    <option disabled selected>
-                      Duration
-                    </option>
-                    <option>5</option>
-                    <option>10</option>
-                    <option>15</option>
-                    <option>20</option>
-                    <option>25</option>
-                    <option>30</option>
-                    <option>35</option>
-                  </select>
-                </div>
-
-                <div className="modal-action w-full">
+              <dialog
+                id="my_modal_1"
+                className="modal text-black text-base text-start"
+              >
+                <div className="modal-box">
                   <form method="dialog">
-                    {/* if there is a button in form, it will close the modal */}
-                    <button className="btn btn-primary text-white w-80 lg:w-32">
-                      Save
+                    <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 bg-red-600 text-white">
+                      ✕
                     </button>
                   </form>
-                </div>
-              </div>
-            </dialog>
-            {/* Open the modal using document.getElementById('ID').showModal() method */}
+                  <h3 className="font-bold text-lg text-center text-red ">
+                    Delete Activity
+                    <p className="text-center text-red-600 flex justify-center text-5xl">
+                      <GoAlertFill />
+                    </p>
+                  </h3>
 
-            <button
-              className=""
-              onClick={() => document.getElementById("my_modal_1").showModal()}
-            >
-              <button className="hidden lg:block btn btn-sm bg-red-600 text-white lg:w-24 ">
-                Delete
-              </button>
-              <div className="lg:hidden text-black ">
-                <TbTrash />
-              </div>
-            </button>
-            <dialog
-              id="my_modal_1"
-              className="modal text-black text-base text-start"
-            >
-              <div className="modal-box">
-                <form method="dialog">
-                  <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 bg-red-600 text-white">
-                    ✕
-                  </button>
-                </form>
-                <h3 className="font-bold text-lg text-center text-red ">
-                  Delete Activity
-                  <p className="text-center text-red-600 flex justify-center text-5xl">
-                    <GoAlertFill />
+                  <img src="./assets/trash_ja.png" alt="" />
+                  <p className="py-4 text-center ">
+                    Deleting this activity will permanently remove it from your
+                    workout record. Are you sure you want to delete this
+                    activity?
                   </p>
-                </h3>
-
-                <img src="./assets/trash_ja.png" alt="" />
-                <p className="py-4 text-center">
-                  Deleting this activity will permanently remove it from your
-                  workout record. Are you sure you want to delete this activity?
-                </p>
-                <div className="modal-action">
-                  <div className="text-center">
-                    <form method="dialog ">
-                      {/* if there is a button in form, it will close the modal */}
-                      <button className="btn bg-green-500 text-white  w-72 lg:w-32 lg:me-2">
-                        Cancel
-                      </button>
-                      <button className="btn bg-red-600 text-white  w-72 lg:w-32 ">
-                        Delete
-                      </button>
-                    </form>
+                  <div className="modal-action">
+                    <div className="text-center">
+                      <form method="dialog ">
+                        {/* if there is a button in form, it will close the modal */}
+                        <button className="btn bg-green-500 text-white  w-72 lg:w-32 lg:me-2">
+                          Cancel
+                        </button>
+                        <button className="btn bg-red-600 text-white  w-72 lg:w-32 ">
+                          Delete
+                        </button>
+                      </form>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </dialog>
-
-            {/* <a href="#" className="tooltip  tooltip-primary" data-tip="Edit">
-            <TbPencil className="text-slate-900" />
-          </a> */}
-
-            {/* <a href="#" className="tooltip " data-tip="Delete">
-            <TbTrash className="text-slate-900" />
-          </a> */}
+              </dialog>
+            </div>
           </div>
-        </div>
+        ))}
       </div>
     </Layout>
   );
