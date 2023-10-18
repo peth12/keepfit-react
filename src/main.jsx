@@ -10,10 +10,11 @@ import Activity from "./views/Activity/Activity.jsx";
 import History from "./views/History/History.jsx";
 import Profile from "./views/User/Profile.jsx";
 import { AddActivityButton } from "./components/index.js";
+import { LandingPage } from "./views/LandingPage.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <LandingPage />,
   },
   {
     path: "/login",
@@ -37,7 +38,8 @@ const router = createBrowserRouter([
   },{
     path: '/user',
     element: <Profile/>
-  }
+  },
+  
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
