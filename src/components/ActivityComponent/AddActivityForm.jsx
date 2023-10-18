@@ -90,9 +90,9 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType }) => {
                 className="input input-bordered  w-80 rounded-sm"
               />
             </div>
-            <div className="flex justify-center items-center gap-4">
+            <div className="flex justify-center items-center gap-4 ">
               <div className="">
-                <label className="block  text-xl font-bold hover:cursor-pointer">
+                <label className="block  text-xl font-bold">
                   Date:
                 </label>
                 <input
