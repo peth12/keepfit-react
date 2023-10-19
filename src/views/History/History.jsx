@@ -51,7 +51,7 @@ function History() {
     <Layout>
       {/* Choose history type */}
       <div
-        className="hidden bg-primary text-slate-100 flex justify-between mt-24 rounded-lg m-5 lg:flex   
+        className="hidden bg-primary text-slate-100 flex justify-between mt-24 rounded-lg m-5 lg:flex scroll-smooth 
       "
       >
         <a className="btn btn-ghost normal-case lg:text-xl">All</a>
@@ -102,25 +102,25 @@ function History() {
         {user.map((item, index) => (
           <div
             key={index}
-            className=" glass mt-5 flex flex-col text-white rounded-lg m-5 p-1 lg:p-5 lg:flex-row justify-between drop-shadow-md  transform transition-transform hover:scale-[101%] shadow-xl "
+            className=" glass mt-5 flex flex-col text-white rounded-lg m-5 p-1 lg:p-5 lg:flex-row justify-between drop-shadow-md   shadow-xl lg:w-full"
           >
             {/* icon */}
             <div className=" m-5  justify-center hidden lg:flex lg:justify-center flex-col border-solid">
-              <div className="text-slate-900 text-20 lg:text-5xl ">
+              <div className="text-slate-900 text-20 lg:text-5xl   ">
                 <FaRunning />
               </div>
             </div>
 
             {/* Card image */}
-            <div className="justify-center  flex-col hidden lg:flex h-40  drop-shadow-md rounded-lg w-40">
+            <div className="justify-center  flex-col hidden lg:flex h-40  drop-shadow-md rounded-lg w-40 ">
               <img
                 src={item.ActivityImage}
-                alt=""
+                alt="activityImage"
                 className="h-40  drop-shadow-md rounded-lg w-40 "
               />
             </div>
             {/* Description */}
-            <div className="text-slate-700 lg:max-w-72   w-100 lg:ml-2 ps-5">
+            <div className="text-slate-700 lg:max-w-72   w-100 lg:ml-2 ps-5 lg:w-52">
               <div className="">
                 <p className="text-sm ">Activity Name</p>
                 <p className=" lg:text-2xl font-bold ">{item.ActivityName}</p>
@@ -131,9 +131,9 @@ function History() {
               </div>
             </div>
             {/* History Infomation */}
-            <div className=" text-slate-700  lg:gap-10 gap-5 flex flex-row  ps-5 mt-2">
-              <div className="">
-                <div className=" w-30">
+            <div className=" text-slate-700  lg:gap-10 gap-5 flex flex-row  ps-5 mt-2 ">
+              <div className="w-30">
+                <div className=" ">
                   <p className="text-sm">Date </p>
                   <p className="font-bold lg:text-2xl ">{item.ActivityDate}</p>
                 </div>
@@ -141,7 +141,7 @@ function History() {
 
               <div className=" ">
                 <div className=" ">
-                  <p className="text-sm">Duration (Mins)</p>
+                  <p className="text-sm">Duration (Minutes)</p>
                   <p className="font-bold lg:text-2xl">
                     {item.ActivityDuration}
                   </p>
@@ -222,7 +222,7 @@ function History() {
                       className="input input-bordered w-full text-black"
                     />
                   </div>
-                  <div className="form-control w-full pt-3">
+                  <div className="form-control w-full pt-3 ">
                     <label className="label">
                       <span className="label-text text-primary font-semibold text-[16px]">
                         Date
@@ -248,12 +248,12 @@ function History() {
                   <div className="form-control w-full pt-3">
                     <label className="label">
                       <span className="label-text text-primary font-semibold text-[16px]">
-                        Activity Type
+                        Workout Type
                       </span>
                     </label>
                     <input
                       type="text"
-                      placeholder=" Activity Type"
+                      placeholder="Workout Type"
                       className="input input-bordered w-full text-black"
                     />
                   </div>
@@ -261,17 +261,10 @@ function History() {
                   <div className="form-control w-full pt-3">
                     <label className="label">
                       <span className="label-text text-primary font-semibold text-[16px]">
-                        Duration
+                        Duration (Minutes)
                       </span>
                     </label>
                     <div className="flex gap-x-2">
-                      <input
-                        type="number"
-                        min={0}
-                        max={23}
-                        placeholder="Hours"
-                        className="input input-bordered w-full text-black"
-                      />
                       <input
                         type="number"
                         placeholder="Minutes"
@@ -330,9 +323,9 @@ function History() {
                     workout record. Are you sure you want to delete this
                     activity?
                   </p>
-                  <div className="modal-action">
+                  <div className="modal-action flex justify-center">
                     <div className="text-center">
-                      <form method="dialog ">
+                      <form method="dialog " className="">
                         {/* if there is a button in form, it will close the modal */}
                         <button className="btn bg-green-500 text-white  w-72 lg:w-32 lg:me-2">
                           Cancel
