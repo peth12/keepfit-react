@@ -5,6 +5,11 @@ import "./User.css";
 
 const Profile = () => {
   const [isEditMode, setIsEditMode] = useState(false);
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [weight, setWeight] = useState('');
+  const [height, setHeight] = useState('');
+  const [gender, setGender] = useState('');
 
   const toggleEditMode = () => {
     setIsEditMode(!isEditMode);
@@ -75,9 +80,10 @@ const Profile = () => {
                           id="inputFirstName"
                           type="text"
                           placeholder="Enter your first name"
+                          onChange={(e) => setFirstName(e.target.value)}
                         />
                       ) : (
-                        <p className="px-3 text-lg">Padtaraya</p>
+                        <p className="px-3 text-lg">{firstName}</p>
                       )}
                     </div>
                     {/* Form Group (last name) */}
@@ -95,9 +101,10 @@ const Profile = () => {
                           id="inputLastName"
                           type="text"
                           placeholder="Enter your last name"
+                          onChange={(e) => setLastName(e.target.value)}
                         />
                       ) : (
-                        <p className="px-3 text-lg">Chudchawinpond</p>
+                        <p className="px-3 text-lg">{lastName}</p>
                       )}
                     </div>
                   </div>
@@ -119,9 +126,10 @@ const Profile = () => {
                           type="number"
                           min="0"
                           placeholder="Enter your weight"
+                          onChange={(e) => setWeight(e.target.value)}
                         />
                       ) : (
-                        <p className="px-3 text-lg">15</p>
+                        <p className="px-3 text-lg">{weight}</p>
                       )}
                     </div>
                     {/* Form Group (height) */}
@@ -140,9 +148,10 @@ const Profile = () => {
                           type="number"
                           min="0"
                           placeholder="Enter your Height"
+                          onChange={(e) => setHeight(e.target.value)}
                         />
                       ) : (
-                        <p className="px-3 text-lg">189</p>
+                        <p className="px-3 text-lg">{height}</p>
                       )}
                     </div>
                   </div>
@@ -174,7 +183,7 @@ const Profile = () => {
                       </label>
 
                       {isEditMode ? (
-                        <select className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:border-primary">
+                        <select className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:border-primary" onChange={(e) => setGender(e.target.value)}>
                           <option disabled selected>
                             None
                           </option>
@@ -183,7 +192,7 @@ const Profile = () => {
                           <option>Not specified</option>
                         </select>
                       ) : (
-                        <p className="px-3 text-lg">Male</p>
+                        <p className="px-3 text-lg">{gender}</p>
                       )}
                     </div>
                     {/* Form Group (birthday) */}
@@ -229,12 +238,21 @@ const Profile = () => {
                   {/* Save changes button */}
 
                   {isEditMode ? (
-                    <button
-                      className="btn btn-primary text-white font-semibold py-2 px-4 rounded"
-                      onClick={toggleEditMode}
-                    >
-                      Save changes
-                    </button>
+                    <div className="flex gap-6">
+                      <button
+                        className="btn btn-primary text-white font-semibold py-2 px-4 rounded"
+                        onClick={toggleEditMode}
+                      >
+                        Save changes
+                      </button>
+
+                      <button
+                        className="btn  bg-slate-500 hover:bg-slate-700 text-white font-semibold py-2 px-4 rounded"
+                        onClick={toggleEditMode}>Discard Changes</button>
+
+                    </div>
+
+
                   ) : (
                     <button
                       className="btn btn-primary text-white font-semibold py-2 px-4 rounded hidden"
