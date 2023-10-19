@@ -1,75 +1,124 @@
 import React, { useState } from "react";
-import axios from "axios";
 import "./Signup.css";
-
 const SignUp = () => {
-  // State to manage form data
-  const [formData, setFormData] = useState({
-    Userfname: "",
-    Userlname: "",
-    UserDateOfBirth: "",
-    Gender: "",
-    Weight: "",
-    Height: "",
-    UserEmail: "",
-    UserPassword: "",
-    UserRole: "",
-  });
-
-  // Event handler to update form data on input change
-  const handleInputChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  // Event handler to submit the form data
-  const handleSubmit = async () => {
-    try {
-      // Make a POST request to save data to MongoDB
-      const response = await axios.post(
-        "https://keepfit-backend.onrender.com/user",
-        formData
-      );
-
-      // Handle the response, e.g., show a success message
-      console.log("Data saved successfully:", response.data);
-    } catch (error) {
-      // Handle errors, e.g., show an error message
-      console.error("Error saving data:", error);
-    }
-  };
 
   return (
     <>
-      {/* ... Your existing JSX code ... */}
-      
-      {/* Update input elements to include the 'name' attribute and 'onChange' handler */}
-      <div className="form-control">
-        <label className="label">
-          <span className="label-text text-primary font-semibold text-[16px]">
-            First Name
-          </span>
-        </label>
-        <input
-          type="text"
-          name="Userfname"
-          value={formData.Userfname}
-          onChange={handleInputChange}
-          placeholder="Enter Firstname"
-          className="input input-bordered w-80 h-10"
-        />
+      {/* <NavbarLandingPage /> */}
+      <div className=" flex min-h-[100vh]">
+        {/* section 1 */}
+        <div className="left hidden md:block min-h-[100%] w-[100%]"></div>
+        {/* section 2 */}
+        <div className="right min-h-[100%] bg-white w-[100%]">
+          <div className="flex justify-center items-center w-[100%] min-h-[100%]">
+          <div className="glass  flex-col flex items-center px-14 pb-14 rounded-xl">
+              <h1 className=" text-[70px] text-primary italic font-bold text-center">
+                Sign Up
+              </h1>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text text-primary font-semibold text-[16px]">First Name</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="Enter Firstname"
+                  className="input input-bordered w-80 h-10"
+                />
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text text-primary font-semibold text-[16px]">LastName</span>
+                </label>
+                <input
+                  type="password"
+                  placeholder="Enter Lastname"
+                  className="input input-bordered w-80 h-10"
+                />
+              </div>
+              <div className="flex justify-between">
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text text-primary font-semibold text-[16px]">Date of Birth</span>
+                  </label>
+                  <input
+                    type="date"
+                    placeholder="Enter Lastname"
+                    className="input input-bordered w-40 text-secondary"
+                  />
+                </div>
+
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text text-primary font-semibold text-[16px]">
+                      Gender
+                    </span>
+                  </label>
+                  <select className="select select-bordered text-gray-400 ">
+                    <option disabled selected>
+                      None
+                    </option>
+                    <option>Female</option>
+                    <option>Male</option>
+                    <option>Not specified</option>
+                  </select>
+                </div>
+              </div>
+
+              <div className="flex justify-between">
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text text-primary font-semibold text-[16px]">Weigth</span>
+                  </label>
+                  <input
+                    type="number"
+                    placeholder="Enter Weigth"
+                    className="input input-bordered w-[9.5rem] text-secondary h-10" 
+                  />
+                </div>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text text-primary font-semibold text-[16px]">Height</span>
+                  </label>
+                  <input
+                    type="number"
+                    placeholder="Enter Height"
+                    className="input input-bordered w-[9.5rem] text-secondary h-10"
+                  />
+                </div>
+
+              </div>
+
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text text-primary font-semibold text-[16px]">Email</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="Enter Email"
+                  className="input input-bordered w-80"
+                />
+              </div>
+              <div className="form-control pb-4">
+                <label className="label">
+                  <span className="label-text text-primary font-semibold text-[16px]">Password</span>
+                </label>
+                <input
+                  type="password"
+                  placeholder="Enter password"
+                  className="input input-bordered w-80"
+                />
+              </div>
+
+              {/* <Link to={"/activity"}> */}
+              <button className="btn-primary w-80 rounded-md p-1 text-[24px] font-semibold text-white">
+                Sign Up
+              </button>
+
+              {/* </Link> */}
+            </div>
+          </div>
+        </div>
       </div>
-
-      {/* ... Repeat similar changes for other input elements ... */}
-
-      {/* Update the button to trigger the handleSubmit function */}
-      <button
-        onClick={handleSubmit}
-        className="btn-primary w-80 rounded-md p-1 text-[24px] font-semibold text-white"
-      >
-        Sign Up
-      </button>
-
-      {/* ... Your existing JSX code ... */}
     </>
   );
 };

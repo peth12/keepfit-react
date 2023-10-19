@@ -1,6 +1,12 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { useData } from "./ActivityData";
 import { BsImages } from "react-icons/bs";
+import {BiSwim, BiCycling} from 'react-icons/bi'
+import {GrYoga} from 'react-icons/gr'
+import {GiBodyBalance} from 'react-icons/gi'
+import {RiBoxingLine} from 'react-icons/ri'
+import {FaRunning} from 'react-icons/fa'
+
 const AddActivityForm = ({ toggleFormVisibility, defaultType }) => {
   const { activityList } = useData();
 
@@ -8,6 +14,14 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType }) => {
     (activity) => activity.name === defaultType
   );
 
+  const iconComponents = {
+    GiBodyBalance: <GiBodyBalance className="fill-white scale-150 mb-1" />,
+    RiBoxingLine: <RiBoxingLine className="fill-white scale-150 mb-1" />,
+    BiCycling: <BiCycling className="fill-white scale-150 mb-1" />,
+    BiSwim: <BiSwim className="fill-white scale-150 mb-1" />,
+    FaRunning: <FaRunning className="fill-white scale-150 mb-1" />,
+  };
+  
   const [activityData, setActivityData] = useState({
     name: "",
     description: "",
@@ -18,7 +32,6 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle the form submission here
     console.log(activityData);
   };
 
@@ -46,7 +59,8 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType }) => {
           <div className="text-3xl text-white font-bold mb-1 text-center pb-1">
             {selectedActivity.name}
           </div>
-          <div>{selectedActivity.icon}</div>
+          <div>{console.log(iconComponents[selectedActivity.icon])}</div>
+          <div>{iconComponents[selectedActivity.icon]}</div>
         </div>
         <form onSubmit={handleSubmit}>
           <div className="mb-4 text-orange-400">

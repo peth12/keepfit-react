@@ -10,15 +10,35 @@ import { VscChevronRight } from "react-icons/vsc";
 import { VscChevronDown } from "react-icons/vsc";
 import { AiFillEdit } from "react-icons/ai";
 import { GoAlertFill } from "react-icons/go";
+import { Link, useParams , useNavigate} from "react-router-dom";
 
 function History() {
+  const { id } = useParams();
   const [user, setUser] = useState([]);
+  const [userById , setUserById] = useState([])
+  const [reload, setReload] = useState(false)
   useEffect(() => {
     axios
       .get("https://keepfit-backend.onrender.com/activity")
       .then((result) => setUser(result.data))
       .catch((err) => console.log(err));
-  }, []);
+  }, [reload]);
+  useEffect(()=> {
+
+  })
+  useEffect(() => {
+    // Fetch data by ID when the 'id' parameter changes
+    if (id) {
+      axios
+        .get(`https://keepfit-backend.onrender.com/activity/${id}`)
+        .then((result) => {
+          setUserById(result.data);
+           // This might not be necessary if you're not using 'reload' for other purposes
+        })
+        .catch((err) => console.log(err));
+    }
+    setReload(!reload);
+  }, [id]);
 
   // const activity = [
   //   {
@@ -50,10 +70,9 @@ function History() {
   return (
     <Layout>
       {/* Choose history type */}
-      <div
-        className="hidden bg-primary text-slate-100 flex justify-between mt-24 rounded-lg m-5 lg:flex scroll-smooth 
-      "
-      >
+
+      <div className="hidden bg-primary text-slate-100 flex justify-between mt-24 rounded-lg m-5 lg:flex scroll-smooth" >
+
         <a className="btn btn-ghost normal-case lg:text-xl">All</a>
         <a className="btn btn-ghost normal-case lg:text-xl">Run</a>
         <a className="btn btn-ghost normal-case lg:text-xl">Swim</a>
@@ -157,9 +176,11 @@ function History() {
                   document.getElementById("my_modal_5").showModal()
                 }
               >
-                <button className="hidden lg:block btn btn-sm bg-primary text-white  lg:w-24 me-2 ">
-                  Edit
-                </button>
+                <Link to={`/history/${item._id}`}>
+                  <button className="hidden lg:block btn btn-sm bg-primary text-white  lg:w-24 me-2 ">
+                    Edit
+                  </button>
+                </Link>
                 <div className="lg:hidden text-black ">
                   <TbPencil />
                 </div>
@@ -179,7 +200,7 @@ function History() {
                   <div className="flex justify-center py-8">
                     <img
                       className="w-[200px] h-[200px] object-cover rounded-full border-4 border-primary"
-                      src="https://i.pinimg.com/564x/aa/b1/66/aab1668efa22babd2f1e883fd859846c.jpg"
+                      src={userById.ActivityImage}
                       alt=""
                     />
 
@@ -207,6 +228,7 @@ function History() {
                     <input
                       type="text"
                       placeholder="Activity Name"
+                      value={userById.ActivityName}
                       className="input input-bordered w-full text-black"
                     />
                   </div>
@@ -219,6 +241,7 @@ function History() {
                     <input
                       type="text"
                       placeholder="Description"
+                      value={userById.ActivityDesc}
                       className="input input-bordered w-full text-black"
                     />
                   </div>
@@ -230,21 +253,11 @@ function History() {
                     </label>
                     <input
                       type="date"
+                      value={userById.ActivityDate}
                       className="input input-bordered w-full  text-black"
                     />
                   </div>
-                  <div className="form-control w-full pt-3">
-                    <label className="label">
-                      <span className="label-text text-primary font-semibold text-[16px]">
-                        Distance (Kg)
-                      </span>
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="Distance"
-                      className="input input-bordered w-full text-black"
-                    />
-                  </div>
+                  
                   <div className="form-control w-full pt-3">
                     <label className="label">
                       <span className="label-text text-primary font-semibold text-[16px]">
@@ -253,7 +266,10 @@ function History() {
                     </label>
                     <input
                       type="text"
+
                       placeholder="Workout Type"
+                      value={userById.ActivityType}
+
                       className="input input-bordered w-full text-black"
                     />
                   </div>
@@ -267,6 +283,14 @@ function History() {
                     <div className="flex gap-x-2">
                       <input
                         type="number"
+                        min={0}
+                        max={23}
+                        placeholder="Hours"
+                        value={userById.ActivityDuration}
+                        className="input input-bordered w-full text-black"
+                      />
+                      <input
+                        type="number"
                         placeholder="Minutes"
                         min={0}
                         max={59}
@@ -278,9 +302,11 @@ function History() {
                   <div className="modal-action w-full">
                     <form method="dialog">
                       {/* if there is a button in form, it will close the modal */}
+                      <Link to={'/history'}>
                       <button className="btn btn-primary text-white w-80 lg:w-32">
                         Save
                       </button>
+                      </Link>
                     </form>
                   </div>
                 </div>
@@ -292,10 +318,11 @@ function History() {
                 onClick={() =>
                   document.getElementById("my_modal_1").showModal()
                 }
-              >
+              ><Link to={`/history/${item._id}`}>
                 <button className="hidden lg:block btn btn-sm bg-red-600 text-white lg:w-24 ">
                   Delete
                 </button>
+                </Link>
                 <div className="lg:hidden text-black ">
                   <TbTrash />
                 </div>
