@@ -6,10 +6,11 @@ import {GrYoga} from 'react-icons/gr'
 import {GiBodyBalance} from 'react-icons/gi'
 import {RiBoxingLine} from 'react-icons/ri'
 import {FaRunning} from 'react-icons/fa'
+import axios from "axios";
 
 const AddActivityForm = ({ toggleFormVisibility, defaultType }) => {
   const { activityList } = useData();
-
+  const [newActivity, setNewActivity] = useState([])
   const selectedActivity = activityList.find(
     (activity) => activity.name === defaultType
   );
@@ -25,15 +26,10 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType }) => {
   const [activityData, setActivityData] = useState({
     name: "",
     description: "",
-    type: defaultType,
-    duration: "",
+    type: "",
+    duration: 0,
     date: "",
   });
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(activityData);
-  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -41,6 +37,25 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType }) => {
       ...activityData,
       [name]: value,
     });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post("https://your-backend-api.com/activity/create", activityData);
+      console.log("Activity created:", response.data);
+
+      setActivityData({
+        name: "",
+        description: "",
+        type: "",
+        duration: 0,
+        date: "",
+      });
+    } catch (error) {
+      console.error("Error creating activity:", error);
+    }
   };
 
   return (
