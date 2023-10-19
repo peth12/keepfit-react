@@ -9,8 +9,10 @@ import SignUp from "./views/SignUp/SignUp.jsx";
 import Activity from "./views/Activity/Activity.jsx";
 import History from "./views/History/History.jsx";
 import Profile from "./views/User/Profile.jsx";
-import { AddActivityButton } from "./components/index.js";
 import { LandingPage } from "./views/LandingPage.jsx";
+import WorkoutManagement from "./views/Admin/WorkoutManagement/WorkoutManagement.jsx";
+import UserManagement from "./views/Admin/UserManagement/UserManagement.jsx";
+import ActivityManagement from "./views/Admin/ActivityManagement/ActivityManagement.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -34,12 +36,40 @@ const router = createBrowserRouter([
   },
   {
     path: "/history",
-    element: <History/>
-  },{
-    path: '/user',
-    element: <Profile/>
+    element: <History />,
   },
-  
+  {
+    path: "/history/:id",
+    element: <History />,
+  },
+  {
+    path: "/user",
+    element: <Profile />,
+  },
+  {
+    path: "/admin/user",
+    element: <UserManagement />,
+  },
+  {
+    path: "/admin/user/:id",
+    element: <UserManagement />,
+  },
+  {
+    path: "/admin/activity",
+    element: <ActivityManagement />,
+  },
+  {
+    path: "/admin/activity/:id",
+    element: <ActivityManagement />,
+  },
+  {
+    path: "/admin/workout",
+    element: <WorkoutManagement />,
+  },
+  {
+    path: "/admin/workout/:id",
+    element: <WorkoutManagement />,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
