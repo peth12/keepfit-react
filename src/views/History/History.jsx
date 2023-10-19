@@ -255,19 +255,7 @@ function History() {
                       className="input input-bordered w-full  text-black"
                     />
                   </div>
-                  <div className="form-control w-full pt-3">
-                    <label className="label">
-                      <span className="label-text text-primary font-semibold text-[16px]">
-                        Distance (Kg)
-                      </span>
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="Distance"
-                      
-                      className="input input-bordered w-full text-black"
-                    />
-                  </div>
+                  
                   <div className="form-control w-full pt-3">
                     <label className="label">
                       <span className="label-text text-primary font-semibold text-[16px]">
