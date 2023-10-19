@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { Layout } from "../../components/Layout";
 import { TbTrash } from "react-icons/tb";
 import { TbPencil } from "react-icons/tb";
@@ -11,32 +12,41 @@ import { AiFillEdit } from "react-icons/ai";
 import { GoAlertFill } from "react-icons/go";
 
 function History() {
-  const activity = [
-    {
-      icon: <FaRunning />,
-      img: "https://i.pinimg.com/564x/51/83/33/5183331b94eb09c31eaf59bc0ac60797.jpg",
-      activityName: "Running",
-      description: "Happiness is running with friends.",
-      date: "08/09/2023",
-      duration: "32.04 min",
-    },
-    {
-      icon: <FaRunning />,
-      img: "https://i.pinimg.com/236x/bf/30/95/bf30954c5e361c3ac9d1a030982a8ccd.jpg",
-      activityName: "Swim",
-      description: "Swim",
-      date: "08/09/2023",
-      duration: "55 mins",
-    },
-    {
-      icon: <FaRunning />,
-      img: "https://i.pinimg.com/736x/dc/b9/57/dcb95731d54a6500bd67c130ce2164dc.jpg",
-      activityName: "Boxing",
-      description: "punch helloehlehieleoehekehbeibebeiifee",
-      date: "03/10/2023",
-      duration: "10 mins",
-    },
-  ];
+  const [user, setUser] = useState([]);
+  useEffect(() => {
+    axios
+      .get("https://keepfit-backend.onrender.com/activity")
+      .then((result) => setUser(result.data))
+      .catch((err) => console.log(err));
+  }, []);
+
+  // const activity = [
+  //   {
+  //     icon: <FaRunning />,
+  //     img: "https://i.pinimg.com/564x/51/83/33/5183331b94eb09c31eaf59bc0ac60797.jpg",
+  //     activityName: "Running",
+  //     description: "Happiness is running with friends.",
+  //     date: "08/09/2023",
+  //     duration: "32.04 min",
+  //   },
+  //   {
+  //     icon: <FaRunning />,
+  //     img: "https://i.pinimg.com/236x/bf/30/95/bf30954c5e361c3ac9d1a030982a8ccd.jpg",
+  //     activityName: "Swim",
+  //     description: "Swim",
+  //     date: "08/09/2023",
+  //     duration: "55 mins",
+  //   },
+  //   {
+  //     icon: <FaRunning />,
+  //     img: "https://i.pinimg.com/736x/dc/b9/57/dcb95731d54a6500bd67c130ce2164dc.jpg",
+  //     activityName: "Boxing",
+  //     description: "punch helloehlehieleoehekehbeibebeiifee",
+  //     date: "03/10/2023",
+  //     duration: "10 mins",
+  //   },
+  // ];
+
   return (
     <Layout>
       {/* Choose history type */}
@@ -89,7 +99,7 @@ function History() {
       </div>
       <div className="xl:container xl:mx-auto">
         {/* Card */}
-        {activity.map((item, index) => (
+        {user.map((item, index) => (
           <div
             key={index}
             className=" glass mt-5 flex flex-col text-white rounded-lg m-5 p-1 lg:p-5 lg:flex-row justify-between drop-shadow-md  transform transition-transform hover:scale-[101%] shadow-xl "
@@ -97,14 +107,14 @@ function History() {
             {/* icon */}
             <div className=" m-5  justify-center hidden lg:flex lg:justify-center flex-col border-solid">
               <div className="text-slate-900 text-20 lg:text-5xl ">
-                {item.icon}
+                <FaRunning />
               </div>
             </div>
 
             {/* Card image */}
             <div className="justify-center  flex-col hidden lg:flex h-40  drop-shadow-md rounded-lg w-40">
               <img
-                src={item.img}
+                src={item.ActivityImage}
                 alt=""
                 className="h-40  drop-shadow-md rounded-lg w-40 "
               />
@@ -113,11 +123,11 @@ function History() {
             <div className="text-slate-700 lg:max-w-72   w-100 lg:ml-2 ps-5">
               <div className="">
                 <p className="text-sm ">Activity Name</p>
-                <p className=" lg:text-2xl font-bold ">{item.activityName}</p>
+                <p className=" lg:text-2xl font-bold ">{item.ActivityName}</p>
 
                 <p className="text-sm mt-3">Description</p>
 
-                <p className=" lg:text-2xl font-bold ">{item.description}</p>
+                <p className=" lg:text-2xl font-bold ">{item.ActivityDesc}</p>
               </div>
             </div>
             {/* History Infomation */}
@@ -125,14 +135,16 @@ function History() {
               <div className="">
                 <div className=" w-30">
                   <p className="text-sm">Date </p>
-                  <p className="font-bold lg:text-2xl">{item.date}</p>
+                  <p className="font-bold lg:text-2xl ">{item.ActivityDate}</p>
                 </div>
               </div>
 
               <div className=" ">
                 <div className=" ">
-                  <p className="text-sm">Duration</p>
-                  <p className="font-bold lg:text-2xl">{item.duration}</p>
+                  <p className="text-sm">Duration (Mins)</p>
+                  <p className="font-bold lg:text-2xl">
+                    {item.ActivityDuration}
+                  </p>
                 </div>
               </div>
             </div>
@@ -313,7 +325,7 @@ function History() {
                   </h3>
 
                   <img src="./assets/trash_ja.png" alt="" />
-                  <p className="py-4 text-center ">
+                  <p className="py-4 text-center  ">
                     Deleting this activity will permanently remove it from your
                     workout record. Are you sure you want to delete this
                     activity?

@@ -13,6 +13,7 @@
     "@canvasjs/charts": "^3.7.22",
     "@canvasjs/react-charts": "^1.0.0",
     "apexcharts": "^3.43.0",
+    "axios": "^1.5.1",
     "canvasjs": "^1.8.3",
     "chart.js": "^4.4.0",
     "flowbite": "^1.8.1",
