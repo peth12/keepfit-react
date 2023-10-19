@@ -1,13 +1,15 @@
-import React from "react";
+import React,{useState} from "react";
 import { BiEditAlt } from "react-icons/bi";
 import {FiSave} from "react-icons/fi"
 
-const EditActivity = () => {
+const EditActivity = (props) => {
+  const {userById} = props
+  
   return (
     <>
       {/* You can open the modal using document.getElementById('ID').showModal() method */}
       <button
-        className="px-3 text-sm font-medium text-center inline-flex items-center rounded-lg gap-1 bg-blue-500 hover:bg-blue-600 text-white"
+        className="px-3 text-sm font-medium text-center inline-flex items-center rounded-lg gap-1 bg-blue-500 hover:bg-blue-600 text-white h-full"
         onClick={() => document.getElementById("my_modal_4").showModal()}
       >
         Edit
@@ -27,7 +29,7 @@ const EditActivity = () => {
           <div className="flex justify-center py-8">
                   <img
                     className="w-[200px] h-[200px] object-cover rounded-full border-4 border-primary"
-                    src="https://i.pinimg.com/564x/aa/b1/66/aab1668efa22babd2f1e883fd859846c.jpg"
+                    src={userById.ActivityImage}
                     alt=""
                   />
 
@@ -49,7 +51,7 @@ const EditActivity = () => {
           {/*Container of Details ทั้งหมด */}
           <div>
             <p className="block text-sm font-semibold text-gray-600 mb-1">Activity Owner</p>
-            <p className="block text-sm mb-6 ps-3">Padtaraya Chudchawinpond</p>
+            <p className="block text-sm mb-6 ps-3">{userById.UserEmail}</p>
 
             {/* Input */}
             <div className="">
@@ -66,6 +68,7 @@ const EditActivity = () => {
                 className="w-full border rounded-lg px-3 py-2 mb-6 focus:outline-none focus:border-primary"
                 id="inputActivityName"
                 type="text"
+                value={userById.ActivityName}
                 placeholder="Enter your Activity name"
               />
             </div>
@@ -82,6 +85,7 @@ const EditActivity = () => {
                 className="w-full border rounded-lg px-3 py-2 mb-6 focus:outline-none focus:border-primary"
                 id="inputDescription"
                 type="text"
+                value={userById.ActivityDesc}
                 placeholder="Enter your description"
               />
             </div>
@@ -98,6 +102,7 @@ const EditActivity = () => {
                 className="w-full border rounded-lg px-3 py-2 mb-6 focus:outline-none focus:border-primary"
                 id="inputDate"
                 type="date"
+                value={userById.ActivityDate}
                 placeholder="Enter date"
               />
             </div>
