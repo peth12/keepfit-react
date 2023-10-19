@@ -1,14 +1,20 @@
-import React, { createContext, useState, useContext } from "react";
+import React, { createContext, useState, useContext, useEffect } from "react";
 import {BiSwim, BiCycling} from 'react-icons/bi'
 import {GrYoga} from 'react-icons/gr'
 import {GiBodyBalance} from 'react-icons/gi'
 import {RiBoxingLine} from 'react-icons/ri'
 import {FaRunning} from 'react-icons/fa'
+import axios from "axios";
+
 
 const DataContext = createContext();
 const ActivityData = ({ children }) => {
   const [activityList, setActivityList] = useState([
-   {
+   
+  ]);
+
+  const [data, setData] = useState([
+    {
       name: "Yoga",
       imgUrl:
         "https://content.jdmagicbox.com/comp/coimbatore/76/0422p422std2200276/catalogue/isha-foundation-registered-office--singanallur-coimbatore-yoga-classes-0vsccfhxoy.jpg?clr=",
@@ -46,22 +52,19 @@ const ActivityData = ({ children }) => {
     },
   ]);
 
-  const [data, setData] = useState([
-    {
-      name: "Yoga",
-      description: "test des",
-      type: "testtype",
-      duration: "1111",
-      date: "1111",
-    },
-    {
-        name: "Running",
-        description: "test des",
-        type: "testtype",
-        duration: "1111",
-        date: "1111",
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await axios.get("https://keepfit-backend.onrender.com/activityType"); // Replace with the actual API endpoint
+        console.log(response.data)
+        setActivityList(response.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
       }
-  ]);
+    }
+
+    fetchData();
+  }, []);
 
   const addData = (newData) => {
     setData((prevData) => [...prevData, newData]);
