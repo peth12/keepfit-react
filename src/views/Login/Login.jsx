@@ -27,6 +27,7 @@ export const Login = () => {
       setError("Invalid email or password");
     }
   };
+  
   return (
     <>
       {/* <NavbarLandingPage /> */}
