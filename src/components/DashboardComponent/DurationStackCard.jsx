@@ -1,9 +1,9 @@
 const DurationStackCard = () => {
   return (
-    <div className="rounded-2xl bg-primary h-full grid grid-cols-1 grid-rows-6 p-2  border-4">
+    <div className="rounded-2xl bg-primary h-full grid grid-cols-1 grid-rows-6 p-2 ">
       <div className="col-span-1 text-end row-span-1">
         <h1 className="pt-2">
-          <strong className="text-[24px] font-bold bg-white px-10 p-1 rounded-full">
+          <strong className="text-[24px] font-bold  px-10 p-1 rounded-full">
             Week
           </strong>
         </h1>
