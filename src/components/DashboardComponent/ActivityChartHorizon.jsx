@@ -5,7 +5,7 @@ import { LinearScale, CategoryScale, BarElement } from "chart.js";
 import { useData } from "../ActivityComponent/ActivityData";
 import { Tooltip } from "chart.js";
 
-const ActivityChart = () => {
+const ActivityChartHorizon = () => {
     const {activityList} = useData()
 
   Chart.register(LinearScale, CategoryScale, BarElement, Tooltip);
@@ -14,6 +14,7 @@ const ActivityChart = () => {
     labels: ["Yoga", "Running", "Cycling", "Swimming", "Boxing"],
     datasets: [
       {
+        axis:'y',
         label: "minute(s)",
         data: [30, 20, 30, 40, 30],
         backgroundColor: [
@@ -36,10 +37,11 @@ const ActivityChart = () => {
   };
 
   const options = {
+    indexAxis:'y',
     plugins: {
       legend: {
         display: true,
-        position: "center",
+        position: "right",
         labels: {
           generateLabels: function (chart) {
             const data = chart.data.datasets[0].data;
@@ -63,6 +65,7 @@ const ActivityChart = () => {
         },
       },
     },
+    categorySpacing: 10,
   };
 
   return (
@@ -72,4 +75,4 @@ const ActivityChart = () => {
   );
 };
 
-export default ActivityChart;
+export default ActivityChartHorizon;
