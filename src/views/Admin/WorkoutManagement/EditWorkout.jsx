@@ -6,13 +6,7 @@ const EditWorkout = () => {
   return (
     <>
       {/* You can open the modal using document.getElementById('ID').showModal() method */}
-      <button
-        className="px-3 py-1 text-sm font-medium text-center inline-flex items-center rounded-lg gap-1 bg-blue-500 hover:bg-blue-600 text-white"
-        onClick={() => document.getElementById("my_modal_4").showModal()}
-      >
-        Edit
-        <BiEditAlt />
-      </button>
+
       <dialog id="my_modal_4" className="modal">
         <div className="modal-box w-11/12 max-w-5xl">
           <form method="dialog">

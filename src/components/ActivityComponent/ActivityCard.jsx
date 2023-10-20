@@ -34,21 +34,21 @@ const ActivityCard = ({ toggleFormVisibility, setDefaultType, defaultType }) => 
               <div className="card w-full h-[400px] bg-base-100 shadow-xl transform transition-transform hover:scale-105">
                 <figure>
                   <img
-                    src={activity.imgUrl}
-                    alt={activity.name}
+                    src={activity.ActivityTypeImage}
+                    alt={activity.ActivityTypeName}
                     className="w-full h-44 object-cover"
                   />
                 </figure>
                 <div className="card-body p-4  text-orange">
                   <h2 className="text-2xl font-bold mt-5 underline-offset-8 underline">
-                    {activity.name}
+                    {activity.ActivityTypeName}
                   </h2>
                   <p className="text-gray-600 h-fit mt-4">
-                    {activity.description}
+                    {activity.ActivityTypeDesc}
                   </p>
                   <div className="flex justify-end">
                     <AddActivityButton
-                      activityName={activity.name}
+                      activityName={activity.ActivityTypeName}
                       onClick={handleActivityClick}
                       toggleFormVisibility={toggleFormVisibility}
                     />
