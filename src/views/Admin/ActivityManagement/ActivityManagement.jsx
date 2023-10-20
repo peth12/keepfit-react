@@ -58,6 +58,7 @@ const ActivityManagement = () => {
           navigate("/admin/activity");
           setReload(!reload);
           notify();
+          
         })
         .catch((err) => console.error(err));
     }

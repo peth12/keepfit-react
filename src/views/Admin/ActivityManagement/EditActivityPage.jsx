@@ -4,6 +4,7 @@ import { FaUserAstronaut } from "react-icons/fa";
 import { LayoutAdmin } from "../../../components/LayoutAdmin";
 import { useParams , useNavigate , Link} from "react-router-dom";
 import axios from "axios";
+import toast, { Toaster } from "react-hot-toast";
 
 const EditActivityPage = () => {
   const { id } = useParams();
@@ -51,7 +52,19 @@ const EditActivityPage = () => {
         UserEmail : userEmail
       })
       .then((res) => {console.log(res)
-        navigate('/admin/activity')})
+        navigate('/admin/activity')
+        setTimeout(() => {
+            toast.success("Update Success", {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: true,
+              closeOnClick: false,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+            });
+          }, 1);})
       .catch((err) => console.error(err));
 
   };
