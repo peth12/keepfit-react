@@ -96,7 +96,7 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType, setCheckAddActivit
           <div>{iconComponent}</div>
         </div>
         <form onSubmit={handleSubmit}>
-          <div className="mb-4 text-orange-400">
+          <div className="mb-4 text-black">
             <div className="mb-4 ">
               <label className="block text-xl font-bold mb-2 mt-12">
                 Activity Name:
@@ -107,7 +107,7 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType, setCheckAddActivit
                 placeholder=" Morning Jogging, Basic Yoga ..."
                 value={activityData.name}
                 onChange={handleInputChange}
-                className="input input-bordered  w-80 rounded-sm"
+                className="input input-bordered  w-80 rounded-sm text-orange-400"
                 required
               />
             </div>
@@ -140,7 +140,7 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType, setCheckAddActivit
                 value={activityData.description}
                 onChange={handleInputChange}
                 placeholder=" Tell about your activity..."
-                className="input input-bordered  w-80 rounded-sm "
+                className="input input-bordered  w-80 rounded-sm text-orange-400"
                 required
               ></input>
             </div>
@@ -153,10 +153,10 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType, setCheckAddActivit
                 type="number"
                 name="ActivityDuration"
                 min={0}
-                placeholder=" only number here"
+                placeholder="only number here"
                 value={activityData.duration}
                 onChange={handleInputChange}
-                className="input input-bordered  w-80 rounded-sm"
+                className="input input-bordered  w-80 rounded-sm text-orange-400"
                 required
               />
             </div>
@@ -168,15 +168,16 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType, setCheckAddActivit
                 <input
                   type="date"
                   name="ActivityDate"
+                  placeholder="mm/dd/yyyy"
                   value={activityData.date}
                   onChange={handleInputChange}
-                  className="input input-bordered  w-80 text-black h-10"
+                  className="input input-bordered  w-80  h-10 text-orange-400"
                   required
                 />
               </div>
             </div>
             <div className="flex justify-center items-center gap-4 hover:cursor-pointer hover:scale-110 mt-10">
-              <label className="flex bg-cyan-600 hover:bg-cyan-300 hover:cursor-pointer  w-80 gap-3 text-white font-semibold py-2 px-4 rounded items-center ">
+              <label className="flex bg-[#08A045] hover:bg-[#21D375] hover:cursor-pointer  w-80 gap-3 text-white font-semibold py-2 px-4 rounded items-center ">
                 <input
                   type="file"
                   name="ActivityImage"

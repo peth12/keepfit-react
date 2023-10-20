@@ -3,51 +3,63 @@ import { Bar } from "react-chartjs-2";
 import { Chart } from "chart.js";
 import { LinearScale, CategoryScale, BarElement } from "chart.js";
 import { useData } from "../ActivityComponent/ActivityData";
-
+import { Tooltip } from "chart.js";
 const ActivityChart = () => {
     const {activityList} = useData()
   // Register the scales with Chart.js
-  Chart.register(LinearScale, CategoryScale, BarElement);
+  Chart.register(LinearScale, CategoryScale, BarElement, Tooltip);
 
   const data = {
-    labels: ["Yoga","Running", "Cycling", "Swimming","Boxing"],
+    labels: ["Yoga", "Running", "Cycling", "Swimming", "Boxing"],
     datasets: [
       {
-        label: "My First Dataset",
-        data: [300, 50, 100, 30, 40],
+        label: "minute(s)",
+        data: [30, 20, 30, 40, 30],
         backgroundColor: [
-            "#BB83DF",
-            "rgb(255, 99, 132)",
-            "#ff9b05",
-            "#80DFD6",
-            "#EDE13D",
+          "#EB57A2",
+          "#FFDB58",
+          "#ff9b05",
+          "#53D8B9",
+          "#4B9FC9",
         ],
         hoverBackgroundColor: [
-          "rgb(255, 0, 0)",
-          "rgb(0, 0, 255)",
-          "rgb(255, 255, 0)",
-          "rgb(54, 162, 235)",
-          "rgb(255, 205, 86)",
+          "#EB57A2",
+          "#FFDB58",
+          "#ff9b05",
+          "#53D8B9",
+          "#4B9FC9",
         ],
-        hoverOffset: 4,
+        hoverOffset: 6,
       },
     ],
   };
 
   const options = {
     plugins: {
-      title: {
-        display: true,
-        text: "Customized Chart Title",
-      },
-      tooltip: {
-        backgroundColor: "rgba(0, 0, 0, 0.8)",
-        titleColor: "white",
-        bodyColor: "white",
-      },
       legend: {
         display: true,
-        position: "top",
+        position: "center",
+        labels: {
+          generateLabels: function (chart) {
+            const data = chart.data.datasets[0].data;
+            const total = data.reduce((acc, value) => acc + value, 0);
+
+            return data.map((value, index) => ({
+              text: `${chart.data.labels[index]} - ${(
+                (value / total) * 100
+              ).toFixed(2)}%`,
+            }));
+          },
+        },
+      },
+    },
+    tooltips: {
+      callbacks: {
+        label: function (tooltipItem, data) {
+          const label = data.labels[tooltipItem.index];
+          const value = data.datasets[0].data[tooltipItem.index];
+          return `${label}: ${value}%`;
+        },
       },
     },
   };
