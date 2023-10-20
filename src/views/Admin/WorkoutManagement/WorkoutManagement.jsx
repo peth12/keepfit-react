@@ -3,12 +3,13 @@ import { LayoutAdmin } from "../../../components/LayoutAdmin";
 import { LiaEvernote } from "react-icons/lia";
 import SearchBox from "../SearchBox.jsx";
 import { MdOutlineSportsMartialArts } from "react-icons/md";
+import { BiEditAlt } from "react-icons/bi";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import EditWorkout from "./EditWorkout.jsx";
 import DeleteWorkout from "./DeleteWorkout.jsx";
 import AddWorkout from "./AddWorkout.jsx";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 
 const WorkoutManagement = () => {
@@ -86,11 +87,15 @@ const WorkoutManagement = () => {
 
                     <td className="border-b border-r ">
                       <div className="flex gap-2">
-                        <EditWorkout />
+                        <Link to={`/admin/workout/edit/${item._id}`}>
                         <button
-                          onClick={() => deleteActivityType(item._id)}
-                          className="p-1 px-3 rounded-lg items-center gap-1 bg-red-500 hover:bg-red-600 text-white flex"
+                          className="px-3 py-1 text-sm font-medium text-center inline-flex items-center rounded-lg gap-1 bg-blue-500 hover:bg-blue-600 text-white"
                         >
+                          Edit
+                          <BiEditAlt />
+                        </button>
+                        </Link>
+                        <button onClick={() => deleteActivityType(item._id)} className="p-1 px-3 rounded-lg items-center gap-1 bg-red-500 hover:bg-red-600 text-white flex">
                           Delete
                           <RiDeleteBin6Line />
                         </button>
