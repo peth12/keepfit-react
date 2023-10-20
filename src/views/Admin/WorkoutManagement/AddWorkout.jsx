@@ -14,7 +14,7 @@ const AddWorkout = () => {
     await axios
       .post(`https://keepfit-backend.onrender.com/activityType/create`, {
         ActivityTypeName: activityTypeName,
-        ActivityTypeImage: "",
+        ActivityTypeImage: activityTypeImage,
         ActivityTypeDesc: activityTypeDesc,
       })
       .then((res) => {
