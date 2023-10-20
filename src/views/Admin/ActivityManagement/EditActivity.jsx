@@ -1,20 +1,26 @@
 import React,{useState} from "react";
-import { BiEditAlt } from "react-icons/bi";
+
 import {FiSave} from "react-icons/fi"
 
 const EditActivity = (props) => {
-  const {userById} = props
+  const { userById , activityTypeById } = props
+
+  const [activityName, setActivityName]  = useState("")
+  const [activityDesc, setActivityDesc]  = useState("")
+  const [activityType, setActivityType]  = useState("")
+  const [activityDuration, setActivityDuration]  = useState("")
+  const [activityImage, setActivityImage]  = useState("")
+  const [UserEmail, setUserEmail]  = useState("")
+
+
+
+
+
   
   return (
     <>
       {/* You can open the modal using document.getElementById('ID').showModal() method */}
-      <button
-        className="px-3 text-sm font-medium text-center inline-flex items-center rounded-lg gap-1 bg-blue-500 hover:bg-blue-600 text-white h-full"
-        onClick={() => document.getElementById("my_modal_4").showModal()}
-      >
-        Edit
-        <BiEditAlt />
-      </button>
+
       <dialog id="my_modal_4" className="modal">
         <div className="modal-box w-11/12 max-w-5xl">
           <form method="dialog">
@@ -29,6 +35,7 @@ const EditActivity = (props) => {
           <div className="flex justify-center py-8">
                   <img
                     className="w-[200px] h-[200px] object-cover rounded-full border-4 border-primary"
+                    
                     src={userById.ActivityImage}
                     alt=""
                   />
@@ -69,6 +76,7 @@ const EditActivity = (props) => {
                 id="inputActivityName"
                 type="text"
                 value={userById.ActivityName}
+                name="ActivityName"
                 placeholder="Enter your Activity name"
               />
             </div>
@@ -117,8 +125,8 @@ const EditActivity = (props) => {
               <select
                 className="w-full border rounded-lg px-3 py-2 mb-6 focus:outline-none focus:border-primary"
               >
-                <option disabled selected>
-                  Duration
+                <option >
+                {userById.ActivityDuration}
                 </option>
                 <option>5</option>
                 <option>10</option>
@@ -141,13 +149,10 @@ const EditActivity = (props) => {
                 className="w-full border rounded-lg px-3 py-2 mb-6 focus:outline-none focus:border-primary"
               >
                 <option disabled selected>
-                  Workout Type
+                {userById.ActivityType}
                 </option>
-                <option>Boxing</option>
-                <option>Cycling</option>
-                <option>Running</option>
-                <option>Swimming</option>
-                <option>Yoga</option>
+                {activityTypeById.map((e ,index) => <option key={index}>{e.ActivityTypeName}</option>)}
+              
               </select>
             </div>
           </div>

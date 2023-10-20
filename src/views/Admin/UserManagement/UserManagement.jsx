@@ -1,5 +1,5 @@
 import React from "react";
-import { Layout } from "../../../components/Layout";
+import { LayoutAdmin } from "../../../components/LayoutAdmin";
 import SearchBox from "../SearchBox.jsx";
 import {FaHouseChimneyUser} from "react-icons/fa6"
 import {BiEditAlt} from "react-icons/bi"
@@ -11,7 +11,7 @@ import EditUser from "./EditUser";
 const UserManagement = () => {
 
   return (
-    <Layout>
+    <LayoutAdmin>
       <div className="w-[90%] mx-auto">
         {/* Container for h1 and search bar */}
         <div className="pt-36 pb-7 w-full ">
@@ -74,7 +74,7 @@ const UserManagement = () => {
           </table>
         </div>
       </div>
-    </Layout>
+    </LayoutAdmin>
   );
 };
 
