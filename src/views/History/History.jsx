@@ -131,7 +131,7 @@ function History() {
             </div>
 
             {/* Card image */}
-            <div className="justify-center  flex-col hidden lg:flex h-40  drop-shadow-md rounded-lg w-40 ">
+            <div className="justify-center   flex-col hidden lg:flex h-auto  drop-shadow-md rounded-lg w-40 ">
               <img
                 src={item.ActivityImage}
                 alt="activityImage"
@@ -146,7 +146,7 @@ function History() {
 
                 <p className="text-sm mt-3">Description</p>
 
-                <p className=" lg:text-2xl font-bold ">{item.ActivityDesc}</p>
+                <p className=" lg:text-2xl font-bold w-auto">{item.ActivityDesc}</p>
               </div>
             </div>
             {/* History Infomation */}

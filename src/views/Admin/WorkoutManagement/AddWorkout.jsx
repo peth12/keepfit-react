@@ -1,9 +1,26 @@
-import React from "react";
+import React,{useState} from "react";
 import { FiPlusCircle } from "react-icons/fi";
 import { MdOutlineSportsKabaddi } from "react-icons/md";
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom'
 
 
 const AddWorkout = () => {
+  const [activityTypeName, setActivityTypeName] = useState("")
+  const [activityTypeImage, setActivityTypeImage] = useState("")
+  const [activityTypeDesc, setActivityTypeDesc] = useState("")
+  const navigate = useNavigate()
+  
+  const createActicityType = async () => {
+    await axios.post(`https://keepfit-backend.onrender.com/activityType/create`,{
+      ActivityTypeName: activityTypeName,
+      ActivityTypeImage: "",
+      ActivityTypeDesc: activityTypeDesc,
+    }).then((res) => {
+      console.log(res)
+      location.reload()
+    }).catch((err) => console.error(err))
+  }
     return (
         <>
         {/* You can open the modal using document.getElementById('ID').showModal() method */}
@@ -64,6 +81,7 @@ const AddWorkout = () => {
                   id="inputWorkoutName"
                   type="text"
                   placeholder="Enter your Workout name"
+                  onChange={(e)=> setActivityTypeName(e.target.value)}
                 />
               </div>
   
@@ -80,13 +98,14 @@ const AddWorkout = () => {
                   id="inputDescription"
                   type="text"
                   placeholder="Enter your Description"
+                  onChange={(e)=> setActivityTypeDesc(e.target.value)}
                 />
               </div>
   
               <div className="modal-action">
                 <form method="dialog">
                   {/* if there is a button, it will close the modal */}
-                  <button className="btn btn-primary text-white">Save</button>
+                  <button className="btn btn-primary text-white" onClick={createActicityType}>Save</button>
                 </form>
               </div>
             </div>

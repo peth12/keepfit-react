@@ -13,6 +13,7 @@ import { LandingPage } from "./views/LandingPage.jsx";
 import WorkoutManagement from "./views/Admin/WorkoutManagement/WorkoutManagement.jsx";
 import UserManagement from "./views/Admin/UserManagement/UserManagement.jsx";
 import ActivityManagement from "./views/Admin/ActivityManagement/ActivityManagement.jsx";
+import EditActivityPage from "./views/Admin/ActivityManagement/EditActivityPage.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -57,6 +58,10 @@ const router = createBrowserRouter([
   {
     path: "/admin/activity",
     element: <ActivityManagement />,
+  },
+  {
+    path: "/admin/activity/edit/:id",
+    element: <EditActivityPage />,
   },
   {
     path: "/admin/activity/:id",
