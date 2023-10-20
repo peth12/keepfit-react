@@ -5,6 +5,8 @@ import {BiSwim, BiCycling} from 'react-icons/bi'
 import {GiBodyBalance} from 'react-icons/gi'
 import {RiBoxingLine} from 'react-icons/ri'
 import {FaRunning} from 'react-icons/fa'
+import axios from "axios";
+
 
 const AddActivityForm = ({ toggleFormVisibility, defaultType }) => {
   const { activityList } = useData();
@@ -33,11 +35,14 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType }) => {
   const iconComponent = getIconComponent(selectedActivity.ActivityTypeName);
   
   const [activityData, setActivityData] = useState({
-    name: "",
-    description: "",
-    type: "",
-    duration: 0,
-    date: "",
+    ActivityName: "",
+    ActivityDesc: "",
+    ActivityType: "",
+    ActivityDuration: 0,
+    ActivityImage: "",
+    ActivityDate: 0,
+    UserEmail:"",
+    UserId:1,
   });
 
   const handleInputChange = (e) => {
@@ -46,13 +51,14 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType }) => {
       ...activityData,
       [name]: value,
     });
+    console.log(activityData);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("https://your-backend-api.com/activity/create", activityData);
+      const response = await axios.post("https://keepfit-backend.onrender.com/activity/create", activityData);
       console.log("Activity created:", response.data);
 
       setActivityData({
@@ -83,7 +89,6 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType }) => {
           <div className="text-3xl text-white font-bold mb-1 text-center pb-1">
             {selectedActivity.ActivityTypeName}
           </div>
-          <div>{console.log(iconComponent)}</div>
           <div>{iconComponent}</div>
         </div>
         <form onSubmit={handleSubmit}>
@@ -94,11 +99,31 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType }) => {
               </label>
               <input
                 type="text"
-                name="name"
+                name="ActivityName"
                 placeholder=" Morning Jogging, Basic Yoga ..."
                 value={activityData.name}
                 onChange={handleInputChange}
                 className="input input-bordered  w-80 rounded-sm"
+              />
+            </div>
+            <div>
+              <input type="text"
+              name="ActivityType"
+              value={selectedActivity.ActivityTypeName}
+              className="hidden"
+              onChange={handleInputChange}
+              />
+              <input type="text"
+              name="UserEmail"
+              value={"sendFrominput@test.com"}
+              className="hidden"
+              onChange={handleInputChange}
+              />
+              <input type="text"
+              name="UserId"
+              value={999}
+              className="hidden"
+              onChange={handleInputChange}
               />
             </div>
             <div className="mb-4">
@@ -106,7 +131,7 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType }) => {
                 Description:
               </label>
               <input
-                name="description"
+                name="ActivityDesc"
                 value={activityData.description}
                 onChange={handleInputChange}
                 placeholder=" Tell about your activity..."
@@ -120,7 +145,7 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType }) => {
               </label>
               <input
                 type="number"
-                name="duration"
+                name="ActivityDuration"
                 min={0}
                 placeholder=" only number here"
                 value={activityData.duration}
@@ -135,7 +160,7 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType }) => {
                 </label>
                 <input
                   type="date"
-                  name="date"
+                  name="ActivityDate"
                   value={activityData.date}
                   onChange={handleInputChange}
                   className="input input-bordered  w-80 text-black h-10"
@@ -146,7 +171,7 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType }) => {
               <label className="flex bg-cyan-600 hover:bg-cyan-300 hover:cursor-pointer  w-80 gap-3 text-white font-semibold py-2 px-4 rounded items-center ">
                 <input
                   type="file"
-                  name="file"
+                  name="ActivityImage"
                   className="file-input file-input-bordered file-input-info h-10 w-80 hover:cursor-pointer hidden"
                 ></input>
                 <BsImages /> Upload image <div className=" text-xs">(optional)</div>
