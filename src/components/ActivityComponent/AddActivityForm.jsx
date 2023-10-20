@@ -6,21 +6,33 @@ import {GrYoga} from 'react-icons/gr'
 import {GiBodyBalance} from 'react-icons/gi'
 import {RiBoxingLine} from 'react-icons/ri'
 import {FaRunning} from 'react-icons/fa'
+import {BsActivity} from 'react-icons/bs'
 
 const AddActivityForm = ({ toggleFormVisibility, defaultType }) => {
   const { activityList } = useData();
 
   const selectedActivity = activityList.find(
-    (activity) => activity.name === defaultType
+    (activity) => activity.ActivityTypeName === defaultType
   );
 
-  const iconComponents = {
-    GiBodyBalance: <GiBodyBalance className="fill-white scale-150 mb-1" />,
-    RiBoxingLine: <RiBoxingLine className="fill-white scale-150 mb-1" />,
-    BiCycling: <BiCycling className="fill-white scale-150 mb-1" />,
-    BiSwim: <BiSwim className="fill-white scale-150 mb-1" />,
-    FaRunning: <FaRunning className="fill-white scale-150 mb-1" />,
+  const getIconComponent = (iconKey) => {
+    switch (iconKey) {
+      case "Yoga":
+        return <GiBodyBalance className="fill-white scale-150 mb-1" />;
+      case "Boxing":
+        return <RiBoxingLine className="fill-white scale-150 mb-1" />;
+      case "Cycling":
+        return <BiCycling className="fill-white scale-150 mb-1" />;
+      case "Swimming":
+        return <BiSwim className="fill-white scale-150 mb-1" />;
+      case "Running":
+        return <FaRunning className="fill-white scale-150 mb-1" />;
+      default:
+        return <BsActivity className="fill-white scale-150 mb-1" />;
+    }
   };
+
+  const iconComponent = getIconComponent(selectedActivity.ActivityTypeName);
   
   const [activityData, setActivityData] = useState({
     name: "",
@@ -57,10 +69,10 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType }) => {
         </span>
         <div className="mb-7 flex justify-start items-center gap-3 ">
           <div className="text-3xl text-white font-bold mb-1 text-center pb-1">
-            {selectedActivity.name}
+            {selectedActivity.ActivityTypeName}
           </div>
-          <div>{console.log(iconComponents[selectedActivity.icon])}</div>
-          <div>{iconComponents[selectedActivity.icon]}</div>
+          <div>{console.log(iconComponent)}</div>
+          <div>{iconComponent}</div>
         </div>
         <form onSubmit={handleSubmit}>
           <div className="mb-4 text-orange-400">
