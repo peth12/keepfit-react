@@ -13,6 +13,12 @@ import { LandingPage } from "./views/LandingPage.jsx";
 import WorkoutManagement from "./views/Admin/WorkoutManagement/WorkoutManagement.jsx";
 import UserManagement from "./views/Admin/UserManagement/UserManagement.jsx";
 import ActivityManagement from "./views/Admin/ActivityManagement/ActivityManagement.jsx";
+import EditActivityPage from "./views/Admin/ActivityManagement/EditActivityPage.jsx";
+
+import { ActivityData } from "./components/index.js";
+
+import EditWorkoutPage from "./views/Admin/WorkoutManagement/EditWorkoutPage.jsx";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -28,7 +34,12 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <Dashboard />,
+    element: (
+      <ActivityData>
+        {" "}
+        <Dashboard />
+      </ActivityData>
+    ),
   },
   {
     path: "/activity",
@@ -59,6 +70,10 @@ const router = createBrowserRouter([
     element: <ActivityManagement />,
   },
   {
+    path: "/admin/activity/edit/:id",
+    element: <EditActivityPage />,
+  },
+  {
     path: "/admin/activity/:id",
     element: <ActivityManagement />,
   },
@@ -69,6 +84,10 @@ const router = createBrowserRouter([
   {
     path: "/admin/workout/:id",
     element: <WorkoutManagement />,
+  },
+  {
+    path: "/admin/workout/edit/:id",
+    element: <EditWorkoutPage />,
   },
 ]);
 

@@ -1,6 +1,6 @@
 function UserCard() {
   return (
-    <div className="w-full h-full bg-white rounded-3xl border-4  border-primary grid grid-cols-2 grid-rows-4 ">
+    <div className="w-full h-full grid grid-cols-2 grid-rows-4 ">
       <div className="avatar col-span-2 row-span-2 grid place-items-center">
         <div className="w-32 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 ">
           <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxBtZf2tBV8MvwHWZRUje7mazjFIxMTdM4Cg&usqp=CAU" />

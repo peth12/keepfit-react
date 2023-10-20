@@ -1,16 +1,13 @@
 import React, { createContext, useState, useContext, useEffect } from "react";
-import {BiSwim, BiCycling} from 'react-icons/bi'
-import {GrYoga} from 'react-icons/gr'
-import {GiBodyBalance} from 'react-icons/gi'
-import {RiBoxingLine} from 'react-icons/ri'
-import {FaRunning} from 'react-icons/fa'
 import axios from "axios";
 
 
 const DataContext = createContext();
+
+
 const ActivityData = ({ children }) => {
   const [activityList, setActivityList] = useState([]);
-
+  const [data, setData] = useState()
   useEffect(() => {
     async function fetchData() {
       try {
