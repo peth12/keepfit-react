@@ -58,6 +58,7 @@ const ActivityManagement = () => {
           navigate("/admin/activity");
           setReload(!reload);
           notify();
+          
         })
         .catch((err) => console.error(err));
     }
@@ -84,7 +85,7 @@ const ActivityManagement = () => {
               <thead className="text-[18px] text-slate-600">
                 <tr>
                   
-                  <th className="w-1/5 border border-r">Activity Owner</th>
+                  <th className="w-1/5 border border-r ">Activity Owner</th>
                   <th className="w-1/5 border border-r">Activity name</th>
                   <th className="w-1/5 border border-r">Description</th>
                   <th className="w-1/5 border border-r">Duration</th>
