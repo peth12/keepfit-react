@@ -1,16 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { LayoutAdmin } from "../../../components/LayoutAdmin";
-import { LiaEvernote } from "react-icons/lia";
 import SearchBox from "../SearchBox.jsx";
 import { MdOutlineSportsMartialArts } from "react-icons/md";
 import { BiEditAlt } from "react-icons/bi";
 import { RiDeleteBin6Line } from "react-icons/ri";
-import EditWorkout from "./EditWorkout.jsx";
-import DeleteWorkout from "./DeleteWorkout.jsx";
 import AddWorkout from "./AddWorkout.jsx";
 import axios from "axios";
-import { useParams, Link } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 const WorkoutManagement = () => {
   const [allActivityType, setAllActivityType] = useState([]);
