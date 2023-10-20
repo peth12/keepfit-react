@@ -14,7 +14,11 @@ import WorkoutManagement from "./views/Admin/WorkoutManagement/WorkoutManagement
 import UserManagement from "./views/Admin/UserManagement/UserManagement.jsx";
 import ActivityManagement from "./views/Admin/ActivityManagement/ActivityManagement.jsx";
 import EditActivityPage from "./views/Admin/ActivityManagement/EditActivityPage.jsx";
+
+import { ActivityData } from "./components/index.js";
+
 import EditWorkoutPage from "./views/Admin/WorkoutManagement/EditWorkoutPage.jsx";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -30,7 +34,12 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <Dashboard />,
+    element: (
+      <ActivityData>
+        {" "}
+        <Dashboard />
+      </ActivityData>
+    ),
   },
   {
     path: "/activity",
