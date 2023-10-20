@@ -1,30 +1,31 @@
 import { Link, useNavigate } from "react-router-dom";
-import { NavbarLandingPage } from "../../components/NavbarLogin";
 import { useState } from "react";
+import axios from 'axios'; // Import Axios
 import "./Login.css";
-
 
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const Navigate=useNavigate();
+  const Navigate = useNavigate();
 
-  const mockupData = [
-    { email: "testja@hotmail.com", password: "123456" },
-    { email: "testja2@hotmail.com", password: "123a" },
-  ];
-  const handleLogin = () => {
-    const user = mockupData.find(
-      (u) => u.email === email && u.password === password
-    );
+  const handleLogin = async () => {
+    try {
+      const response = await axios.post(`https://keepfit-backend.onrender.com/user/`, {
+        email,
+        password,
+      });
 
-    if (user) {
-      setError("");
-      Navigate("/dashboard");
-      console.log("Login successful!");
-    } else {
-      setError("Invalid email or password");
+      if (response.data.success) {
+        setError("");
+        Navigate("/dashboard");
+        console.log("Login successful!");
+      } else {
+        setError("Invalid email or password");
+      }
+    } catch (error) {
+      setError("An error occurred while trying to log in.");
+      console.error(error);
     }
   };
   
