@@ -6,9 +6,9 @@ import {GiBodyBalance} from 'react-icons/gi'
 import {RiBoxingLine} from 'react-icons/ri'
 import {FaRunning} from 'react-icons/fa'
 import axios from "axios";
+import toast from "react-hot-toast";
 
-
-const AddActivityForm = ({ toggleFormVisibility, defaultType }) => {
+const AddActivityForm = ({ toggleFormVisibility, defaultType, setCheckAddActivity }) => {
   const { activityList } = useData();
   const [newActivity, setNewActivity] = useState([])
   const selectedActivity = activityList.find(
@@ -61,6 +61,8 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType }) => {
       const response = await axios.post("https://keepfit-backend.onrender.com/activity/create", activityData);
       console.log("Activity created:", response.data);
 
+      setCheckAddActivity("successed")
+      toast.success("added activity successfully")
       setActivityData({
         name: "",
         description: "",
@@ -69,6 +71,8 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType }) => {
         date: "",
       });
     } catch (error) {
+      setCheckAddActivity("failed")
+      toast.error("add activity failed")
       console.error("Error creating activity:", error);
     }
   };
@@ -104,6 +108,7 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType }) => {
                 value={activityData.name}
                 onChange={handleInputChange}
                 className="input input-bordered  w-80 rounded-sm"
+                required
               />
             </div>
             <div>
@@ -136,6 +141,7 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType }) => {
                 onChange={handleInputChange}
                 placeholder=" Tell about your activity..."
                 className="input input-bordered  w-80 rounded-sm "
+                required
               ></input>
             </div>
 
@@ -151,6 +157,7 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType }) => {
                 value={activityData.duration}
                 onChange={handleInputChange}
                 className="input input-bordered  w-80 rounded-sm"
+                required
               />
             </div>
             <div className="flex justify-center items-center gap-4 ">
@@ -164,6 +171,7 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType }) => {
                   value={activityData.date}
                   onChange={handleInputChange}
                   className="input input-bordered  w-80 text-black h-10"
+                  required
                 />
               </div>
             </div>
