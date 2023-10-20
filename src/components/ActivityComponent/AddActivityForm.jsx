@@ -2,7 +2,6 @@ import React, { useState,useEffect } from "react";
 import { useData } from "./ActivityData";
 import { BsImages } from "react-icons/bs";
 import {BiSwim, BiCycling} from 'react-icons/bi'
-import {GrYoga} from 'react-icons/gr'
 import {GiBodyBalance} from 'react-icons/gi'
 import {RiBoxingLine} from 'react-icons/ri'
 import {FaRunning} from 'react-icons/fa'
