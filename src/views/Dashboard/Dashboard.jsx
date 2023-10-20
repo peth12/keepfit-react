@@ -13,8 +13,8 @@ import DurationChart from "../../components/DashboardComponent/DurationChart";
 export const Dashboard = () => {
   return (
     <Layout>
-      <div className="flex items-center justify-center h-screen">
-        <div className="flex-col  space-y-10 mt-12">
+      <div className="flex justify-center mt-40">
+        <div className="flex-col  space-y-12">
           <div className="flex gap-5  justify-center">
             <div className="shadow-xl rounded-xl p-10  gradient-background-user w-1/3">
               <UserCard />
@@ -27,13 +27,13 @@ export const Dashboard = () => {
             <div className="flex-col items-center shadow-xl overflow-hidden rounded-xl p-10 w-2/3 font-bold">
               <div className="mb-5">Duration Summary Overview</div>
               <div className="">
-                <ActivityChart />
+                <ActivityChart className="" />
               </div>
             </div>
             <div className=" shadow-xl overflow-hidden rounded-xl p-10 w-1/3 font-bold">
               <div className="mb-5">Activity Count Overview</div>
               <div>
-                <DurationChart className="" />
+                <DurationChart className=" scale-150" />
               </div>
             </div>
           </div>

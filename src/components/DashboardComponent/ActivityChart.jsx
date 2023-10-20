@@ -1,6 +1,6 @@
 import React from "react";
 import { Bar } from "react-chartjs-2";
-import { Chart } from "chart.js";
+import { Chart, scales } from "chart.js";
 import { LinearScale, CategoryScale, BarElement } from "chart.js";
 import { useData } from "../ActivityComponent/ActivityData";
 import { Tooltip } from "chart.js";
