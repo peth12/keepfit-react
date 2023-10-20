@@ -1,6 +1,44 @@
 import React, { useState } from "react";
 import "./Signup.css";
+import axios from "axios";
+
 const SignUp = () => {
+  const [FormData, setFormData] = useState({
+    Userfname: "",
+    Userlname: "",
+    UserDateOfBirth: "",
+    Gender: "",
+    Weight: "",
+    Height: "",
+    UserEmail: "",
+    UserPassword: "",
+    RePassword: "",
+  });
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleInputChange = (e) => {
+    setFormData({ ...FormData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async () => {
+    //Check Password and Repassword
+    if (FormData.UserPassword !== FormData.RePassword) {
+      setErrorMessage("Password and Re-Password do not match");
+      return;
+    }
+
+    try {
+      const response = await axios.post(
+        "https://keepfit-backend.onrender.com/user",
+        FormData
+      );
+
+      console.log("Data saved successfully:", response.data);
+    } catch (error) {
+      console.error("Error saving data:", error);
+      setErrorMessage("Error saving data. Please try again.");
+    }
+  };
 
   return (
     <>
@@ -11,38 +49,53 @@ const SignUp = () => {
         {/* section 2 */}
         <div className="right min-h-[100%] bg-white w-[100%]">
           <div className="flex justify-center items-center w-[100%] min-h-[100%]">
-          <div className="glass  flex-col flex items-center px-14 pb-14 rounded-xl">
+            <div className="glass  flex-col flex items-center px-14 pb-14 rounded-xl">
               <h1 className=" text-[70px] text-primary italic font-bold text-center">
                 Sign Up
               </h1>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text text-primary font-semibold text-[16px]">First Name</span>
+                  <span className="label-text text-primary font-semibold text-[16px]">
+                    First Name
+                  </span>
                 </label>
                 <input
                   type="text"
+                  name="Userfname"
+                  value={FormData.Userfname}
+                  onChange={handleInputChange}
                   placeholder="Enter Firstname"
                   className="input input-bordered w-80 h-10"
                 />
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text text-primary font-semibold text-[16px]">LastName</span>
+                  <span className="label-text text-primary font-semibold text-[16px]">
+                    LastName
+                  </span>
                 </label>
                 <input
-                  type="password"
+                  type="text"
+                  name="Userlname"
                   placeholder="Enter Lastname"
+                  value={FormData.Userlname}
+                  onChange={handleInputChange}
                   className="input input-bordered w-80 h-10"
                 />
               </div>
               <div className="flex justify-between">
                 <div className="form-control">
                   <label className="label">
-                    <span className="label-text text-primary font-semibold text-[16px]">Date of Birth</span>
+                    <span className="label-text text-primary font-semibold text-[16px]">
+                      Date of Birth
+                    </span>
                   </label>
                   <input
                     type="date"
+                    name="UserDateOfBirth"
                     placeholder="Enter Lastname"
+                    value={FormData.UserDateOfBirth}
+                    onChange={handleInputChange}
                     className="input input-bordered w-40 text-secondary"
                   />
                 </div>
@@ -53,7 +106,11 @@ const SignUp = () => {
                       Gender
                     </span>
                   </label>
-                  <select className="select select-bordered text-gray-400 ">
+                  {/* problem */}
+                  <select
+                    name="Gender"
+                    className="select select-bordered text-gray-400 "
+                  >
                     <option disabled selected>
                       None
                     </option>
@@ -63,57 +120,95 @@ const SignUp = () => {
                   </select>
                 </div>
               </div>
-
+              {/* problem */}
               <div className="flex justify-between">
                 <div className="form-control">
                   <label className="label">
-                    <span className="label-text text-primary font-semibold text-[16px]">Weigth</span>
+                    <span className="label-text text-primary font-semibold text-[16px]">
+                      Weigth
+                    </span>
                   </label>
+
                   <input
                     type="number"
+                    name="Weight"
                     placeholder="Enter Weigth"
-                    className="input input-bordered w-[9.5rem] text-secondary h-10" 
+                    value={FormData.Weight}
+                    onChange={handleInputChange}
+                    className="input input-bordered w-[9.5rem] text-secondary h-10"
                   />
                 </div>
                 <div className="form-control">
                   <label className="label">
-                    <span className="label-text text-primary font-semibold text-[16px]">Height</span>
+                    <span className="label-text text-primary font-semibold text-[16px]">
+                      Height
+                    </span>
                   </label>
                   <input
                     type="number"
+                    name="Height"
                     placeholder="Enter Height"
+                    value={FormData.Height}
+                    onChange={handleInputChange}
                     className="input input-bordered w-[9.5rem] text-secondary h-10"
                   />
                 </div>
-
               </div>
 
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text text-primary font-semibold text-[16px]">Email</span>
+                  <span className="label-text text-primary font-semibold text-[16px]">
+                    Email
+                  </span>
                 </label>
                 <input
                   type="text"
+                  name="UserEmail"
                   placeholder="Enter Email"
+                  value={FormData.UserEmail}
+                  onChange={handleInputChange}
                   className="input input-bordered w-80"
                 />
               </div>
               <div className="form-control pb-4">
                 <label className="label">
-                  <span className="label-text text-primary font-semibold text-[16px]">Password</span>
+                  <span className="label-text text-primary font-semibold text-[16px]">
+                    Password
+                  </span>
                 </label>
                 <input
                   type="password"
+                  name="UserPassword"
+                  placeholder="Enter password"
+                  value={FormData.UserPassword}
+                  onChange={handleInputChange}
+                  className="input input-bordered w-80"
+                />
+              </div>
+              <div className="form-control pb-4">
+                <label className="label">
+                  <span className="label-text text-primary font-semibold text-[16px]">
+                    Re-Password
+                  </span>
+                </label>
+                <input
+                  type="password"
+                  name="RePassword"
+                  value={FormData.RePassword}
+                  onChange={handleInputChange}
                   placeholder="Enter password"
                   className="input input-bordered w-80"
                 />
               </div>
 
               {/* <Link to={"/activity"}> */}
-              <button className="btn-primary w-80 rounded-md p-1 text-[24px] font-semibold text-white">
+              <button
+                onClick={handleSubmit}
+                className="btn-primary w-80 rounded-md p-1 text-[24px] font-semibold text-white"
+              >
                 Sign Up
               </button>
-
+              {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
               {/* </Link> */}
             </div>
           </div>
