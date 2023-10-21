@@ -40,50 +40,41 @@ const ActivityChart = () => {
 
             return data.map((value, index) => ({
               text: `${chart.data.labels[index]} - ${(
-                (value / total) *
-                100
-              ).toFixed(2)}%`,
+                (value / total) * 100
+              ).toFixed(10)}%`,
               class: "bold-label",
             }));
           },
         },
         fullSize: true,
       },
+      responsive:true,
       tooltip: {
         callbacks: {},
         titleFont: {
           weight: 900,
-          size: 40,
+          size: 20,
         },
         bodyFont: {
           weight: 900,
-          size: 40,
+          size: 20,
         },
-      },
-    },
-    animation: {
-      tension: {
-        duration: 2000,
-        easing: "easeInQuart",
-        from: 1,
-        to: 0,
-        loop: true,
       },
     },
     scales: {
       x: {
         ticks: {
           font: {
-            size: 30,
-            weight: 900,
+            size: 20,
+            weight: 700,
           },
         },
       },
       y: {
         ticks: {
           font: {
-            size: 30,
-            weight: 900,
+            size: 20,
+            weight: 800,
           },
         },
       },
@@ -91,7 +82,7 @@ const ActivityChart = () => {
   };
 
   return (
-    <div>
+    <div className="w-full">
       <Bar data={data} options={options} />
     </div>
   );

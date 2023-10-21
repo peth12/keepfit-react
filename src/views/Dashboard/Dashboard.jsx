@@ -14,36 +14,37 @@ import ActivityChartHorizon from "../../components/DashboardComponent/ActivityCh
 export const Dashboard = () => {
   return (
     <Layout>
-      <div className="flex justify-center mt-40">
-        <div className="flex-col  space-y-24">
-          <div className="flex flex-col lg:flex-row gap-5 justify-center">
-            <div className="shadow-xl rounded-xl p-10  gradient-background-user h-[494px] w-full lg:w-1/3">
+      <div className="xl:container mx-auto px-10">
+      <div className="flex justify-center mt-24 px-5">
+        <div className="mx-auto px-5">
+          <div className="flex flex-col xl:flex-row gap-5 justify-center ">
+            <div className="shadow-xl rounded-xl p-10  gradient-background-user h-auto w-full ">
               <UserCard />
             </div>
-            <div className="shadow-xl rounded-xl p-10 bg-orange-400 h-[494px] w-full lg:w-2/3">
+            <div className="shadow-xl rounded-xl  bg-orange-400 h-auto w-full ">
               <DurationStackCard />
             </div>
           </div>
-          <div className="flex flex-col lg:flex-row gap-5 justify-center items-top">
-            <div className="flex-col items-center shadow-xl  rounded-xl  w-full lg:w-4/6 font-bold text-3xl">
-              <div className="m-16">Activity Count Overview</div>
-              <div className="hidden lg:block p-20">
+          <div className="flex flex-col lg:flex-row gap-5">
+            <div className="shadow-xl  rounded-xl  w-full xl:w-4/6 font-bold text-xl h-auto">
+              <div className="hidden lg:block p-10">
+              <div className="">Activity Count Overview</div>
                 <ActivityChart className="" />
               </div>
-              <div className="block lg:hidden h-full">
-                <ActivityChartHorizon className="h-full" />
+              <div className="block lg:hidden">
+                <ActivityChartHorizon className="" />
               </div>
             </div>
-            <div className=" shadow-xl  rounded-xl   w-full lg:w-2/6 font-bold text-3xl">
-              <div className="m-16">Duration Summary Overview</div>
+            <div className=" shadow-xl  rounded-xl  w-full lg:w-2/6 font-bold  text-3xl">
+              <div className="mt-10 ms-3">Duration Summary Overview</div>
               <div className="p-20">
-                <DurationChart className=" scale-150" />
+                <DurationChart className="" />
               </div>
             </div>
           </div>
-          <div className="col-span-12 row-span-1 place-items-center my-auto">
+          <div className="col-span-12 row-span-1 place-items-center ">
             <button
-              className="btn btn-primary w-fit h-[50px] text-white text-lg rounded-full scale-150 mr-20 mb-20"
+              className="btn btn-primary w-fit h-[50px] text-white text-lg rounded-full scale-125 mr-10 mb-20"
               style={{ position: "fixed", bottom: "20px", right: "20px" }}
             >
               add activity +
@@ -51,6 +52,7 @@ export const Dashboard = () => {
           </div>
         </div>
         
+      </div>
       </div>
     </Layout>
   );

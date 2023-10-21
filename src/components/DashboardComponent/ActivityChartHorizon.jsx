@@ -50,7 +50,7 @@ const ActivityChartHorizon = () => {
             return data.map((value, index) => ({
               text: `${chart.data.labels[index]} - ${(
                 (value / total) * 100
-              ).toFixed(2)}%`,
+              ).toFixed(10)}%`,
             }));
           },
         },
@@ -70,7 +70,7 @@ const ActivityChartHorizon = () => {
       x: {
         ticks: {
           font: {
-            size: 30,
+            size: 20,
             weight: 900,
           },
         },
@@ -78,7 +78,7 @@ const ActivityChartHorizon = () => {
       y: {
         ticks: {
           font: {
-            size: 30,
+            size: 20,
             weight: 900,
           },
         },
@@ -87,7 +87,7 @@ const ActivityChartHorizon = () => {
   };
 
   return (
-    <div className="">
+    <div className=" px-3 w-full">
       <Bar data={data} options={options} />
     </div>
   );

@@ -3,9 +3,9 @@ const DurationStackCard = () => {
     <div className="flex-col rounded-2xl p-2 ">
       <div className="text-end mt-4 pl-4">
         <h1 className="pt-2 text-start">
-          <strong className="text-[50px] font-semibold text-white text-start pe-2 italic">
+          <div className="text-[50px] font-semibold text-white text-start pe-2 italic">
             All time summary 
-          </strong>
+          </div>
         </h1>
         {/* <p className="text-lg bg-white max-w-sm rounded-full  text-black btn normal-case px-7">Week</p> */}
       </div>
