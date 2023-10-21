@@ -66,10 +66,28 @@ const ActivityChartHorizon = () => {
       },
     },
     categorySpacing: 10,
+    scales: {
+      x: {
+        ticks: {
+          font: {
+            size: 30,
+            weight: 900,
+          },
+        },
+      },
+      y: {
+        ticks: {
+          font: {
+            size: 30,
+            weight: 900,
+          },
+        },
+      },
+    },
   };
 
   return (
-    <div>
+    <div className="">
       <Bar data={data} options={options} />
     </div>
   );

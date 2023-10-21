@@ -13,6 +13,7 @@ const DurationChart = () => {
     labels: ["Yoga", "Running", "Cycling", "Swimming", "Boxing"],
     datasets: [
       {
+        label:"time(s)",
         data: [30, 20, 30, 40, 30],
         backgroundColor: [
           "#EB57A2",
@@ -21,20 +22,46 @@ const DurationChart = () => {
           "#53D8B9",
           "#4B9FC9",
         ],
-        hoverOffset: 4,
+        hoverOffset: 14,
       },
     ],
   };
 
   const options = {
     plugins: {
-      tooltip: {
-        callbacks: {
-          label: function (context) {
-            return context.label + ": " + context.parsed + "%";
+      legend: {
+        display: true,
+        position: "center",
+        labels: {
+          generateLabels: function (chart) {
+            const data = chart.data.datasets[0].data;
+            const total = data.reduce((acc, value) => acc + value, 0);
+            
+            return data.map((value, index) => ({
+              text: `${chart.data.labels[index]} - ${(
+                (value / total) * 100
+              ).toFixed(2)}%`,
+              class: 'bold-label',
+            }));
+            
           },
+         
         },
       },
+      tooltip: {
+        callbacks: {
+          
+        },
+        titleFont: {
+          weight: 900 ,
+          size: 40,
+        },
+        bodyFont: {
+          weight: 900 ,
+          size: 40,
+        }
+      },
+
     },
   };
 

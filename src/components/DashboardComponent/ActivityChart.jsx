@@ -6,7 +6,7 @@ import { useData } from "../ActivityComponent/ActivityData";
 import { Tooltip } from "chart.js";
 
 const ActivityChart = () => {
-    const {activityList} = useData()
+  const { activityList } = useData();
 
   Chart.register(LinearScale, CategoryScale, BarElement, Tooltip);
 
@@ -23,14 +23,7 @@ const ActivityChart = () => {
           "#53D8B9",
           "#4B9FC9",
         ],
-        hoverBackgroundColor: [
-          "#EB57A2",
-          "#FFDB58",
-          "#ff9b05",
-          "#53D8B9",
-          "#4B9FC9",
-        ],
-        hoverOffset: 6,
+        hoverOffset: 16,
       },
     ],
   };
@@ -47,19 +40,51 @@ const ActivityChart = () => {
 
             return data.map((value, index) => ({
               text: `${chart.data.labels[index]} - ${(
-                (value / total) * 100
+                (value / total) *
+                100
               ).toFixed(2)}%`,
+              class: "bold-label",
             }));
           },
         },
+        fullSize: true,
+      },
+      tooltip: {
+        callbacks: {},
+        titleFont: {
+          weight: 900,
+          size: 40,
+        },
+        bodyFont: {
+          weight: 900,
+          size: 40,
+        },
       },
     },
-    tooltips: {
-      callbacks: {
-        label: function (tooltipItem, data) {
-          const label = data.labels[tooltipItem.index];
-          const value = data.datasets[0].data[tooltipItem.index];
-          return `${label}: ${value}%`;
+    animation: {
+      tension: {
+        duration: 2000,
+        easing: "easeInQuart",
+        from: 1,
+        to: 0,
+        loop: true,
+      },
+    },
+    scales: {
+      x: {
+        ticks: {
+          font: {
+            size: 30,
+            weight: 900,
+          },
+        },
+      },
+      y: {
+        ticks: {
+          font: {
+            size: 30,
+            weight: 900,
+          },
         },
       },
     },

@@ -15,7 +15,7 @@ export const Dashboard = () => {
   return (
     <Layout>
       <div className="flex justify-center mt-40">
-        <div className="flex-col  space-y-12">
+        <div className="flex-col  space-y-24">
           <div className="flex flex-col lg:flex-row gap-5 justify-center">
             <div className="shadow-xl rounded-xl p-10  gradient-background-user h-[494px] w-full lg:w-1/3">
               <UserCard />
@@ -25,18 +25,18 @@ export const Dashboard = () => {
             </div>
           </div>
           <div className="flex flex-col lg:flex-row gap-5 justify-center items-top">
-            <div className="flex-col items-center shadow-xl overflow-hidden rounded-xl p-10 w-full lg:w-2/3 font-bold">
-              <div className="mb-5">Duration Summary Overview</div>
-              <div className="hidden lg:block">
+            <div className="flex-col items-center shadow-xl  rounded-xl  w-full lg:w-4/6 font-bold text-3xl">
+              <div className="m-16">Activity Count Overview</div>
+              <div className="hidden lg:block p-20">
                 <ActivityChart className="" />
               </div>
               <div className="block lg:hidden h-full">
                 <ActivityChartHorizon className="h-full" />
               </div>
             </div>
-            <div className=" shadow-xl overflow-hidden rounded-xl p-10  w-full lg:w-1/3 font-bold">
-              <div className="mb-5">Activity Count Overview</div>
-              <div>
+            <div className=" shadow-xl  rounded-xl   w-full lg:w-2/6 font-bold text-3xl">
+              <div className="m-16">Duration Summary Overview</div>
+              <div className="p-20">
                 <DurationChart className=" scale-150" />
               </div>
             </div>
@@ -50,6 +50,7 @@ export const Dashboard = () => {
             </button>
           </div>
         </div>
+        
       </div>
     </Layout>
   );
