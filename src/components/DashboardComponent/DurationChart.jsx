@@ -10,7 +10,7 @@ const DurationChart = () => {
   Chart.register(LinearScale, CategoryScale, ArcElement, Tooltip);
 
   const data = {
-    labels: ["Yoga", "Running", "Cycling", "Swimming", "Boxing"],
+    
     datasets: [
       {
         label:"time(s)",
@@ -69,17 +69,7 @@ const DurationChart = () => {
     <div>
       <Doughnut data={data} options={options} />
       <div className="legend flex gap-3 mt-8 justify-center items-center">
-        {data.labels.map((label, index) => (
-          <div key={index} className="flex items-center gap-1">
-            <div
-              className="legend-color w-4 h-4"
-              style={{
-                backgroundColor: data.datasets[0].backgroundColor[index],
-              }}
-            ></div>
-            <div>{label}</div>
-          </div>
-        ))}
+
       </div>
     </div>
   );
