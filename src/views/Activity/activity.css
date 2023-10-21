@@ -7,7 +7,6 @@
 }
 
 .gradient-background {
-    background: linear-gradient(0deg, #ffffff 84%, #ff9b05 12%); /* You can adjust the colors as needed */
-    /* Add other CSS properties for the container, like padding, margin, etc. */
+    background: linear-gradient(0deg, #ffffff 84%, #ff9b05 12%);
   }
   

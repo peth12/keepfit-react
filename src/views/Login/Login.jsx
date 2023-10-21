@@ -3,16 +3,16 @@ import { NavbarLandingPage } from "../../components/NavbarLogin";
 import { useState } from "react";
 import "./Login.css";
 
-
 export const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const Navigate=useNavigate();
+  const Navigate = useNavigate();
 
   const mockupData = [
     { email: "testja@hotmail.com", password: "123456" },
     { email: "testja2@hotmail.com", password: "123a" },
+    { email: "admin", password: "admin" },
   ];
   const handleLogin = () => {
     const user = mockupData.find(
@@ -27,7 +27,7 @@ export const Login = () => {
       setError("Invalid email or password");
     }
   };
-  
+
   return (
     <>
       {/* <NavbarLandingPage /> */}
