@@ -11,6 +11,7 @@ import { VscChevronDown } from "react-icons/vsc";
 import { AiFillEdit } from "react-icons/ai";
 import { GoAlertFill } from "react-icons/go";
 import { Link, useParams , useNavigate} from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
 
 function History() {
   const { id } = useParams();
@@ -66,11 +67,25 @@ function History() {
   //     duration: "10 mins",
   //   },
   // ];
+  const notify = () => toast.success("delete success");
+  const deleteData = async (data) => {
+    if(window.confirm(`Are you sure delete`)){
 
+      await axios
+        .delete(`https://keepfit-backend.onrender.com/activity/${data}`)
+        .then((res) => {
+          console.log(res.data);
+          setReload(!reload);
+          notify();
+          
+        })
+        .catch((err) => console.error(err));
+    }
+  };
   return (
     <Layout>
       {/* Choose history type */}
-
+      <Toaster position="top-right" reverseOrder={false} />
       <div className="hidden bg-primary text-slate-100 flex justify-between mt-24 rounded-lg m-5 lg:flex scroll-smooth" >
 
         <a className="btn btn-ghost normal-case lg:text-xl">All</a>
@@ -172,160 +187,31 @@ function History() {
             <div className=" text-2xl ml-5 text-end  lg:justify-end lg:flex items-end">
               <button
                 className=" text-white"
-                onClick={() =>
-                  document.getElementById("my_modal_5").showModal()
-                }
+  
               >
-                <Link to={`/history/${item._id}`}>
+                <Link to={`/editHistory/${item._id}`}>
                   <button className="hidden lg:block btn btn-sm bg-primary text-white  lg:w-24 me-2 ">
                     Edit
                   </button>
                 </Link>
+                <Link to={`/editHistory/${item._id}`}>
                 <div className="lg:hidden text-black ">
                   <TbPencil />
                 </div>
+                </Link>
               </button>
-              <dialog
-                id="my_modal_5"
-                className="modal modal-bottom sm:modal-middle"
-              >
-                <div className="modal-box">
-                  <form method="dialog">
-                    <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 bg-red-600">
-                      ✕
-                    </button>
-                  </form>
-
-                  {/* Edit profile photo */}
-                  <div className="flex justify-center py-8">
-                    <img
-                      className="w-[200px] h-[200px] object-cover rounded-full border-4 border-primary"
-                      src={userById.ActivityImage}
-                      alt=""
-                    />
-
-                    {/* รูปไว้กด Edit */}
-                    <div className="w-[200px] h-[200px] group hover:bg-gray-200 opacity-60 rounded-full absolute flex justify-center items-center cursor-pointer transition duration-500">
-                      <img
-                        type="file"
-                        className="hidden group-hover:block w-12"
-                        src="https://www.svgrepo.com/show/33565/upload.svg"
-                        alt=""
-                      />
-
-                      {/* ปุ่มไว้กด Upload photo */}
-
-                      <input type="file"></input>
-                    </div>
-                  </div>
-
-                  <div className="form-control w-full pt-3">
-                    <label className="label">
-                      <span className="label-text text-primary font-semibold text-[16px]">
-                        Activity Name
-                      </span>
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="Activity Name"
-                      value={userById.ActivityName}
-                      className="input input-bordered w-full text-black"
-                    />
-                  </div>
-                  <div className="form-control w-full pt-3">
-                    <label className="label">
-                      <span className="label-text text-primary font-semibold text-[16px]">
-                        Description
-                      </span>
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="Description"
-                      value={userById.ActivityDesc}
-                      className="input input-bordered w-full text-black"
-                    />
-                  </div>
-                  <div className="form-control w-full pt-3 ">
-                    <label className="label">
-                      <span className="label-text text-primary font-semibold text-[16px]">
-                        Date
-                      </span>
-                    </label>
-                    <input
-                      type="date"
-                      value={userById.ActivityDate}
-                      className="input input-bordered w-full  text-black"
-                    />
-                  </div>
-                  
-                  <div className="form-control w-full pt-3">
-                    <label className="label">
-                      <span className="label-text text-primary font-semibold text-[16px]">
-                        Workout Type
-                      </span>
-                    </label>
-                    <input
-                      type="text"
-
-                      placeholder="Workout Type"
-                      value={userById.ActivityType}
-
-                      className="input input-bordered w-full text-black"
-                    />
-                  </div>
-
-                  <div className="form-control w-full pt-3">
-                    <label className="label">
-                      <span className="label-text text-primary font-semibold text-[16px]">
-                        Duration (Minutes)
-                      </span>
-                    </label>
-                    <div className="flex gap-x-2">
-                      <input
-                        type="number"
-                        min={0}
-                        max={23}
-                        placeholder="Hours"
-                        value={userById.ActivityDuration}
-                        className="input input-bordered w-full text-black"
-                      />
-                      <input
-                        type="number"
-                        placeholder="Minutes"
-                        min={0}
-                        max={59}
-                        className="input input-bordered w-full text-black "
-                      />
-                    </div>
-                  </div>
-
-                  <div className="modal-action w-full">
-                    <form method="dialog">
-                      {/* if there is a button in form, it will close the modal */}
-                      <Link to={'/history'}>
-                      <button className="btn btn-primary text-white w-80 lg:w-32">
-                        Save
-                      </button>
-                      </Link>
-                    </form>
-                  </div>
-                </div>
-              </dialog>
+              
               {/* Open the modal using document.getElementById('ID').showModal() method */}
 
               <button
-                className=""
-                onClick={() =>
-                  document.getElementById("my_modal_1").showModal()
-                }
-              ><Link to={`/history/${item._id}`}>
-                <button className="hidden lg:block btn btn-sm bg-red-600 text-white lg:w-24 ">
+              >
+                <button onClick={() => deleteData(item._id)} className="hidden lg:block btn btn-sm bg-red-600 text-white lg:w-24 ">
                   Delete
                 </button>
-                </Link>
-                <div className="lg:hidden text-black ">
+                
+                <button className="lg:hidden text-black ">
                   <TbTrash />
-                </div>
+                </button>
               </button>
               <dialog
                 id="my_modal_1"

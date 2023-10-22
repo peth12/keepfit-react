@@ -19,6 +19,7 @@ import { ActivityData } from "./components/index.js";
 
 import EditWorkoutPage from "./views/Admin/WorkoutManagement/EditWorkoutPage.jsx";
 import EditUserPage from "./views/Admin/UserManagement/EditUserPage.jsx";
+import EditHistory from "./views/History/EditHistory.jsx";
 
 const router = createBrowserRouter([
   {
@@ -57,6 +58,9 @@ const router = createBrowserRouter([
   {
     path: "/user",
     element: <Profile />,
+  },{
+    path: "/editHistory/:id",
+    element: <EditHistory/>
   },
   {
     path: "/admin/user",
