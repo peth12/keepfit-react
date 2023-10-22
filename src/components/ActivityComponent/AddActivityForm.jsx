@@ -11,6 +11,18 @@ import toast from "react-hot-toast";
 const AddActivityForm = ({ toggleFormVisibility, defaultType, setCheckAddActivity }) => {
   const { activityList } = useData();
   const [newActivity, setNewActivity] = useState([])
+
+
+  const [activityName, setActivityName] = useState("");
+  const [activityDesc, setActivityDesc] = useState("");
+  const [activityType, setActivityType] = useState("");
+  const [activityDuration, setActivityDuration] = useState("");
+  const [activityImage, setActivityImage] = useState("");
+  const [activityDate, setActivityDate] = useState("");
+  const [userEmail, setUserEmail] = useState("");
+  const [userId, setUserId] = useState("");
+  const [allActivityType, setAllActivityType] = useState([]);
+  const [previewSource, setPreviewSource] = useState('');
   const selectedActivity = activityList.find(
     (activity) => activity.ActivityTypeName === defaultType
   );
@@ -45,20 +57,19 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType, setCheckAddActivit
     UserId:1,
   });
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setActivityData({
-      ...activityData,
-      [name]: value,
-    });
-    console.log(activityData);
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("https://keepfit-backend.onrender.com/activity/create", activityData);
+      const response = await axios.post("https://keepfit-backend.onrender.com/activity/create", {
+        ActivityName: activityName,
+        ActivityDesc: activityDesc,
+        ActivityType: selectedActivity.ActivityTypeName,
+        ActivityDuration: activityDuration,
+        ActivityImage: previewSource,
+        UserId: userId,
+        UserEmail : userEmail
+      });
       console.log("Activity created:", response.data);
 
       setCheckAddActivity("successed")
@@ -76,6 +87,20 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType, setCheckAddActivit
       console.error("Error creating activity:", error);
     }
   };
+
+  const handleFileInput = (e) => {
+    const file = e.target.files[0]
+    console.log(`file : ${e.target.files[0]}`);
+    previewFile(file)
+}
+const previewFile = (file) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setPreviewSource(reader.result)
+
+    }
+}
 
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50">
@@ -106,7 +131,7 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType, setCheckAddActivit
                 name="ActivityName"
                 placeholder=" Morning Jogging, Basic Yoga ..."
                 value={activityData.name}
-                onChange={handleInputChange}
+                onChange={(e) => setActivityName(e.target.value)}
                 className="input input-bordered  w-80 rounded-sm text-orange-400"
                 required
               />
@@ -116,19 +141,19 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType, setCheckAddActivit
               name="ActivityType"
               value={selectedActivity.ActivityTypeName}
               className="hidden"
-              onChange={handleInputChange}
+              onChange={(e) => setActivityType(e.target.value)}
               />
               <input type="text"
               name="UserEmail"
               value={"sendFrominput@test.com"}
               className="hidden"
-              onChange={handleInputChange}
+              onChange={(e) => setUserEmail(e.target.value)}
               />
               <input type="text"
               name="UserId"
               value={999}
               className="hidden"
-              onChange={handleInputChange}
+              onChange={(e) => setUserId(e.target.value)}
               />
             </div>
             <div className="mb-4">
@@ -138,7 +163,7 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType, setCheckAddActivit
               <input
                 name="ActivityDesc"
                 value={activityData.description}
-                onChange={handleInputChange}
+                onChange={(e) => setActivityDesc(e.target.value)}
                 placeholder=" Tell about your activity..."
                 className="input input-bordered  w-80 rounded-sm text-orange-400"
                 required
@@ -155,7 +180,7 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType, setCheckAddActivit
                 min={0}
                 placeholder="only number here"
                 value={activityData.duration}
-                onChange={handleInputChange}
+                onChange={(e) => setActivityDuration(e.target.value)}
                 className="input input-bordered  w-80 rounded-sm text-orange-400"
                 required
               />
@@ -170,20 +195,24 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType, setCheckAddActivit
                   name="ActivityDate"
                   placeholder="mm/dd/yyyy"
                   value={activityData.date}
-                  onChange={handleInputChange}
+                  onChange={(e) => setActivityDate(e.target.value)}
                   className="input input-bordered  w-80  h-10 text-orange-400"
                   required
                 />
               </div>
             </div>
-            <div className="flex justify-center items-center gap-4 hover:cursor-pointer hover:scale-110 mt-10">
+<div className="">
+  <img src={activityData.ActivityImage} alt="" />
+</div>
+            <div className="flex justify-center items-center gap-4 hover:cursor-pointer hover:scale-[102%] hover:duration-300 mt-10">
               <label className="flex bg-[#08A045] hover:bg-[#21D375] hover:cursor-pointer  w-80 gap-3 text-white font-semibold py-2 px-4 rounded items-center ">
                 <input
                   type="file"
                   name="ActivityImage"
+                  onChange={handleFileInput}
                   className="file-input file-input-bordered file-input-info h-10 w-80 hover:cursor-pointer hidden"
                 ></input>
-                <BsImages /> Upload image <div className=" text-xs">(optional)</div>
+                <BsImages /> Upload image <div className=" text-xs" >(optional)</div>
                 
               </label>
             </div>
@@ -192,7 +221,7 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType, setCheckAddActivit
           <div className="text-center mt-10">
             <button
               type="submit"
-              className="btn bg-orange-400 text-white w-80 hover:bg-orange-300 hover:scale-110"
+              className="btn bg-orange-400 text-white w-80 hover:bg-orange-300 hover:scale-[102%] hover:duration-300"
             >
               Add Activity
             </button>
