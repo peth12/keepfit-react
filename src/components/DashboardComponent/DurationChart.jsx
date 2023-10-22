@@ -2,19 +2,21 @@ import React from "react";
 import { Doughnut } from "react-chartjs-2";
 import { Chart } from "chart.js";
 import { LinearScale, CategoryScale, ArcElement } from "chart.js";
-import { useData } from "../ActivityComponent/ActivityData";
+import { useData } from "../DashboardComponent/DashboardData";
 import { Tooltip } from "chart.js";
 
 const DurationChart = () => {
   const { activityList } = useData();
+  const {duration} = useData()
+  
   Chart.register(LinearScale, CategoryScale, ArcElement, Tooltip);
 
   const data = {
-    
+    labels: ["Yoga", "Running", "Cycling", "Swimming", "Boxing"],
     datasets: [
       {
-        label:"time(s)",
-        data: [30, 20, 30, 40, 30],
+        label:"minute(s)",
+        data: [duration.yoga, duration.running, duration.cycling, duration.swimming, duration.boxing],
         backgroundColor: [
           "#EB57A2",
           "#FFDB58",
@@ -31,6 +33,7 @@ const DurationChart = () => {
     plugins: {
       legend: {
         display: true,
+        fullSize:true,
         position: "center",
         labels: {
           generateLabels: function (chart) {
@@ -53,12 +56,12 @@ const DurationChart = () => {
           
         },
         titleFont: {
-          weight: 900 ,
-          size: 40,
+          weight: 700 ,
+          size: 20,
         },
         bodyFont: {
-          weight: 900 ,
-          size: 40,
+          weight: 700 ,
+          size: 20,
         }
       },
 
@@ -69,7 +72,10 @@ const DurationChart = () => {
     <div>
       <Doughnut data={data} options={options} />
       <div className="legend flex gap-3 mt-8 justify-center items-center">
-
+      <div>
+        {console.log(duration)}
+        {/* {console.log(dataDuration.Running)} */}
+      </div>
       </div>
     </div>
   );

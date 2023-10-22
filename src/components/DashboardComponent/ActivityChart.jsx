@@ -2,11 +2,12 @@ import React from "react";
 import { Bar } from "react-chartjs-2";
 import { Chart, scales } from "chart.js";
 import { LinearScale, CategoryScale, BarElement } from "chart.js";
-import { useData } from "../ActivityComponent/ActivityData";
+import { useData } from "../DashboardComponent/DashboardData";
 import { Tooltip } from "chart.js";
 
 const ActivityChart = () => {
   const { activityList } = useData();
+  const {duration, running, swimming, boxing, cycling, yoga} = useData()
 
   Chart.register(LinearScale, CategoryScale, BarElement, Tooltip);
 
@@ -14,8 +15,8 @@ const ActivityChart = () => {
     labels: ["Yoga", "Running", "Cycling", "Swimming", "Boxing"],
     datasets: [
       {
-        label: "minute(s)",
-        data: [30, 20, 30, 40, 30],
+        label: "time(s)",
+        data: [yoga.length, running.length, cycling.length, swimming.length, boxing.length],
         backgroundColor: [
           "#EB57A2",
           "#FFDB58",
@@ -48,7 +49,7 @@ const ActivityChart = () => {
         },
         fullSize: true,
       },
-      responsive:true,
+      
       tooltip: {
         callbacks: {},
         titleFont: {
@@ -71,6 +72,7 @@ const ActivityChart = () => {
         },
       },
       y: {
+        display:false,
         ticks: {
           font: {
             size: 20,
@@ -84,6 +86,8 @@ const ActivityChart = () => {
   return (
     <div className="w-full">
       <Bar data={data} options={options} />
+      {console.log("check  " + running.length)}
+      {console.log("check 2 " + duration.running)}
     </div>
   );
 };

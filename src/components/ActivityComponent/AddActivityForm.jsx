@@ -37,7 +37,7 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType, setCheckAddActivit
   const [activityData, setActivityData] = useState({
     ActivityName: "",
     ActivityDesc: "",
-    ActivityType: "",
+    ActivityType: selectedActivity.ActivityTypeName,
     ActivityDuration: 0,
     ActivityImage: "",
     ActivityDate: 0,
