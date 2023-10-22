@@ -10,6 +10,7 @@ const EditWorkoutPage = () => {
   const [activityTypeName, setActivityTypeName] = useState("");
   const [activityTypeImage, setActivityTypeImage] = useState("");
   const [activityTypeDesc, setActivityTypeDesc] = useState("");
+  const [previewSource, setPreviewSource] = useState('');
 
   const navigate = useNavigate();
 
@@ -24,6 +25,19 @@ const EditWorkoutPage = () => {
       .catch((err) => console.error(err));
   }, []);
 
+
+  const handleFileInput = (e) => {
+      const file = e.target.files[0]
+      console.log(`file : ${e.target.files[0]}`);
+      previewFile(file)
+  }
+  const previewFile = (file) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onloadend = () => {
+        setActivityTypeImage(reader.result)
+      }
+  }
   const updateActivityType = async (e) => {
     e.preventDefault();
     await axios
@@ -67,7 +81,7 @@ const EditWorkoutPage = () => {
                   {/* Profile picture image */}
                   <img
                     className="w-48 h-48 mx-auto rounded-full mb-2 border-primary border-4 object-cover"
-                    src={activityTypeImage}
+                    src={previewSource ? previewSource : activityTypeImage}
                     alt=""
                   />
                   {/* Profile picture help block */}
@@ -77,7 +91,7 @@ const EditWorkoutPage = () => {
                   {/* Profile picture edit button */}
 
                   <label className="bg-primary hover:bg-primary-focus duration-150 text-white font-semibold py-2 px-4 rounded cursor-pointer">
-                    <input type="file" className="hidden" /> Upload new image
+                    <input type="file" className="hidden" onChange={handleFileInput}/> Upload new image
                   </label>
                 </div>
               </div>

@@ -63,6 +63,15 @@ const ActivityManagement = () => {
         .catch((err) => console.error(err));
     }
   };
+  const changeDateFormat = (query) => {
+    const dateData = new Date(query)
+    return {
+        date : dateData.getDate(),
+        mont : dateData.getMonth(),
+        year : dateData.getFullYear(),
+        all : dateData.toDateString()
+    }
+}
 
   return (
     <>
@@ -116,7 +125,7 @@ const ActivityManagement = () => {
                         {item.ActivityType}
                       </td>
                       <td className="w-1/5 border border-r">
-                        {item.ActivityDate}
+                        {changeDateFormat(item.ActivityDate).all}
                       </td>
                       <td className="flex gap-1">
                         <Link to={`/admin/activity/edit/${item._id}`}>

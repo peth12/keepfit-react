@@ -11,10 +11,11 @@ const AddWorkout = () => {
   const navigate = useNavigate();
 
   const createActicityType = async () => {
+    
     await axios
       .post(`https://keepfit-backend.onrender.com/activityType/create`, {
         ActivityTypeName: activityTypeName,
-        ActivityTypeImage: activityTypeImage,
+        ActivityTypeImage: previewSource,
         ActivityTypeDesc: activityTypeDesc,
       })
       .then((res) => {
@@ -23,6 +24,20 @@ const AddWorkout = () => {
       })
       .catch((err) => console.error(err));
   };
+  const [previewSource, setPreviewSource] = useState('');
+  const handleFileInput = (e) => {
+      const file = e.target.files[0]
+      console.log(`file : ${e.target.files[0]}`);
+      previewFile(file)
+  }
+  const previewFile = (file) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onloadend = () => {
+          setPreviewSource(reader.result)
+      }
+  }
+
   return (
     <>
       {/* You can open the modal using document.getElementById('ID').showModal() method */}
@@ -49,7 +64,7 @@ const AddWorkout = () => {
             <div className="flex justify-center py-8">
               <img
                 className="w-[200px] h-[200px] object-cover rounded-full border-4 border-primary"
-                src="https://i.pinimg.com/564x/aa/b1/66/aab1668efa22babd2f1e883fd859846c.jpg"
+                src={previewSource}
                 alt=""
               />
 
@@ -64,7 +79,7 @@ const AddWorkout = () => {
 
                 {/* ปุ่มไว้กด Upload photo */}
 
-                <input type="file"></input>
+                <input type="file" onChange={handleFileInput}></input>
               </div>
             </div>
 
