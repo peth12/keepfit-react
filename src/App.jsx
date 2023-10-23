@@ -5,7 +5,6 @@ import { LandingPage } from "./views/LandingPage";
 import { Login } from "./views/Login/Login";
 function App() {
   return <>
-  <Login></Login>
   </>;
 }
 

@@ -3,8 +3,6 @@ import { Layout } from "../../components/Layout";
 import {
   ActivityCard,
   ActivityData,
-  ActivitySlide,
-  AddActivityButton,
 } from "../../components";
 import "./activity.css";
 import TempoShow from "../../components/ActivityComponent/TempoShow";

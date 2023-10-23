@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { LayoutAdmin } from "../../../components/LayoutAdmin.jsx";
 import { LiaEvernote } from "react-icons/lia";
-import EditActivity from "./EditActivity.jsx";
 import DeleteActivity from "./DeleteActivity.jsx";
 import SearchBox from "../SearchBox.jsx";
 import { Link, useNavigate, useParams } from "react-router-dom";
