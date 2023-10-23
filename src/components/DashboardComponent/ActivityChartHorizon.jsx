@@ -87,8 +87,8 @@ const ActivityChartHorizon = () => {
   };
 
   return (
-    <div className=" px-3 w-full">
-      <Bar data={data} options={options} />
+    <div className=" px-3 h-full">
+      <Bar data={data} options={options} className=""/>
     </div>
   );
 };
