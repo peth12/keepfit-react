@@ -82,6 +82,15 @@ function History() {
         .catch((err) => console.error(err));
     }
   };
+  const changeDateFormat = (query) => {
+    const dateData = new Date(query)
+    return {
+        date : dateData.getDate(),
+        mont : dateData.getMonth(),
+        year : dateData.getFullYear(),
+        all : dateData.toDateString()
+    }
+}
   return (
     <Layout>
       {/* Choose history type */}
@@ -169,7 +178,7 @@ function History() {
               <div className="w-30">
                 <div className=" ">
                   <p className="text-sm">Date </p>
-                  <p className="font-bold lg:text-2xl ">{item.ActivityDate}</p>
+                  <p className="font-bold lg:text-2xl ">{changeDateFormat(item.ActivityDate).all}</p>
                 </div>
               </div>
 
