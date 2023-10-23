@@ -131,7 +131,7 @@ function History() {
           </ul>
         </div>
       </div>
-      <div className="xl:container xl:mx-auto">
+      <div className="xl:container xl:mx-auto px-10">
         {/* Card */}
         {user.map((item, index) => (
           <div
