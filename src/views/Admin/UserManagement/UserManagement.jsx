@@ -5,7 +5,6 @@ import { FaHouseChimneyUser } from "react-icons/fa6";
 import { BiEditAlt } from "react-icons/bi";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { GoAlertFill } from "react-icons/go";
-import DeleteUser from "./DeleteButton.jsx";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";

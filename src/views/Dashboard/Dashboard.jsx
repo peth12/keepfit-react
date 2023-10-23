@@ -4,8 +4,6 @@ import "./Dashboard.css";
 import {
   UserCard,
   DurationStackCard,
-  NewChart,
-  ColumnChart,
 } from "../../components";
 import ActivityChart from "../../components/DashboardComponent/ActivityChart";
 import DurationChart from "../../components/DashboardComponent/DurationChart";

@@ -1,5 +1,4 @@
 import { Link, useNavigate } from "react-router-dom";
-import { NavbarLandingPage } from "../../components/NavbarLogin";
 import { useState } from "react";
 import "./Login.css";
 

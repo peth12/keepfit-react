@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext, createContext } from "react";
 import axios from "axios";
-import DurationChart from "./DurationChart";
+
 
 const DashboardDataContext = createContext();
 
