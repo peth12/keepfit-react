@@ -28,10 +28,11 @@ function History() {
       .get("https://keepfit-backend.onrender.com/activity")
       .then((result) => setUser(result.data))
       .catch((err) => console.log(err));
+      
   }, [reload]);
   useEffect(()=> {
-
-  })
+    setFilterDataType(user)
+  },[user])
   useEffect(() => {
     // Fetch data by ID when the 'id' parameter changes
     if (id) {
