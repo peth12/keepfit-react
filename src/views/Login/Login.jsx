@@ -34,9 +34,9 @@ export const Login = () => {
         {/* section 1 */}
         <div className="left hidden md:block h-[100%] w-[100%] "></div>
         {/* section 2 */}
-        <div className="right h-[100%] w-[100%]">
-          <div className="flex justify-center items-center w-[100%] h-[100%]">
-            <div className="glass  flex-col flex items-center px-14 pb-14 rounded-xl">
+        <div className="right h-[100%] w-[100%] ">
+          <div className="flex justify-center items-center max-w-[100%] h-[100%]">
+            <div className="  flex-col flex items-center px-10 pb-14 rounded-xl bg-white drop-shadow-xl pt-2 ">
               <h1 className=" text-[80px] text-primary  italic font-bold text-center py-3">
                 Login
               </h1>
