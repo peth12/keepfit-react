@@ -29,7 +29,7 @@ const SignUp = () => {
 
     try {
       const response = await axios.post(
-        "https://keepfit-backend.onrender.com/user/create",
+        "https://keepfit-backend.onrender.com/auth/register",
         FormData
       );
 
