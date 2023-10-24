@@ -105,7 +105,7 @@ function History() {
       <Fade cascade damping={0.1}>
         {/* Choose history type */}
         <Toaster position="top-right" reverseOrder={false} />
-        <div className="hidden bg-primary text-slate-100  justify-between mt-24 rounded-lg m-5 lg:flex scroll-smooth">
+        <div className="hidden bg-primary text-slate-100  justify-between pt-[75px] rounded-lg m-5 lg:flex scroll-smooth">
           <button
             onClick={() => {
               setFilterDataType(activity), setReload(!reload);
