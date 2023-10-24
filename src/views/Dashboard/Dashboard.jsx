@@ -9,10 +9,12 @@ import ActivityChart from "../../components/DashboardComponent/ActivityChart";
 import DurationChart from "../../components/DashboardComponent/DurationChart";
 import ActivityChartHorizon from "../../components/DashboardComponent/ActivityChartHorizon";
 import DashboardData from "../../components/DashboardComponent/DashboardData";
+import toast, { Toaster } from "react-hot-toast";
 
 export const Dashboard = () => {
   return (
     <Layout>
+    <Toaster/>
       <DashboardData>
       <div className="xl:container mx-auto px-10">
       <div className="flex justify-center mt-24 px-5">

@@ -84,7 +84,7 @@ const ActivityChart = () => {
   };
 
   return (
-    <div className="w-full">
+    <div className="min-w-full">
       <Bar data={data} options={options} />
       {console.log("check  " + running.length)}
       {console.log("check 2 " + duration.running)}

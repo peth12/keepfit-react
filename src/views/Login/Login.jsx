@@ -1,36 +1,52 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import "./Login.css";
+import axios from "axios";
+import toast, { Toaster } from "react-hot-toast";
 
 export const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [userEmail, setUserEmail] = useState("");
+  const [userPassword, setUserPassword] = useState("");
   const [error, setError] = useState("");
-  const Navigate = useNavigate();
+  const navigate = useNavigate();
 
-  const mockupData = [
-    { email: "testja@hotmail.com", password: "123456" },
-    { email: "testja2@hotmail.com", password: "123a" },
-    { email: "admin", password: "admin" },
-  ];
   const handleLogin = () => {
-    const user = mockupData.find(
-      (u) => u.email === email && u.password === password
-    );
-
-    if (user) {
-      setError("");
-      Navigate("/dashboard");
-      console.log("Login successful!");
-    } else {
-      setError("Invalid email or password");
+    if(userEmail == "" && userPassword == ""){
+      toast.error("please input data")
+      return
     }
+    axios
+      .post(`https://keepfit-backend.onrender.com/auth/login`, {
+        UserEmail: userEmail,
+        UserPassword: userPassword,
+      })
+      .then((result) => {
+        console.log(result.data)
+        if(result.data.message == "login success"){
+          console.log("eiei");
+          navigate("/dashboard");
+        setTimeout(() => {
+          toast.success("Login Success 🎉", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: true,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
+        }, 1);
+        }
+      })
+      .catch((err) => console.error(err));
   };
 
   return (
     <>
       {/* <NavbarLandingPage /> */}
       <div className=" flex h-[100vh]">
+        <Toaster/>
         {/* section 1 */}
         <div className="left hidden md:block h-[100%] w-[100%] "></div>
         {/* section 2 */}
@@ -48,7 +64,7 @@ export const Login = () => {
                   type="text"
                   placeholder="Enter Email"
                   className="input input-bordered w-80"
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => setUserEmail(e.target.value)}
                 />
               </div>
               <div className="form-control py-3">
@@ -59,7 +75,7 @@ export const Login = () => {
                   type="password"
                   placeholder="Enter password"
                   className="input input-bordered w-80"
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={(e) => setUserPassword(e.target.value)}
                 />
               </div>
               <p className="text-end py-2">
