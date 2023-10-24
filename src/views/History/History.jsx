@@ -11,13 +11,18 @@ import { VscChevronDown } from "react-icons/vsc";
 import { AiFillEdit } from "react-icons/ai";
 import { GoAlertFill } from "react-icons/go";
 import { Link, useParams , useNavigate} from "react-router-dom";
+import { BsImages, BsActivity } from "react-icons/bs";
+import {BiSwim, BiCycling} from 'react-icons/bi'
+import {GiBodyBalance} from 'react-icons/gi'
+import {RiBoxingLine} from 'react-icons/ri'
 import toast, { Toaster } from "react-hot-toast";
 
 function History() {
   const { id } = useParams();
   const [user, setUser] = useState([]);
   const [userById , setUserById] = useState([])
-  const [reload, setReload] = useState(false)
+  const [reload, setReload] = useState(false);
+  const [filterDataType, setFilterDataType] = useState([])
   useEffect(() => {
     axios
       .get("https://keepfit-backend.onrender.com/activity")
@@ -91,21 +96,46 @@ function History() {
         all : dateData.toDateString()
     }
 }
+const getIconComponent = (iconKey) => {
+  switch (iconKey) {
+    case "Yoga":
+      return <GiBodyBalance className="fill-primary scale-150 mb-1" />;
+    case "Boxing":
+      return <RiBoxingLine className="fill-primary scale-150 mb-1" />;
+    case "Cycling":
+      return <BiCycling className="fill-primary scale-150 mb-1" />;
+    case "Swimming":
+      return <BiSwim className="fill-primary scale-150 mb-1" />;
+    case "Running":
+      return <FaRunning className="fill-primary scale-150 mb-1" />;
+    default:
+      return <BsActivity className="fill-primary scale-150 mb-1" />;
+  }
+};
+const filterType = async (category) => {
+  setFilterDataType(
+    user.filter((item) => {
+      return item.ActivityType === category;    
+    })
+    
+    );
+  
+};
   return (
     <Layout>
       {/* Choose history type */}
       <Toaster position="top-right" reverseOrder={false} />
       <div className="hidden bg-primary text-slate-100 flex justify-between mt-24 rounded-lg m-5 lg:flex scroll-smooth" >
 
-        <a className="btn btn-ghost normal-case lg:text-xl">All</a>
-        <a className="btn btn-ghost normal-case lg:text-xl">Run</a>
-        <a className="btn btn-ghost normal-case lg:text-xl">Swim</a>
-        <a className="btn btn-ghost normal-case lg:text-xl">Walk</a>
-        <a className="btn btn-ghost normal-case lg:text-xl">Cycling</a>
-        <a className="btn btn-ghost normal-case lg:text-xl">Boxing</a>
-        <a className="btn btn-ghost normal-case lg:text-xl">
+        <button onClick={() => {setFilterDataType(user), setReload(!reload)}} className="btn btn-ghost normal-case lg:text-xl">All</button>
+        <button onClick={() => filterType("Running")} className="btn btn-ghost normal-case lg:text-xl">Run</button>
+        <button onClick={() => filterType("Swimming")} className="btn btn-ghost normal-case lg:text-xl">Swim</button>
+        <button onClick={() => filterType("Cycling")} className="btn btn-ghost normal-case lg:text-xl">Cycling</button>
+        <button onClick={() => filterType("Boxing")} className="btn btn-ghost normal-case lg:text-xl">Boxing</button>
+        <button onClick={() => filterType("Yoga")} className="btn btn-ghost normal-case lg:text-xl">Yoga</button>
+        <button onClick={() => filterType()} className="btn btn-ghost normal-case lg:text-xl">
           <VscChevronRight />
-        </a>
+        </button>
       </div>
 
       <div className="flex justify-end lg:hidden me-5">
@@ -142,7 +172,7 @@ function History() {
       </div>
       <div className="xl:container xl:mx-auto px-10">
         {/* Card */}
-        {user.map((item, index) => (
+        {filterDataType.map((item, index) => (
           <div
             key={index}
             className=" glass mt-5 flex flex-col text-white rounded-lg m-5 p-1 lg:p-5 lg:flex-row justify-between drop-shadow-md   shadow-xl lg:w-full"
@@ -150,7 +180,7 @@ function History() {
             {/* icon */}
             <div className=" m-5  justify-center hidden lg:flex lg:justify-center flex-col border-solid">
               <div className="text-slate-900 text-20 lg:text-5xl   ">
-                <FaRunning />
+                {getIconComponent(item.ActivityType)}
               </div>
             </div>
 
