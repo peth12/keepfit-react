@@ -19,20 +19,25 @@ import toast, { Toaster } from "react-hot-toast";
 
 function History() {
   const { id } = useParams();
-  const [user, setUser] = useState([]);
+  const [activity, setActivity] = useState([]);
+  const [activityType, setActivityType] = useState([]);
   const [userById , setUserById] = useState([])
   const [reload, setReload] = useState(false);
   const [filterDataType, setFilterDataType] = useState([])
   useEffect(() => {
     axios
       .get("https://keepfit-backend.onrender.com/activity")
-      .then((result) => setUser(result.data))
+      .then((result) => setActivity(result.data))
       .catch((err) => console.log(err));
-      
+    axios
+      .get("https://keepfit-backend.onrender.com/activityType")
+      .then((result) => setActivityType(result.data))
+      .catch((err) => console.log(err));
+
   }, [reload]);
   useEffect(()=> {
-    setFilterDataType(user)
-  },[user])
+    setFilterDataType(activity)
+  },[activity])
   useEffect(() => {
     // Fetch data by ID when the 'id' parameter changes
     if (id) {
@@ -115,7 +120,7 @@ const getIconComponent = (iconKey) => {
 };
 const filterType = async (category) => {
   setFilterDataType(
-    user.filter((item) => {
+    activity.filter((item) => {
       return item.ActivityType === category;    
     })
     
@@ -128,15 +133,9 @@ const filterType = async (category) => {
       <Toaster position="top-right" reverseOrder={false} />
       <div className="hidden bg-primary text-slate-100 flex justify-between mt-24 rounded-lg m-5 lg:flex scroll-smooth" >
 
-        <button onClick={() => {setFilterDataType(user), setReload(!reload)}} className="btn btn-ghost normal-case lg:text-xl">All</button>
-        <button onClick={() => filterType("Running")} className="btn btn-ghost normal-case lg:text-xl">Run</button>
-        <button onClick={() => filterType("Swimming")} className="btn btn-ghost normal-case lg:text-xl">Swim</button>
-        <button onClick={() => filterType("Cycling")} className="btn btn-ghost normal-case lg:text-xl">Cycling</button>
-        <button onClick={() => filterType("Boxing")} className="btn btn-ghost normal-case lg:text-xl">Boxing</button>
-        <button onClick={() => filterType("Yoga")} className="btn btn-ghost normal-case lg:text-xl">Yoga</button>
-        <button onClick={() => filterType()} className="btn btn-ghost normal-case lg:text-xl">
-          <VscChevronRight />
-        </button>
+        <button onClick={() => {setFilterDataType(activity), setReload(!reload)}} className="btn btn-ghost normal-case lg:text-xl">All</button>
+        {activityType.map((item, index) => (<button key={index} onClick={() => filterType(`${item.ActivityTypeName}`)} className="btn btn-ghost normal-case lg:text-xl">{item.ActivityTypeName}</button>))}
+
       </div>
 
       <div className="flex justify-end lg:hidden me-5">
