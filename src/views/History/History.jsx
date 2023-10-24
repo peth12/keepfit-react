@@ -153,30 +153,30 @@ function History() {
         </div>
       </div>
 
-      <div className="xl:container xl:mx-auto px-10">
+      <div className="xl:container xl:mx-auto  px-5 xl:px-10 ">
         {/* Card */}
         {filterDataType.map((item, index) => (
           <div
             key={index}
-            className=" glass mt-5 flex flex-col text-white rounded-lg  p-1 lg:p-5 lg:flex-row justify-between drop-shadow-md   shadow-xl lg:w-full"
+            className=" glass mt-5  flex flex-col text-white rounded-lg  p-5 lg:p-5 lg:flex-row justify-between drop-shadow-md   shadow-xl lg:w-full"
           >
             {/* icon */}
             <div className=" m-5  justify-center hidden lg:flex lg:justify-center flex-col border-solid">
-              <div className="text-slate-900 text-20 lg:text-5xl   ">
+              <div className="text-slate-900 text-20 lg:text-4xl   ">
                 {getIconComponent(item.ActivityType)}
               </div>
             </div>
 
             {/* Card image */}
-            <div className="justify-center   flex-col hidden lg:flex h-auto  drop-shadow-md rounded-lg w-40 ">
+            <div className="justify-center   flex-col hidden lg:flex h-auto   rounded-lg w-52 ps-5">
               <img
                 src={item.ActivityImage}
                 alt="activityImage"
-                className="h-40  drop-shadow-md rounded-lg w-40 "
+                className="h-40   rounded-lg w-full "
               />
             </div>
             {/* Description */}
-            <div className="text-slate-700 lg:max-w-72   w-100 lg:ml-2 ps-5 lg:w-52">
+            <div className="text-slate-700 lg:max-w-72   w-100 lg:ml-2 lg:ps-5 lg:w-52">
               <div className="">
                 <p className="text-sm ">Activity Name</p>
                 <p className=" lg:text-2xl font-bold ">{item.ActivityName}</p>
@@ -189,7 +189,7 @@ function History() {
               </div>
             </div>
             {/* History Infomation */}
-            <div className=" text-slate-700  lg:gap-10 gap-5 flex flex-row  ps-5 mt-2 ">
+            <div className=" text-slate-700  lg:gap-10 gap-5 flex flex-row  lg:ps-5 mt-2 ">
               <div className="w-30">
                 <div className=" ">
                   <p className="text-sm">Date </p>
@@ -210,7 +210,7 @@ function History() {
             </div>
             {/* Delete and Edit Button */}
             {/* Edit */}
-            <div className=" text-2xl ml-5 text-end  lg:justify-end lg:flex items-end">
+            <div className=" text-2xl ml-5 text-end  lg:justify-end lg:flex items-end ">
               <button className=" text-white">
                 <Link to={`/editHistory/${item._id}`}>
                   <button className="hidden lg:block btn btn-sm bg-primary text-white   me-2 ">
