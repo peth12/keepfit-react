@@ -91,6 +91,9 @@ function History() {
     }
   };
   const filterType = async (category) => {
+    if (category === "All") {
+      setFilterDataType(activity), setReload(!reload);
+    }
     setFilterDataType(
       activity.filter((item) => {
         return item.ActivityType === category;
@@ -102,7 +105,7 @@ function History() {
       <Fade cascade damping={0.1}>
         {/* Choose history type */}
         <Toaster position="top-right" reverseOrder={false} />
-        <div className="hidden bg-primary text-slate-100 flex justify-between mt-24 rounded-lg m-5 lg:flex scroll-smooth">
+        <div className="hidden bg-primary text-slate-100  justify-between mt-24 rounded-lg m-5 lg:flex scroll-smooth">
           <button
             onClick={() => {
               setFilterDataType(activity), setReload(!reload);
@@ -123,36 +126,18 @@ function History() {
         </div>
 
         <div className="flex justify-end lg:hidden me-5">
-          <div className=" dropdown dropdown-end mt-24">
-            <label tabIndex={0} className=" ">
-              <div className="btn btn-primary text-white ">
-                Type <VscChevronDown />
-              </div>
-            </label>
-            <ul
-              tabIndex={0}
-              className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
-            >
-              <li>
-                <a>All</a>
-              </li>
-              <li>
-                <a>Run</a>
-              </li>
-              <li>
-                <a>Swim</a>
-              </li>
-              <li>
-                <a>Walk</a>
-              </li>
-              <li>
-                <a>Cycling</a>
-              </li>
-              <li>
-                <a>Boxing</a>
-              </li>
-            </ul>
-          </div>
+          <select
+            className="select select-primary max-w-xs mt-24"
+            onChange={(e) => filterType(e.target.value)}
+          >
+            <option value={"All"}>All</option>
+
+            {activityType.map((item, index) => (
+              <option key={index} value={item.ActivityTypeName}>
+                {item.ActivityTypeName}
+              </option>
+            ))}
+          </select>
         </div>
         <div className="xl:container xl:mx-auto  px-5 xl:px-10 ">
           {/* Card */}

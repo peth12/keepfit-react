@@ -11,9 +11,9 @@ export const Login = () => {
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    if(userEmail == "" && userPassword == ""){
-      toast.error("please input data")
-      return
+    if (userEmail == "" && userPassword == "") {
+      toast.error("please input data");
+      return;
     }
     axios
       .post(`https://keepfit-backend.onrender.com/auth/login`, {
@@ -21,22 +21,22 @@ export const Login = () => {
         UserPassword: userPassword,
       })
       .then((result) => {
-        console.log(result.data)
-        if(result.data.message == "login success"){
+        console.log(result.data);
+        if (result.data.message == "login success") {
           console.log("eiei");
           navigate("/dashboard");
-        setTimeout(() => {
-          toast.success("Login Success 🎉", {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: true,
-            closeOnClick: false,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-          });
-        }, 1);
+          setTimeout(() => {
+            toast.success("Login Success 🎉", {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: true,
+              closeOnClick: false,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+            });
+          }, 1);
         }
       })
       .catch((err) => console.error(err));
@@ -46,7 +46,7 @@ export const Login = () => {
     <>
       {/* <NavbarLandingPage /> */}
       <div className=" flex h-[100vh]">
-        <Toaster/>
+        <Toaster />
         {/* section 1 */}
         <div className="left hidden md:block h-[100%] w-[100%] "></div>
         {/* section 2 */}
