@@ -17,7 +17,7 @@ export const Dashboard = () => {
     <Toaster/>
       <DashboardData>
       <div className="xl:container mx-auto px-10">
-      <div className="flex justify-center mt-24 px-5">
+      <div className="flex justify-center pt-[75px] px-5">
         <div className="mx-auto px-5">
           <div className="flex flex-col xl:flex-row gap-5 justify-center ">
             <div className="shadow-xl rounded-xl p-10  gradient-background-user h-auto w-full ">

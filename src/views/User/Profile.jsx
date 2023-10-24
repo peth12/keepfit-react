@@ -18,7 +18,7 @@ const Profile = () => {
   return (
     <Layout>
       <div className="xl:container xl:mx-auto">
-        <div className="px-4 mt-28">
+        <div className="px-4 pt-[75px]">
           <div className="grid grid-cols-2 gap-4">
             <div className="col-span-2 rounded-xl shadow-lg">
               {/* Profile picture card */}
