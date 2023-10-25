@@ -28,6 +28,10 @@ import { createStore } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import rootReducer from "./reducers/index.js";
 
+// Route 
+
+import UserRoute from "./routes/UserRoute.jsx";
+import AdminRoute from "./routes/AdminRoute.jsx";
 
 
 const store = createStore(rootReducer, composeWithDevTools());
@@ -52,71 +56,73 @@ const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: (
+      <UserRoute>
       <ActivityData>
-        {" "}
         <Dashboard />
       </ActivityData>
+      </UserRoute>
     ),
   },
   {
     path: "/activity",
-    element: <Activity />,
+    element: <UserRoute> <Activity /></UserRoute>
   },
   {
     path: "/history",
-    element: <History />,
+    element:(<UserRoute> <History /></UserRoute>),
   },
   {
     path: "/history/:id",
-    element: <History />,
+    element: (<UserRoute> <History /></UserRoute>), 
   },
   {
     path: "/user",
-    element: <Profile />,
+    element: (<UserRoute> <Profile /></UserRoute>),
   },{
     path: "/editHistory/:id",
-    element: <EditHistory/>
+    element: (<UserRoute><EditHistory/></UserRoute>) 
   },
   {
     path: "/admin/user",
-    element: <UserManagement />,
+    element:(<AdminRoute> <UserManagement /></AdminRoute>),
   },
   {
     path: "/admin/user/:id",
-    element: <UserManagement />,
+    element: (<AdminRoute> <UserManagement /></AdminRoute>),
   },
   {
     path: "/admin/user/edit/:id",
-    element: <EditUserPage />,
+    element: (<AdminRoute><EditUserPage /></AdminRoute>),
   },
   {
     path: "/admin/activity",
-    element: <ActivityManagement />,
+    element: (<AdminRoute><ActivityManagement /></AdminRoute>),
   },
   {
     path: "/admin/activity/edit/:id",
-    element: <EditActivityPage />,
+    element: (<AdminRoute><EditActivityPage /></AdminRoute>),
   },
   {
     path: "/admin/activity/:id",
-    element: <ActivityManagement />,
+    element: (<AdminRoute><ActivityManagement /></AdminRoute>),
   },
   {
     path: "/admin/workout",
-    element: <WorkoutManagement />,
+    element: (<AdminRoute><WorkoutManagement /></AdminRoute>),
   },
   {
     path: "/admin/workout/:id",
-    element: <WorkoutManagement />,
+    element: (<AdminRoute><WorkoutManagement /></AdminRoute>),
   },
   {
     path: "/admin/workout/edit/:id",
-    element: <EditWorkoutPage />,
+    element: (<AdminRoute><EditWorkoutPage /></AdminRoute>),
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>
-  <RouterProvider router={router}></RouterProvider>
+  <RouterProvider router={router}>
+  </RouterProvider>
   </Provider>
 );

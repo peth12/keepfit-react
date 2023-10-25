@@ -1,9 +1,12 @@
-import { React, useState } from "react";
+import { React, useState, useEffect } from "react";
 import { Layout } from "../../components/Layout";
 import { FaUserAstronaut } from "react-icons/fa";
 import "./User.css";
 import { useDispatch } from "react-redux";
 import { currentUser } from "../../function/auth";
+import axios from 'axios'
+import {useNavigate} from 'react-router-dom'
+import toast, { Toaster } from "react-hot-toast";
 
 const Profile = () => {
   const [isEditMode, setIsEditMode] = useState(false);
@@ -15,19 +18,26 @@ const Profile = () => {
   const [email, setEmail] = useState('');
   const [image, setImage] = useState('');
   const [userDate, setUserDate] = useState('');
+  const [userId, setUserId] = useState("");
+  const [reload, setReload] =useState(false)
+
+  const navigate = useNavigate()
 
 
   const toggleEditMode = () => {
     setIsEditMode(!isEditMode);
   };
   const idToken = localStorage.token;
+  const userEmail = localStorage.userEmail;
   const dispatch = useDispatch();
   
+useEffect(()=> {
   if (idToken) {
     currentUser(idToken)
       .then((res) => {
 
         console.log("data in profile ", res.data);
+        setUserId(res.data._id)
         setFirstName(res.data.Userfname)
         setLastName(res.data.Userfname)
         setWeight(res.data.Weight)
@@ -48,6 +58,8 @@ const Profile = () => {
       .catch((err) => console.error(err));
   }
 
+}, [reload])
+
   const changeDateFormat = (query) => {
     const dateData = new Date(query);
     const date = new Date()
@@ -60,8 +72,55 @@ const Profile = () => {
     };
   };
   
+
+  const updateUser = async (e) => {
+    e.preventDefault();
+    await axios
+      .put(`https://keepfit-backend.onrender.com/user/update/${userId}`, {
+        Userfname: firstName,
+        Userlname: lastName,
+        UserDateOfBirth: userDate,
+        Gender: gender,
+        Weight: weight,
+        Height: height,
+        UserEmail :userEmail,
+        UserImage: image,
+      })
+      .then((res) => {
+        console.log(res);
+        navigate("/user");
+        setReload(!reload)        
+        setTimeout(() => {
+          toast.success("Update Success", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: true,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
+        }, 1);
+      })
+      .catch((err) => console.error(err));
+  };
+
+  const handleFileInput = (e) => {
+    const file = e.target.files[0]
+    console.log(`file : ${e.target.files[0]}`);
+    previewFile(file)
+}
+const previewFile = (file) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setImage(reader.result)
+    }
+}
   return (
     <Layout>
+      <Toaster/>
       <div className="xl:container xl:mx-auto">
         <div className="px-4 pt-[75px]">
           <div className="grid grid-cols-2 gap-4">
@@ -95,7 +154,7 @@ const Profile = () => {
                   {/* Profile picture edit button */}
                   {isEditMode ? (
                     <label className="bg-primary hover:bg-primary-focus duration-150 text-white font-semibold py-2 px-4 rounded cursor-pointer">
-                      <input type="file" className="hidden" /> Upload new image
+                      <input type="file" className="hidden" onChange={handleFileInput} /> Upload new image
                     </label>
                   ) : (
                     <div className="eiei"></div>
@@ -260,6 +319,7 @@ const Profile = () => {
                             id="inputBirthday"
                             type="date"
                             name="birthday"
+                            onChange={(e) => setUserDate(e.target.value)}
                             placeholder="Enter your birthday"
                           />
                         </div>
@@ -291,7 +351,7 @@ const Profile = () => {
                     <div className="flex gap-6">
                       <button
                         className="btn btn-primary text-white font-semibold py-2 px-4 rounded"
-                        onClick={toggleEditMode}
+                        onClick={updateUser}
                       >
                         Save changes
                       </button>
