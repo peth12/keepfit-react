@@ -158,7 +158,7 @@ const SignUp = () => {
               <div className="form-control">
                 <label className="label">
                   <span className="label-text text-primary font-semibold text-[16px]">
-                    Email222
+                    Email
                   </span>
                 </label>
                 <input
