@@ -30,7 +30,7 @@ import rootReducer from "./reducers/index.js";
 
 
 
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, composeWithDevTools());
 
 
 
