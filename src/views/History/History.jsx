@@ -129,42 +129,42 @@ function History() {
     <Layout>
       <Fade cascade damping={0.1}>
         {/* Choose history type */}
-        <Toaster position="top-right" reverseOrder={false} />
-        <div className="hidden bg-primary text-slate-100  justify-between pt-[75px] rounded-lg m-5 lg:flex scroll-smooth">
-          <button
-            onClick={() => {
-              setFilterDataType(activity), setReload(!reload);
-            }}
-            className="btn btn-ghost normal-case lg:text-xl"
-          >
-            All
-          </button>
-          {activityType.map((item, index) => (
+        <div className="xl:container xl:mx-auto  px-5 xl:px-10 ">
+          <Toaster position="top-right" reverseOrder={false} />
+          <div className="hidden bg-primary text-slate-100  justify-between pt-[75px] rounded-lg  lg:flex scroll-smooth">
             <button
-              key={index}
-              onClick={() => filterType(`${item.ActivityTypeName}`)}
+              onClick={() => {
+                setFilterDataType(activity), setReload(!reload);
+              }}
               className="btn btn-ghost normal-case lg:text-xl"
             >
-              {item.ActivityTypeName}
+              All
             </button>
-          ))}
-        </div>
-
-        <div className="flex justify-end lg:hidden me-5">
-          <select
-            className="select select-primary max-w-xs mt-24"
-            onChange={(e) => filterType(e.target.value)}
-          >
-            <option value={"All"}>All</option>
-
             {activityType.map((item, index) => (
-              <option key={index} value={item.ActivityTypeName}>
+              <button
+                key={index}
+                onClick={() => filterType(`${item.ActivityTypeName}`)}
+                className="btn btn-ghost normal-case lg:text-xl"
+              >
                 {item.ActivityTypeName}
-              </option>
+              </button>
             ))}
-          </select>
-        </div>
-        <div className="xl:container xl:mx-auto  px-5 xl:px-10 ">
+          </div>
+
+          <div className="flex justify-end lg:hidden me-5">
+            <select
+              className="select select-primary max-w-xs mt-24"
+              onChange={(e) => filterType(e.target.value)}
+            >
+              <option value={"All"}>All</option>
+
+              {activityType.map((item, index) => (
+                <option key={index} value={item.ActivityTypeName}>
+                  {item.ActivityTypeName}
+                </option>
+              ))}
+            </select>
+          </div>
           {/* Card */}
           {filterDataType.map((item, index) => (
             <div
@@ -189,12 +189,16 @@ function History() {
               {/* Description */}
               <div className="text-slate-700 lg:max-w-72   w-100 lg:ml-2 lg:ps-5 lg:w-52">
                 <div className="">
-                  <p className="text-sm text-slate-500 ">Activity Name</p>
+                  <p className="text-sm lg:text-base  text-slate-500 ">
+                    Activity Name
+                  </p>
                   <p className="text-lg lg:text-2xl font-bold ">
                     {item.ActivityName}
                   </p>
 
-                  <p className="text-sm mt-3 text-slate-500">Description</p>
+                  <p className="text-sm  lg:text-base mt-3 text-slate-500">
+                    Description
+                  </p>
 
                   <p className="text-lg lg:text-2xl font-bold w-auto">
                     {item.ActivityDesc}
@@ -205,7 +209,9 @@ function History() {
               <div className=" text-slate-700  lg:gap-10 gap-5 flex flex-row  lg:ps-5 mt-2 ">
                 <div className="w-30">
                   <div className=" ">
-                    <p className="text-sm text-slate-500">Date </p>
+                    <p className="text-sm  lg:text-base text-slate-500">
+                      Date{" "}
+                    </p>
                     <p className="text-lg font-bold lg:text-2xl ">
                       {changeDateFormat(item.ActivityDate).all}
                     </p>
@@ -214,7 +220,9 @@ function History() {
 
                 <div className=" ">
                   <div className=" ">
-                    <p className="text-sm text-slate-500">Duration (Mins)</p>
+                    <p className="text-sm  lg:text-base text-slate-500">
+                      Duration (Mins)
+                    </p>
                     <p className="text-lg font-bold lg:text-2xl">
                       {item.ActivityDuration}
                     </p>
