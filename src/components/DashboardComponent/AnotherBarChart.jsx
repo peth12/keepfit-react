@@ -77,10 +77,8 @@ const DurationChart = () => {
     },
     scales: {
       x: {
-
         ticks: {
-          title:"times",
-          align:"center",
+
           font: {
             size: 20,
             weight: 1000,
@@ -88,15 +86,38 @@ const DurationChart = () => {
         },
       },
       y: {
+        
         display: true,
         ticks: {
-          title:"times",
+          stepSize:1,
           font: {
-            size: 30,
+            size: 24,
             weight: 900,
           },
         },
       },
+      xAxes: [ {
+        type: 'time',
+        display: true,
+        scaleLabel: {
+          display: true,
+          labelString: 'Date'
+        },
+        ticks: {
+          major: {
+            fontStyle: 'bold',
+            fontColor: '#FF0000'
+          }
+        }
+      } ],
+      yAxes: [ {
+        type:"",
+        display: true,
+        scaleLabel: {
+          display: true,
+          labelString: 'value'
+        }
+      } ]
     },
     responsive: false,
     maintainAspectRatio: true,
@@ -109,7 +130,7 @@ const DurationChart = () => {
 
   return (
     <div className="pl-10">
-      <Bar data={data} options={options} height="400px" width="900px" />
+      <Bar data={data} options={options} height="650px" width="900px" />
     </div>
   );
 };

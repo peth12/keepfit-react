@@ -57,6 +57,7 @@ export const Dashboard = () => {
                   </div>
                 </div>
                 <div className="block xl:hidden py-10">
+                <div className="py-10 pl-4 border-b-4">Activity Count Overview</div>
                   <ActivityChartHorizon />
                 </div>
               </div>
