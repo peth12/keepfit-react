@@ -41,7 +41,7 @@ if (idToken) {
         <div className="mx-auto px-5">
           <div className="flex flex-col xl:flex-row gap-5 justify-center ">
             <div className="shadow-xl rounded-xl p-10  gradient-background-user h-auto w-full ">
-              <UserCard />
+              <UserCard username = {"user@gmail.com"} height={160} weight={38}/>
             </div>
             <div className="shadow-xl rounded-xl  bg-orange-400 h-auto w-full">
               <DurationStackCard  />
