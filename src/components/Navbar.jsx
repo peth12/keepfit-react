@@ -31,8 +31,8 @@ export const Navbar = () => {
   return (
     <nav className="flex justify-center ">
       <div
-        style={{ "box-shadow": "0px 4px 50px rgba(255, 137.70, 0, 0.30)" }}
-        className="navbar justify-between lg:px-10 px-3 z-10 bg-white fixed"
+        
+        className="navbar justify-between lg:px-10 px-3 z-10 bg-white fixed "
       >
         <div className="dropdown dropdown-bottom  flex lg:hidden">
           <label tabIndex={0} className="btn btn-ghost btn-circle avatar">

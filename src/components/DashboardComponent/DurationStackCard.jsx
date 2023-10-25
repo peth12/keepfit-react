@@ -6,7 +6,7 @@ const DurationStackCard = () => {
   return (
     <div className="flex flex-col align-middle justify-between h-full">
       <div className="text-4xl font-semibold text-white text-start p-2 italic">
-        All time summary
+        Daily time summary
       </div>
       <div className="text-center w-max-[580px]" id="scroll-container">
         <p
@@ -18,7 +18,7 @@ const DurationStackCard = () => {
             duration.running +
             duration.cycling +
             duration.swimming +
-            duration.boxing}5555
+            duration.boxing}
         </p>
       </div>
       <div className="text-4xl font-semibold text-white text-end pr-4 italic">

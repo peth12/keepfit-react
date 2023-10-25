@@ -23,6 +23,7 @@ const DurationChart = () => {
           "#ff9b05",
           "#53D8B9",
           "#4B9FC9",
+          "#A04FF7"
         ],
         hoverOffset: 14,
       },
@@ -33,7 +34,7 @@ const DurationChart = () => {
     plugins: {
       legend: {
         display: true,
-        fullSize:true,
+
         position: "center",
         labels: {
           generateLabels: function (chart) {
@@ -57,28 +58,26 @@ const DurationChart = () => {
         },
         titleFont: {
           weight: 700 ,
-          size: 20,
+          size: 30,
         },
         bodyFont: {
           weight: 700 ,
-          size: 20,
+          size: 30,
         }
       },
 
+    },
+    animation: { // Change to lowercase "animation"
+      easing: "easeOutQuad",
+      duration: 2000, // Animation duration in milliseconds
     },
   };
 
   return (
 
     <div>
-      {/* {data.datasets.length != 0 ? <Doughnut data={data} options={options} /> : <p>eiei</p>} */}
-      <Doughnut data={data} options={options} />
-      <div className="legend flex gap-3 mt-8 justify-center items-center">
-      <div>
-        {console.log(duration)}
-        {/* {console.log(dataDuration.Running)} */}
-      </div>
-      </div>
+      <Doughnut data={data} options={options} width={"full"} />
+      {console.log(duration)}
     </div>
   );
 };
