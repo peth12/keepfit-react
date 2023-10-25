@@ -14,6 +14,10 @@ const ActivityManagement = () => {
   const [user, setUser] = useState([]);
   const [userById, setUserById] = useState([]);
   const [activityTypeById, setactivityTypeById] = useState([]);
+  const [filterDataUser, setFilterDataUser] = useState([]);
+
+  const [userSelect, setUserSelect] = useState([]);
+
   const [reload, setReload] = useState(false);
 
   const navigate = useNavigate();
@@ -22,7 +26,15 @@ const ActivityManagement = () => {
       .get("https://keepfit-backend.onrender.com/activity")
       .then((result) => setUser(result.data))
       .catch((err) => console.log(err));
+    axios
+      .get("https://keepfit-backend.onrender.com/user")
+      .then((result) => setUserSelect(result.data))
+      .catch((err) => console.log(err));
   }, [reload]);
+
+  useEffect(() => {
+    setFilterDataUser(user);
+  }, [user]);
 
   useEffect(() => {
     // Fetch data by ID when the 'id' parameter changes
@@ -48,8 +60,7 @@ const ActivityManagement = () => {
   const notify = () => toast.success("delete success");
 
   const deleteData = async (data) => {
-    if(window.confirm(`Are you sure delete`)){
-
+    if (window.confirm(`Are you sure delete`)) {
       await axios
         .delete(`https://keepfit-backend.onrender.com/activity/${data}`)
         .then((res) => {
@@ -57,21 +68,29 @@ const ActivityManagement = () => {
           navigate("/admin/activity");
           setReload(!reload);
           notify();
-          
         })
         .catch((err) => console.error(err));
     }
   };
   const changeDateFormat = (query) => {
-    const dateData = new Date(query)
+    const dateData = new Date(query);
     return {
-        date : dateData.getDate(),
-        mont : dateData.getMonth(),
-        year : dateData.getFullYear(),
-        all : dateData.toDateString()
+      date: dateData.getDate(),
+      mont: dateData.getMonth(),
+      year: dateData.getFullYear(),
+      all: dateData.toDateString(),
+    };
+  };
+  const filterUser = (UserEmail) => {
+    if (UserEmail === "All") {
+      setFilterDataUser(user), setReload(!reload);
+      return;
     }
-}
-
+    console.log(UserEmail);
+    setFilterDataUser(
+      user.filter((item) => (item.UserEmail == UserEmail))
+    );
+  };
   return (
     <>
       <LayoutAdmin>
@@ -84,7 +103,23 @@ const ActivityManagement = () => {
             </h1>
           </div>
           <div className="flex justify-end pb-6">
-            <SearchBox />
+            <select
+              className="select select-primary max-w-xs"
+              onChange={(e) => filterUser(e.target.value)}
+            >
+              <option value={"All"}>All</option>
+
+              {userSelect.map((item, index) => {
+                
+                return (
+                  <option key={index} value={item.UserEmail}>
+                    {item.UserEmail}
+                  </option>
+                );
+              })}
+            </select>
+
+            {/* <SearchBox /> */}
           </div>
 
           <div className="overflow-x-auto">
@@ -92,7 +127,6 @@ const ActivityManagement = () => {
               {/* Table head */}
               <thead className="text-[18px] text-slate-600">
                 <tr>
-                  
                   <th className="w-1/5 border border-r ">Activity Owner</th>
                   <th className="w-1/5 border border-r">Activity name</th>
                   <th className="w-1/5 border border-r">Description</th>
@@ -104,10 +138,9 @@ const ActivityManagement = () => {
               </thead>
               <tbody>
                 {/* Row 1 */}
-                {user.map((item, index) => {
+                {filterDataUser.map((item, index) => {
                   return (
                     <tr className="hover border " key={index}>
-                      
                       <td className="w-1/5 border border-r">
                         {item.UserEmail}
                       </td>
