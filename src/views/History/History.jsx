@@ -30,30 +30,34 @@ function History() {
   const [userEmail, setUserEmail] = useState("");
 
   const idToken = localStorage.token;
+  const emailUser = localStorage.userEmail;
   const dispatch = useDispatch();
 
-  if (idToken) {
-    currentUser(idToken)
-      .then((res) => {
-        console.log("data in history ", res.data);
-        dispatch({
-          type: "LOGIN",
-          payload: {
-            token: res.data.token,
-            userEmail: res.data.UserEmail,
-            userRole: res.data.UserRole,
-          },
-        });
-        setUserEmail(res.data.UserEmail);
-      })
-      .catch((err) => console.error(err));
-  }
+  useEffect(() => {
+    if (idToken) {
+      currentUser(idToken)
+        .then((res) => {
+          console.log("data in history ", res.data);
+          dispatch({
+            type: "LOGIN",
+            payload: {
+              token: res.data.token,
+              userEmail: res.data.UserEmail,
+              userRole: res.data.UserRole,
+            },
+          });
+          setUserEmail(res.data.UserEmail);
+        })
+        .catch((err) => console.error(err));
+    }
+  });
+
   useEffect(() => {
     axios
-      .get("https://keepfit-backend.onrender.com/activity")
-      .then((result) =>
-        setActivity(result.data.filter((email) => email.UserEmail == userEmail))
-      )
+      .post("https://keepfit-backend.onrender.com/activity", {
+        UserEmail: emailUser,
+      })
+      .then((result) => setActivity(result.data))
       .catch((err) => console.log(err));
     axios
       .get("https://keepfit-backend.onrender.com/activityType")

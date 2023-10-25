@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Signup.css";
 import axios from "axios";
+import {AiOutlineArrowRight, AiOutlineArrowLeft} from 'react-icons/ai'
 import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
@@ -16,6 +17,7 @@ const SignUp = () => {
     RePassword: "",
   });
   const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate()
 
   const handleInputChange = (e) => {
     setFormData({ ...FormData, [e.target.name]: e.target.value });
@@ -113,13 +115,14 @@ const SignUp = () => {
                   <select
                     name="Gender"
                     className="select select-bordered text-gray-400 "
+                    onChange={handleInputChange}
                   >
                     <option disabled selected>
                       None
                     </option>
-                    <option>Female</option>
-                    <option>Male</option>
-                    <option>Not specified</option>
+                    <option value={"Female"}>Female</option>
+                    <option value={"Male"}>Male</option>
+                    <option value={"Not specified"}>Not specified</option>
                   </select>
                 </div>
               </div>
