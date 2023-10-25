@@ -69,6 +69,7 @@ const DurationChart = () => {
   };
 
   return (
+
     <div>
       {/* {data.datasets.length != 0 ? <Doughnut data={data} options={options} /> : <p>eiei</p>} */}
       <Doughnut data={data} options={options} />
