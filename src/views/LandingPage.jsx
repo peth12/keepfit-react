@@ -190,7 +190,7 @@ export const LandingPage = () => {
           <main className="w-full lg:h-[900px] md:h-[800px] flex flex-col justify-start items-center gap-20 lg:gap-28 py-12 md:py-0 mt-3">
             <div className="flex flex-col items-center relative before:absolute before:-bottom-6 before:left-30 before:w-20 before:h-1 before:rounded-lg before:bg-gradient-to-r before:from-amber-500 before:to-red-500">
               <span className="text-black lg:text-5xl md:text-4xl text-3xl mt-10">
-                Feature
+                Features
               </span>
             </div>
             <div className="w-full lg:w-3/4 grid md:grid-cols-2 lg:gap-8 md:gap-5 gap-8 px-6 md:px-4 lg:px-0 ">
@@ -198,7 +198,7 @@ export const LandingPage = () => {
                 <img className="w-full h-h-56" src="admin.png" />
                 <div className="flex flex-col lg:p-6 md:p-4 p-6 gap-2 group">
                   <span className="text-amber-500 text-xl group-hover:underline font-semibold uppercase">
-                    Admin page
+                    Admin
                   </span>
 
                   <p className="text-zinc-400 text-base">
@@ -214,11 +214,11 @@ export const LandingPage = () => {
                 <img className="w-full h-h-56" src="historys.png" />
                 <div className="flex flex-col lg:p-6 md:p-4 p-6 gap-2 group">
                   <span className="text-amber-500 text-xl group-hover:underline font-semibold uppercase">
-                    History
+                    My Activity
                   </span>
 
                   <p className="text-zinc-400 text-base">
-                    Our platform boasts a comprehensive History page, which
+                    Our platform boasts a comprehensive My Activity page, which
                     serves the purpose of keeping users updated on their
                     exercise activities by displaying a detailed record of the
                     types of exercises performed and the precise times at which

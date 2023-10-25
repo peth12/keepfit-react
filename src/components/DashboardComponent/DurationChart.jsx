@@ -70,6 +70,7 @@ const DurationChart = () => {
 
   return (
     <div>
+      {/* {data.datasets.length != 0 ? <Doughnut data={data} options={options} /> : <p>eiei</p>} */}
       <Doughnut data={data} options={options} />
       <div className="legend flex gap-3 mt-8 justify-center items-center">
       <div>

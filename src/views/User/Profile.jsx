@@ -2,6 +2,8 @@ import { React, useState } from "react";
 import { Layout } from "../../components/Layout";
 import { FaUserAstronaut } from "react-icons/fa";
 import "./User.css";
+import { useDispatch } from "react-redux";
+import { currentUser } from "../../function/auth";
 
 const Profile = () => {
   const [isEditMode, setIsEditMode] = useState(false);
@@ -10,11 +12,54 @@ const Profile = () => {
   const [weight, setWeight] = useState('');
   const [height, setHeight] = useState('');
   const [gender, setGender] = useState('');
+  const [email, setEmail] = useState('');
+  const [image, setImage] = useState('');
+  const [userDate, setUserDate] = useState('');
+
 
   const toggleEditMode = () => {
     setIsEditMode(!isEditMode);
   };
+  const idToken = localStorage.token;
+  const dispatch = useDispatch();
+  
+  if (idToken) {
+    currentUser(idToken)
+      .then((res) => {
 
+        console.log("data in profile ", res.data);
+        setFirstName(res.data.Userfname)
+        setLastName(res.data.Userfname)
+        setWeight(res.data.Weight)
+        setHeight(res.data.Height)
+        setGender(res.data.Gender)
+        setEmail(res.data.UserEmail)
+        setImage(res.data.UserImage)
+        setUserDate(res.data.UserDateOfBirth)
+        dispatch({
+          type: "LOGIN",
+          payload: {
+            token: res.data.token,
+            userEmail: res.data.UserEmail,
+            userRole: res.data.UserRole,
+          },
+        });
+      })
+      .catch((err) => console.error(err));
+  }
+
+  const changeDateFormat = (query) => {
+    const dateData = new Date(query);
+    const date = new Date()
+    return {
+      date: dateData.getDate(),
+      mont: dateData.getMonth(),
+      year: dateData.getFullYear(),
+      all: dateData.toDateString(),
+      birthday: date.getFullYear() - dateData.getFullYear()
+    };
+  };
+  
   return (
     <Layout>
       <div className="xl:container xl:mx-auto">
@@ -32,7 +77,7 @@ const Profile = () => {
                   {/* Profile picture image */}
                   <img
                     className="w-48 h-48 mx-auto rounded-full mb-2 border-primary border-4"
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy4z74_LFWLdVmNvCDM0egcILVCWwp0kfEYw&usqp=CAU"
+                    src={image}
                     alt=""
                   />
                   {/* Profile picture help block */}
@@ -43,7 +88,7 @@ const Profile = () => {
                     </div>
                   ) : (
                     <div className="text-xl text-black my-10 ">
-                      eieija@gmail.com
+                      {email}
                     </div>
                   )}
 
@@ -81,6 +126,8 @@ const Profile = () => {
                           type="text"
                           placeholder="Enter your first name"
                           onChange={(e) => setFirstName(e.target.value)}
+                          value={firstName}
+                          
                         />
                       ) : (
                         <p className="px-3 text-lg">{firstName}</p>
@@ -102,6 +149,7 @@ const Profile = () => {
                           type="text"
                           placeholder="Enter your last name"
                           onChange={(e) => setLastName(e.target.value)}
+                          value={lastName}
                         />
                       ) : (
                         <p className="px-3 text-lg">{lastName}</p>
@@ -127,6 +175,7 @@ const Profile = () => {
                           min="0"
                           placeholder="Enter your weight"
                           onChange={(e) => setWeight(e.target.value)}
+                          value={weight}
                         />
                       ) : (
                         <p className="px-3 text-lg">{weight}</p>
@@ -149,6 +198,7 @@ const Profile = () => {
                           min="0"
                           placeholder="Enter your Height"
                           onChange={(e) => setHeight(e.target.value)}
+                          value={height}
                         />
                       ) : (
                         <p className="px-3 text-lg">{height}</p>
@@ -185,11 +235,11 @@ const Profile = () => {
                       {isEditMode ? (
                         <select className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:border-primary" onChange={(e) => setGender(e.target.value)}>
                           <option disabled selected>
-                            None
+                            {gender}
                           </option>
-                          <option>Female</option>
-                          <option>Male</option>
-                          <option>Not specified</option>
+                          <option value={"Female"}>Female</option>
+                          <option value={"Male"}>Male</option>
+                          <option value={"Not specified"}>Not specified</option>
                         </select>
                       ) : (
                         <p className="px-3 text-lg">{gender}</p>
@@ -218,7 +268,7 @@ const Profile = () => {
                           <label className="block text-sm font-semibold text-gray-600">
                             Age
                           </label>
-                          <p className="px-3 text-lg">25</p>
+                          <p className="px-3 text-lg">{changeDateFormat(userDate).birthday}</p>
                         </div>
                       )}
                     </div>

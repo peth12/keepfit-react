@@ -17,6 +17,8 @@ import { GiBodyBalance } from "react-icons/gi";
 import { RiBoxingLine } from "react-icons/ri";
 import toast, { Toaster } from "react-hot-toast";
 import { Fade } from "react-awesome-reveal";
+import { useDispatch } from "react-redux";
+import { currentUser } from "../../function/auth";
 
 function History() {
   const { id } = useParams();
@@ -25,6 +27,25 @@ function History() {
   const [userById, setUserById] = useState([]);
   const [reload, setReload] = useState(false);
   const [filterDataType, setFilterDataType] = useState([]);
+
+const idToken = localStorage.token;
+const dispatch = useDispatch();
+
+if (idToken) {
+  currentUser(idToken)
+    .then((res) => {
+      console.log("data in history ", res.data);
+      dispatch({
+        type: "LOGIN",
+        payload: {
+          token: res.data.token,
+          userEmail: res.data.UserEmail,
+          userRole: res.data.UserRole,
+        },
+      });
+    })
+    .catch((err) => console.error(err));
+}
   useEffect(() => {
     axios
       .get("https://keepfit-backend.onrender.com/activity")
