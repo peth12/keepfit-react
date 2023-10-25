@@ -43,9 +43,6 @@ const UserManagement = () => {
             User Management <FaHouseChimneyUser />
           </h1>
         </div>
-        <div className="flex justify-end pb-6">
-          <SearchBox />
-        </div>
 
         <div className="overflow-x-auto">
           <table className="table border-collapse">

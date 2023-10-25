@@ -47,7 +47,6 @@ const ActivityChart = () => {
             }));
           },
         },
-        fullSize: true,
       },
       
       tooltip: {

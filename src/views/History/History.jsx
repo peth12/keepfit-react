@@ -19,6 +19,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { Fade } from "react-awesome-reveal";
 import { useDispatch } from "react-redux";
 import { currentUser } from "../../function/auth";
+import {GiBoxingGlove} from 'react-icons/gi'
 
 function History() {
   const { id } = useParams();
@@ -109,7 +110,7 @@ function History() {
       case "Yoga":
         return <GiBodyBalance className="fill-primary scale-150 mb-1" />;
       case "Boxing":
-        return <RiBoxingLine className="fill-primary scale-150 mb-1" />;
+        return <GiBoxingGlove className="fill-primary scale-150 mb-1" />;
       case "Cycling":
         return <BiCycling className="fill-primary scale-150 mb-1" />;
       case "Swimming":
