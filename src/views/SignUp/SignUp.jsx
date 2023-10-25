@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Signup.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
 
 const SignUp = () => {
   const [FormData, setFormData] = useState({
@@ -35,6 +36,18 @@ const SignUp = () => {
         FormData
       );
       navigate('/login')
+      setTimeout(() => {
+        toast.success("SignUp Success 🎉", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: true,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      }, 1);
 
 
       console.log("Data saved successfully:", response.data);
