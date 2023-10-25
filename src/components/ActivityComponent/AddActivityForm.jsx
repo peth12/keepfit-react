@@ -7,6 +7,8 @@ import { RiBoxingLine } from "react-icons/ri";
 import { FaRunning } from "react-icons/fa";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { currentUser } from "../../function/auth";
+import { useDispatch } from "react-redux";
 
 const AddActivityForm = ({
   toggleFormVisibility,
@@ -26,6 +28,8 @@ const AddActivityForm = ({
   const [userId, setUserId] = useState("");
   const [allActivityType, setAllActivityType] = useState([]);
   const [previewSource, setPreviewSource] = useState("");
+  const idToken = localStorage.token;
+  const dispatch = useDispatch();
   const selectedActivity = activityList.find(
     (activity) => activity.ActivityTypeName === defaultType
   );
@@ -59,6 +63,23 @@ const AddActivityForm = ({
     UserEmail: "",
     UserId: 1,
   });
+
+  if (idToken) {
+    currentUser(idToken)
+      .then((res) => {
+        console.log("data in history ", res.data);
+        dispatch({
+          type: "LOGIN",
+          payload: {
+            token: res.data.token,
+            userEmail: res.data.UserEmail,
+            userRole: res.data.UserRole,
+          },
+        });
+        setUserEmail(res.data.UserEmail)
+      })
+      .catch((err) => console.error(err));
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -121,7 +142,9 @@ const AddActivityForm = ({
 
   const previewFile = (file) => {
     if (file === "default") {
-      setPreviewSource("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png")
+      setPreviewSource(
+        "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png"
+      );
     } else {
       const reader = new FileReader();
       reader.readAsDataURL(file);
