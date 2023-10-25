@@ -37,7 +37,6 @@ const DashboardData = ({children}) => {
         setBoxing(boxingActivities);
         setYoga(yogaActivities);
         setCycling(cyclingActivities);
-        console.log(running);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
