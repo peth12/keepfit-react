@@ -61,7 +61,21 @@ export const Login = () => {
           }, 1);
         }
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        
+        console.error(err)
+        toast.error("Login fail 🟥", {
+          autoClose: 5000,
+          hideProgressBar: true,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      
+      }
+      );
   };
 
   return (

@@ -88,7 +88,7 @@ export const Navbar = () => {
             </li>
             <li className="px-20">
               <Link to={"/activity"}>
-                <a>Work Out</a>
+                <a>Workout</a>
                 {/* <FaDumbbell/> */}
                 <FaDumbbell />
                 

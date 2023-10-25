@@ -74,6 +74,7 @@ useEffect(()=> {
   
 
   const updateUser = async (e) => {
+
     e.preventDefault();
     await axios
       .put(`https://keepfit-backend.onrender.com/user/update/${userId}`, {
@@ -89,7 +90,8 @@ useEffect(()=> {
       .then((res) => {
         console.log(res);
         navigate("/user");
-        setReload(!reload)        
+         toggleEditMode();
+
         setTimeout(() => {
           toast.success("Update Success", {
             position: "top-right",
