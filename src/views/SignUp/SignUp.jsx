@@ -138,6 +138,7 @@ const SignUp = () => {
                   <input
                     type="number"
                     name="Weight"
+                    min={0}
                     placeholder="Enter Weigth"
                     value={FormData.Weight}
                     onChange={handleInputChange}
@@ -153,6 +154,7 @@ const SignUp = () => {
                   <input
                     type="number"
                     name="Height"
+                    min={0}
                     placeholder="Enter Height"
                     value={FormData.Height}
                     onChange={handleInputChange}
@@ -219,7 +221,7 @@ const SignUp = () => {
                   <AiOutlineArrowLeft /> <a href="/">Explore more</a>
                 </span>
                 <span className=" justify-end flex flex-row items-center w-1/2">
-                  <a href="/">Login</a>
+                  <a href="/login">Login</a>
                   <AiOutlineArrowRight />
                 </span>
               </div>
