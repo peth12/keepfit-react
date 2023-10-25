@@ -27,6 +27,7 @@ function History() {
   const [userById, setUserById] = useState([]);
   const [reload, setReload] = useState(false);
   const [filterDataType, setFilterDataType] = useState([]);
+  const [userEmail, setUserEmail] = useState("");
 
   const idToken = localStorage.token;
   const dispatch = useDispatch();
@@ -43,13 +44,16 @@ function History() {
             userRole: res.data.UserRole,
           },
         });
+        setUserEmail(res.data.UserEmail);
       })
       .catch((err) => console.error(err));
   }
   useEffect(() => {
     axios
       .get("https://keepfit-backend.onrender.com/activity")
-      .then((result) => setActivity(result.data))
+      .then((result) =>
+        setActivity(result.data.filter((email) => email.UserEmail == userEmail))
+      )
       .catch((err) => console.log(err));
     axios
       .get("https://keepfit-backend.onrender.com/activityType")
