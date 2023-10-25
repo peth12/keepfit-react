@@ -193,44 +193,61 @@ export const LandingPage = () => {
                 Features
               </span>
             </div>
-            <div className="w-full lg:w-3/4 grid md:grid-cols-2 lg:gap-8 md:gap-5 gap-8 px-6 md:px-4 lg:px-0 ">
-              <Fade><div className="flex flex-col justify-start bg-zinc-950 border-b-4 border-red-500 h-full">
-                <img className="w-full h-h-56" src="admin.png" />
-                <div className="flex flex-col lg:p-6 md:p-4 p-6 gap-2 group">
-                  <span className="text-amber-500 text-xl group-hover:underline font-semibold uppercase">
-                    Admin
-                  </span>
+            <div className="w-full lg:w-3/4 grid md:grid-cols-3 lg:gap-8 md:gap-5 gap-8 px-6 md:px-4 lg:px-0 ">
+              <Fade>
+                <div className="flex flex-col justify-start bg-zinc-950 border-b-4 border-red-500 h-full">
+                  <img className="w-full h-h-56" src="dash.png" />
+                  <div className="flex flex-col lg:p-6 md:p-4 p-6 gap-2 group">
+                    <span className="text-amber-500 text-xl group-hover:underline font-semibold uppercase">
+                      Dashboard
+                    </span>
 
-                  <p className="text-zinc-400 text-base">
-                    Our website features user management through the admin
-                    system, enabling administrators to adjust user activity
-                    levels and access user information for making future
-                    adjustments
-                  </p>
+                    <p className="text-zinc-400 text-base">
+                      In the dashboard section, the system displays
+                      comprehensive usage information, providing users with a
+                      detailed overview of their exercise routines, including
+                      statistics on their workout history, progress, and
+                      performance
+                    </p>
+                  </div>
                 </div>
-              </div>
 
-              <div className="flex flex-col justify-start bg-zinc-950 border-b-4 border-red-500 h-full">
-                <img className="w-full h-h-56" src="historys.png" />
-                <div className="flex flex-col lg:p-6 md:p-4 p-6 gap-2 group">
-                  <span className="text-amber-500 text-xl group-hover:underline font-semibold uppercase">
-                    My Activity
-                  </span>
+                <div className="flex flex-col justify-start bg-zinc-950 border-b-4 border-red-500 h-full">
+                  <img className="w-full h-h-56" src="admin.png" />
+                  <div className="flex flex-col lg:p-6 md:p-4 p-6 gap-2 group">
+                    <span className="text-amber-500 text-xl group-hover:underline font-semibold uppercase">
+                      Admin
+                    </span>
 
-                  <p className="text-zinc-400 text-base">
-                    Our platform boasts a comprehensive My Activity page, which
-                    serves the purpose of keeping users updated on their
-                    exercise activities by displaying a detailed record of the
-                    types of exercises performed and the precise times at which
-                    they were completed.
-                  </p>
+                    <p className="text-zinc-400 text-base">
+                      Our website features user management through the admin
+                      system, enabling administrators to adjust user activity
+                      levels and access user information for making future
+                      adjustments
+                    </p>
+                  </div>
                 </div>
-              </div>
+
+                <div className="flex flex-col justify-start bg-zinc-950 border-b-4 border-red-500 h-full">
+                  <img className="w-full h-h-56" src="historys.png" />
+                  <div className="flex flex-col lg:p-6 md:p-4 p-6 gap-2 group">
+                    <span className="text-amber-500 text-xl group-hover:underline font-semibold uppercase">
+                      My Activity
+                    </span>
+
+                    <p className="text-zinc-400 text-base">
+                      Our platform boasts a comprehensive My Activity page,
+                      which serves the purpose of keeping users updated on their
+                      exercise activities by displaying a detailed record of the
+                      types of exercises performed and the precise times at
+                      which they were completed.
+                    </p>
+                  </div>
+                </div>
               </Fade>
             </div>
           </main>
         </section>
-        
       </div>
     </>
   );
