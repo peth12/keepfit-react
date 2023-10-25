@@ -28,24 +28,24 @@ function History() {
   const [reload, setReload] = useState(false);
   const [filterDataType, setFilterDataType] = useState([]);
 
-const idToken = localStorage.token;
-const dispatch = useDispatch();
+  const idToken = localStorage.token;
+  const dispatch = useDispatch();
 
-if (idToken) {
-  currentUser(idToken)
-    .then((res) => {
-      console.log("data in history ", res.data);
-      dispatch({
-        type: "LOGIN",
-        payload: {
-          token: res.data.token,
-          userEmail: res.data.UserEmail,
-          userRole: res.data.UserRole,
-        },
-      });
-    })
-    .catch((err) => console.error(err));
-}
+  if (idToken) {
+    currentUser(idToken)
+      .then((res) => {
+        console.log("data in history ", res.data);
+        dispatch({
+          type: "LOGIN",
+          payload: {
+            token: res.data.token,
+            userEmail: res.data.UserEmail,
+            userRole: res.data.UserRole,
+          },
+        });
+      })
+      .catch((err) => console.error(err));
+  }
   useEffect(() => {
     axios
       .get("https://keepfit-backend.onrender.com/activity")
@@ -185,12 +185,14 @@ if (idToken) {
               {/* Description */}
               <div className="text-slate-700 lg:max-w-72   w-100 lg:ml-2 lg:ps-5 lg:w-52">
                 <div className="">
-                  <p className="text-sm ">Activity Name</p>
-                  <p className=" lg:text-2xl font-bold ">{item.ActivityName}</p>
+                  <p className="text-sm text-slate-500 ">Activity Name</p>
+                  <p className="text-lg lg:text-2xl font-bold ">
+                    {item.ActivityName}
+                  </p>
 
-                  <p className="text-sm mt-3">Description</p>
+                  <p className="text-sm mt-3 text-slate-500">Description</p>
 
-                  <p className=" lg:text-2xl font-bold w-auto">
+                  <p className="text-lg lg:text-2xl font-bold w-auto">
                     {item.ActivityDesc}
                   </p>
                 </div>
@@ -199,8 +201,8 @@ if (idToken) {
               <div className=" text-slate-700  lg:gap-10 gap-5 flex flex-row  lg:ps-5 mt-2 ">
                 <div className="w-30">
                   <div className=" ">
-                    <p className="text-sm">Date </p>
-                    <p className="font-bold lg:text-2xl ">
+                    <p className="text-sm text-slate-500">Date </p>
+                    <p className="text-lg font-bold lg:text-2xl ">
                       {changeDateFormat(item.ActivityDate).all}
                     </p>
                   </div>
@@ -208,8 +210,8 @@ if (idToken) {
 
                 <div className=" ">
                   <div className=" ">
-                    <p className="text-sm">Duration (Minutes)</p>
-                    <p className="font-bold lg:text-2xl">
+                    <p className="text-sm text-slate-500">Duration (Mins)</p>
+                    <p className="text-lg font-bold lg:text-2xl">
                       {item.ActivityDuration}
                     </p>
                   </div>
@@ -221,14 +223,14 @@ if (idToken) {
                 <button className=" text-white">
                   <Link to={`/editHistory/${item._id}`}>
                     <button className="hidden lg:block btn btn-sm bg-primary text-white   me-2 ">
-                      <div className="flex gap-2">
+                      <div className="flex gap-2 ">
                         Edit
                         <TbPencil />
                       </div>
                     </button>
                   </Link>
                   <Link to={`/editHistory/${item._id}`}>
-                    <div className="lg:hidden text-black ">
+                    <div className="lg:hidden text-slate-800 ">
                       <TbPencil />
                     </div>
                   </Link>
@@ -249,7 +251,7 @@ if (idToken) {
 
                   <button
                     onClick={() => deleteData(item._id)}
-                    className="lg:hidden text-black "
+                    className="lg:hidden  text-slate-800"
                   >
                     <TbTrash />
                   </button>

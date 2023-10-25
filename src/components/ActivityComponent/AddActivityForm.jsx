@@ -1,17 +1,20 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useData } from "./ActivityData";
 import { BsImages, BsActivity } from "react-icons/bs";
-import {BiSwim, BiCycling} from 'react-icons/bi'
-import {GiBodyBalance} from 'react-icons/gi'
-import {RiBoxingLine} from 'react-icons/ri'
-import {FaRunning} from 'react-icons/fa'
+import { BiSwim, BiCycling } from "react-icons/bi";
+import { GiBodyBalance } from "react-icons/gi";
+import { RiBoxingLine } from "react-icons/ri";
+import { FaRunning } from "react-icons/fa";
 import axios from "axios";
 import toast from "react-hot-toast";
 
-const AddActivityForm = ({ toggleFormVisibility, defaultType, setCheckAddActivity }) => {
+const AddActivityForm = ({
+  toggleFormVisibility,
+  defaultType,
+  setCheckAddActivity,
+}) => {
   const { activityList } = useData();
-  const [newActivity, setNewActivity] = useState([])
-
+  const [newActivity, setNewActivity] = useState([]);
 
   const [activityName, setActivityName] = useState("");
   const [activityDesc, setActivityDesc] = useState("");
@@ -22,7 +25,7 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType, setCheckAddActivit
   const [userEmail, setUserEmail] = useState("");
   const [userId, setUserId] = useState("");
   const [allActivityType, setAllActivityType] = useState([]);
-  const [previewSource, setPreviewSource] = useState('');
+  const [previewSource, setPreviewSource] = useState("");
   const selectedActivity = activityList.find(
     (activity) => activity.ActivityTypeName === defaultType
   );
@@ -45,7 +48,7 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType, setCheckAddActivit
   };
 
   const iconComponent = getIconComponent(selectedActivity.ActivityTypeName);
-  
+
   const [activityData, setActivityData] = useState({
     ActivityName: "",
     ActivityDesc: "",
@@ -53,54 +56,80 @@ const AddActivityForm = ({ toggleFormVisibility, defaultType, setCheckAddActivit
     ActivityDuration: 0,
     ActivityImage: "",
     ActivityDate: 0,
-    UserEmail:"",
-    UserId:1,
+    UserEmail: "",
+    UserId: 1,
   });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const response = await axios.post("https://keepfit-backend.onrender.com/activity/create", {
+      const response = await axios.post(
+        "https://keepfit-backend.onrender.com/activity/create",
+        {
+          ActivityName: activityName,
+          ActivityDesc: activityDesc,
+          ActivityType: selectedActivity.ActivityTypeName,
+          ActivityDuration: activityDuration,
+          ActivityImage: previewSource,
+          UserId: userId,
+          UserEmail: userEmail,
+        }
+      );
+      console.log("Activity created:", response.data);
+
+      setCheckAddActivity("successed");
+      toggleFormVisibility();
+      toast.success("added activity successfully");
+      setActivityData({
+        ActivityName: "",
+        ActivityDesc: "",
+        ActivityType: selectedActivity.ActivityTypeName,
+        ActivityDuration: 0,
+        ActivityImage: "",
+        ActivityDate: 0,
+        UserEmail: "",
+        UserId: 1,
+      });
+    } catch (error) {
+      console.log({
         ActivityName: activityName,
         ActivityDesc: activityDesc,
         ActivityType: selectedActivity.ActivityTypeName,
         ActivityDuration: activityDuration,
         ActivityImage: previewSource,
         UserId: userId,
-        UserEmail : userEmail
+        UserEmail: userEmail,
       });
-      console.log("Activity created:", response.data);
-
-      setCheckAddActivity("successed")
-      toast.success("added activity successfully")
-      setActivityData({
-        name: "",
-        description: "",
-        type: "",
-        duration: 0,
-        date: "",
-      });
-    } catch (error) {
-      setCheckAddActivity("failed")
-      toast.error("add activity failed")
+      setCheckAddActivity("failed");
+      toast.error("add activity failed");
       console.error("Error creating activity:", error);
     }
   };
 
   const handleFileInput = (e) => {
-    const file = e.target.files[0]
+    const file = e.target.files[0];
     console.log(`file : ${e.target.files[0]}`);
-    previewFile(file)
-}
-const previewFile = (file) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onloadend = () => {
-      setPreviewSource(reader.result)
 
+    if (file) {
+      previewFile(file);
+    } else {
+      const defaultImage = "default";
+      previewFile(defaultImage);
     }
-}
+  };
+
+  const previewFile = (file) => {
+    if (file === "default") {
+      setPreviewSource("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png")
+    } else {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onloadend = () => {
+        setPreviewSource(reader.result);
+      };
+    }
+  };
 
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50">
@@ -137,23 +166,26 @@ const previewFile = (file) => {
               />
             </div>
             <div>
-              <input type="text"
-              name="ActivityType"
-              value={selectedActivity.ActivityTypeName}
-              className="hidden"
-              onChange={(e) => setActivityType(e.target.value)}
+              <input
+                type="text"
+                name="ActivityType"
+                value={selectedActivity.ActivityTypeName}
+                className="hidden"
+                onChange={(e) => setActivityType(e.target.value)}
               />
-              <input type="text"
-              name="UserEmail"
-              value={"sendFrominput@test.com"}
-              className="hidden"
-              onChange={(e) => setUserEmail(e.target.value)}
+              <input
+                type="text"
+                name="UserEmail"
+                value={"sendFrominput@test.com"}
+                className="hidden"
+                onChange={(e) => setUserEmail(e.target.value)}
               />
-              <input type="text"
-              name="UserId"
-              value={999}
-              className="hidden"
-              onChange={(e) => setUserId(e.target.value)}
+              <input
+                type="text"
+                name="UserId"
+                value={999}
+                className="hidden"
+                onChange={(e) => setUserId(e.target.value)}
               />
             </div>
             <div className="mb-4">
@@ -187,9 +219,7 @@ const previewFile = (file) => {
             </div>
             <div className="flex justify-center items-center gap-4 ">
               <div className="">
-                <label className="block  text-xl font-bold">
-                  Date:
-                </label>
+                <label className="block  text-xl font-bold">Date:</label>
                 <input
                   type="date"
                   name="ActivityDate"
@@ -201,9 +231,9 @@ const previewFile = (file) => {
                 />
               </div>
             </div>
-<div className="">
-  <img src={activityData.ActivityImage} alt="" />
-</div>
+            <div className="">
+              <img src={activityData.ActivityImage} alt="" />
+            </div>
             <div className="flex justify-center items-center gap-4 hover:cursor-pointer hover:scale-[102%] hover:duration-300 mt-10">
               <label className="flex bg-[#08A045] hover:bg-[#21D375] hover:cursor-pointer  w-80 gap-3 text-white font-semibold py-2 px-4 rounded items-center ">
                 <input
@@ -212,8 +242,8 @@ const previewFile = (file) => {
                   onChange={handleFileInput}
                   className="file-input file-input-bordered file-input-info h-10 w-80 hover:cursor-pointer hidden"
                 ></input>
-                <BsImages /> Upload image <div className=" text-xs" >(optional)</div>
-                
+                <BsImages /> Upload image{" "}
+                <div className=" text-xs">(optional)</div>
               </label>
             </div>
           </div>
@@ -225,6 +255,9 @@ const previewFile = (file) => {
             >
               Add Activity
             </button>
+          </div>
+          <div>
+            <img src="" alt="" />
           </div>
         </form>
       </div>
