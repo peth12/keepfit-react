@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Signup.css";
 import axios from "axios";
+import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
@@ -16,7 +17,7 @@ const SignUp = () => {
     RePassword: "",
   });
   const [errorMessage, setErrorMessage] = useState("");
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     setFormData({ ...FormData, [e.target.name]: e.target.value });
@@ -34,8 +35,7 @@ const SignUp = () => {
         "https://keepfit-backend.onrender.com/auth/register",
         FormData
       );
-      navigate('/login')
-
+      navigate("/login");
 
       console.log("Data saved successfully:", response.data);
     } catch (error) {
@@ -100,7 +100,7 @@ const SignUp = () => {
                     placeholder="Enter Lastname"
                     value={FormData.UserDateOfBirth}
                     onChange={handleInputChange}
-                    className="input input-bordered w-40 text-secondary"
+                    className="input input-bordered w-40 text-secondary mr-4"
                   />
                 </div>
 
@@ -115,7 +115,6 @@ const SignUp = () => {
                     name="Gender"
                     className="select select-bordered text-gray-400 "
                     onChange={handleInputChange}
-                    
                   >
                     <option disabled selected>
                       None
@@ -130,18 +129,20 @@ const SignUp = () => {
               <div className="flex justify-between">
                 <div className="form-control">
                   <label className="label">
-                    <span className="label-text text-primary font-semibold text-[16px]">
-                      Weigth
+                    <span className="label-text text-primary font-semibold text-[16px] ">
+                      Weight
                     </span>
                   </label>
 
                   <input
                     type="number"
                     name="Weight"
+                    min={0}
+                    max={300}
                     placeholder="Enter Weigth"
                     value={FormData.Weight}
                     onChange={handleInputChange}
-                    className="input input-bordered w-[9.5rem] text-secondary h-10"
+                    className="input input-bordered w-[9.5rem] text-secondary h-10 mr-4 "
                   />
                 </div>
                 <div className="form-control">
@@ -153,6 +154,8 @@ const SignUp = () => {
                   <input
                     type="number"
                     name="Height"
+                    min={0}
+                    max={300}
                     placeholder="Enter Height"
                     value={FormData.Height}
                     onChange={handleInputChange}
@@ -214,6 +217,16 @@ const SignUp = () => {
               >
                 Sign Up
               </button>
+              <div className="flex  pt-3  gap-x-3 items-center pb-3 w-[300px] justify-between">
+                <span className="text-primary flex flex-row items-center w-1/2">
+                  <AiOutlineArrowLeft /> <a href="/">Explore more</a>
+                </span>
+                <span className=" justify-end flex flex-row items-center w-1/2">
+                  <a href="/login">Login</a>
+                  <AiOutlineArrowRight />
+                </span>
+              </div>
+
               {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
               {/* </Link> */}
             </div>

@@ -18,11 +18,14 @@ const DashboardData = ({children}) => {
     yoga: 0,
     cycling: 0,
   });
+  const userEmail = localStorage.userEmail
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const response = await axios.get("https://keepfit-backend.onrender.com/activity");
+        const response = await axios.post("https://keepfit-backend.onrender.com/activity",{
+          UserEmail :userEmail
+        });
         const data = response.data;
         setActivityData(data);
 

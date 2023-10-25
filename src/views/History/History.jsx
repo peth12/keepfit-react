@@ -19,6 +19,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { Fade } from "react-awesome-reveal";
 import { useDispatch } from "react-redux";
 import { currentUser } from "../../function/auth";
+import {GiBoxingGlove} from 'react-icons/gi'
 
 function History() {
   const { id } = useParams();
@@ -27,29 +28,38 @@ function History() {
   const [userById, setUserById] = useState([]);
   const [reload, setReload] = useState(false);
   const [filterDataType, setFilterDataType] = useState([]);
+  const [userEmail, setUserEmail] = useState("");
 
-const idToken = localStorage.token;
-const dispatch = useDispatch();
+  const idToken = localStorage.token;
+  const emailUser = localStorage.userEmail;
+  const dispatch = useDispatch();
 
-if (idToken) {
-  currentUser(idToken)
-    .then((res) => {
-      console.log("data in history ", res.data);
-      dispatch({
-        type: "LOGIN",
-        payload: {
-          token: res.data.token,
-          userEmail: res.data.UserEmail,
-          userRole: res.data.UserRole,
-        },
-      });
-    })
-    .catch((err) => console.error(err));
-}
+  useEffect(() => {
+    if (idToken) {
+      currentUser(idToken)
+        .then((res) => {
+          console.log("data in history ", res.data);
+          dispatch({
+            type: "LOGIN",
+            payload: {
+              token: res.data.token,
+              userEmail: res.data.UserEmail,
+              userRole: res.data.UserRole,
+            },
+          });
+          setUserEmail(res.data.UserEmail);
+        })
+        .catch((err) => console.error(err));
+    }
+  });
+
   useEffect(() => {
     axios
-      .get("https://keepfit-backend.onrender.com/activity")
+      .post("https://keepfit-backend.onrender.com/activity", {
+        UserEmail: emailUser,
+      })
       .then((result) => setActivity(result.data))
+
       .catch((err) => console.log(err));
     axios
       .get("https://keepfit-backend.onrender.com/activityType")
@@ -100,7 +110,7 @@ if (idToken) {
       case "Yoga":
         return <GiBodyBalance className="fill-primary scale-150 mb-1" />;
       case "Boxing":
-        return <RiBoxingLine className="fill-primary scale-150 mb-1" />;
+        return <GiBoxingGlove className="fill-primary scale-150 mb-1" />;
       case "Cycling":
         return <BiCycling className="fill-primary scale-150 mb-1" />;
       case "Swimming":
@@ -125,42 +135,42 @@ if (idToken) {
     <Layout>
       <Fade cascade damping={0.1}>
         {/* Choose history type */}
-        <Toaster position="top-right" reverseOrder={false} />
-        <div className="hidden bg-primary text-slate-100  justify-between pt-[75px] rounded-lg m-5 lg:flex scroll-smooth">
-          <button
-            onClick={() => {
-              setFilterDataType(activity), setReload(!reload);
-            }}
-            className="btn btn-ghost normal-case lg:text-xl"
-          >
-            All
-          </button>
-          {activityType.map((item, index) => (
+        <div className="xl:container xl:mx-auto  px-5 xl:px-10 ">
+          <Toaster position="top-right" reverseOrder={false} />
+          <div className="hidden bg-primary text-slate-100  justify-between pt-[75px] rounded-lg  lg:flex scroll-smooth">
             <button
-              key={index}
-              onClick={() => filterType(`${item.ActivityTypeName}`)}
+              onClick={() => {
+                setFilterDataType(activity), setReload(!reload);
+              }}
               className="btn btn-ghost normal-case lg:text-xl"
             >
-              {item.ActivityTypeName}
+              All
             </button>
-          ))}
-        </div>
-
-        <div className="flex justify-end lg:hidden me-5">
-          <select
-            className="select select-primary max-w-xs mt-24"
-            onChange={(e) => filterType(e.target.value)}
-          >
-            <option value={"All"}>All</option>
-
             {activityType.map((item, index) => (
-              <option key={index} value={item.ActivityTypeName}>
+              <button
+                key={index}
+                onClick={() => filterType(`${item.ActivityTypeName}`)}
+                className="btn btn-ghost normal-case lg:text-xl"
+              >
                 {item.ActivityTypeName}
-              </option>
+              </button>
             ))}
-          </select>
-        </div>
-        <div className="xl:container xl:mx-auto  px-5 xl:px-10 ">
+          </div>
+
+          <div className="flex justify-end lg:hidden me-5">
+            <select
+              className="select select-primary max-w-xs mt-24"
+              onChange={(e) => filterType(e.target.value)}
+            >
+              <option value={"All"}>All</option>
+
+              {activityType.map((item, index) => (
+                <option key={index} value={item.ActivityTypeName}>
+                  {item.ActivityTypeName}
+                </option>
+              ))}
+            </select>
+          </div>
           {/* Card */}
           {filterDataType.map((item, index) => (
             <div
@@ -185,12 +195,18 @@ if (idToken) {
               {/* Description */}
               <div className="text-slate-700 lg:max-w-72   w-100 lg:ml-2 lg:ps-5 lg:w-52">
                 <div className="">
-                  <p className="text-sm ">Activity Name</p>
-                  <p className=" lg:text-2xl font-bold ">{item.ActivityName}</p>
+                  <p className="text-sm lg:text-base  text-slate-500 ">
+                    Activity Name
+                  </p>
+                  <p className="text-lg lg:text-2xl font-bold ">
+                    {item.ActivityName}
+                  </p>
 
-                  <p className="text-sm mt-3">Description</p>
+                  <p className="text-sm  lg:text-base mt-3 text-slate-500">
+                    Description
+                  </p>
 
-                  <p className=" lg:text-2xl font-bold w-auto">
+                  <p className="text-lg lg:text-2xl font-bold w-auto">
                     {item.ActivityDesc}
                   </p>
                 </div>
@@ -199,8 +215,10 @@ if (idToken) {
               <div className=" text-slate-700  lg:gap-10 gap-5 flex flex-row  lg:ps-5 mt-2 ">
                 <div className="w-30">
                   <div className=" ">
-                    <p className="text-sm">Date </p>
-                    <p className="font-bold lg:text-2xl ">
+                    <p className="text-sm  lg:text-base text-slate-500">
+                      Date{" "}
+                    </p>
+                    <p className="text-lg font-bold lg:text-2xl ">
                       {changeDateFormat(item.ActivityDate).all}
                     </p>
                   </div>
@@ -208,8 +226,10 @@ if (idToken) {
 
                 <div className=" ">
                   <div className=" ">
-                    <p className="text-sm">Duration (Minutes)</p>
-                    <p className="font-bold lg:text-2xl">
+                    <p className="text-sm  lg:text-base text-slate-500">
+                      Duration (Mins)
+                    </p>
+                    <p className="text-lg font-bold lg:text-2xl">
                       {item.ActivityDuration}
                     </p>
                   </div>
@@ -221,14 +241,14 @@ if (idToken) {
                 <button className=" text-white">
                   <Link to={`/editHistory/${item._id}`}>
                     <button className="hidden lg:block btn btn-sm bg-primary text-white   me-2 ">
-                      <div className="flex gap-2">
+                      <div className="flex gap-2 ">
                         Edit
                         <TbPencil />
                       </div>
                     </button>
                   </Link>
                   <Link to={`/editHistory/${item._id}`}>
-                    <div className="lg:hidden text-black ">
+                    <div className="lg:hidden text-slate-800 ">
                       <TbPencil />
                     </div>
                   </Link>
@@ -249,7 +269,7 @@ if (idToken) {
 
                   <button
                     onClick={() => deleteData(item._id)}
-                    className="lg:hidden text-black "
+                    className="lg:hidden  text-slate-800"
                   >
                     <TbTrash />
                   </button>

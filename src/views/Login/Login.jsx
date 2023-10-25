@@ -25,7 +25,7 @@ export const Login = () => {
 
   const handleLogin = () => {
     if (userEmail == "" && userPassword == "") {
-      toast.error("please input data");
+      toast.error("Please check your input data");
       return;
     }
     axios
@@ -61,7 +61,21 @@ export const Login = () => {
           }, 1);
         }
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        
+        console.error(err)
+        toast.error("Wrong email or password ❌", {
+          autoClose: 5000,
+          hideProgressBar: true,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+      
+      }
+      );
   };
 
   return (

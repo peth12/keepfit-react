@@ -47,10 +47,8 @@ const WorkoutManagement = () => {
               Workout Management <MdOutlineSportsMartialArts />
             </h1>
           </div>
+
           <div className="flex justify-end pb-6">
-            <SearchBox />
-          </div>
-          <div className="flex justify-start pb-6">
             <AddWorkout />
           </div>
 

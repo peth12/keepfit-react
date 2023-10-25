@@ -34,11 +34,13 @@ export const Dashboard = () => {
     <Layout>
       <Toaster />
       <DashboardData>
+
         <div className="xl:container xl:mx-auto pt-[150px] ">
           <div className="mx-auto px-5 space-y-20 xl:space-y-20">
             <div className="flex flex-col xl:flex-row gap-5 justify-center ">
               <div className="shadow-xl rounded-xl p-10  gradient-background-user h-auto w-full ">
                 <UserCard />
+
               </div>
               <div className="shadow-xl rounded-xl  bg-orange-400 h-auto w-full">
                 <DurationStackCard />

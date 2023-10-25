@@ -5,11 +5,22 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { currentUser } from "../function/auth";
 import { useState } from "react";
+import { useNavigate} from 'react-router-dom'
+
 
 export const Navbar = () => {
   const [image, setImage] = useState("")
   const idToken = localStorage.token;
   const dispatch = useDispatch();
+  const navigate = useNavigate()
+
+  const logout = () => {
+    dispatch({
+      type: "LOGOUT",
+      payload: null,
+    });
+    navigate("/login");
+  };
   
   if (idToken) {
     currentUser(idToken)
@@ -77,7 +88,7 @@ export const Navbar = () => {
             </li>
             <li className="px-20">
               <Link to={"/activity"}>
-                <a>Work Out</a>
+                <a>Workout</a>
                 {/* <FaDumbbell/> */}
                 <FaDumbbell />
                 
@@ -109,7 +120,7 @@ export const Navbar = () => {
                 </Link>
               </li>
               <li className="text-red-600">
-                <Link to={"/Login"}>
+                <Link onClick={logout}>
                   <a>Logout</a>
                 </Link>
               </li>

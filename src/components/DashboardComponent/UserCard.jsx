@@ -1,4 +1,4 @@
-function UserCard() {
+function UserCard({username, height, weight}) {
   return (
     <div className="flex-col ">
       <div className="">
@@ -11,10 +11,12 @@ function UserCard() {
           </div>
         </div>
         <div className="text-center text-black mt-4">
+
           <p className="">Mr.Terry Crews</p>
           <div className="w-full flex justify-around pt-10 gap-5">
             <p className="">Height 188 cm</p>
             <p className="">Weight 90 kg</p>
+
           </div>
         </div>
       </div>
