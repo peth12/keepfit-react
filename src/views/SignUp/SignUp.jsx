@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "./Signup.css";
 import axios from "axios";
-import { AiOutlineArrowLeft  ,AiOutlineArrowRight} from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
+
 const SignUp = () => {
   const [FormData, setFormData] = useState({
     Userfname: "",
@@ -32,6 +33,8 @@ const SignUp = () => {
         "https://keepfit-backend.onrender.com/auth/register",
         FormData
       );
+      navigate('/login')
+
 
       console.log("Data saved successfully:", response.data);
     } catch (error) {
