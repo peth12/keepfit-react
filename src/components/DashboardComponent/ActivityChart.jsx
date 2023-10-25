@@ -1,9 +1,8 @@
 import React from "react";
 import { Bar } from "react-chartjs-2";
-import { Chart, scales } from "chart.js";
-import { LinearScale, CategoryScale, BarElement } from "chart.js";
+import { Chart, Tooltip, LinearScale, CategoryScale, BarElement } from "chart.js";
 import { useData } from "../DashboardComponent/DashboardData";
-import { Tooltip } from "chart.js";
+
 
 const ActivityChart = () => {
   const { activityList } = useData();
@@ -23,6 +22,8 @@ const ActivityChart = () => {
           "#ff9b05",
           "#53D8B9",
           "#4B9FC9",
+          "#A04FF7"
+
         ],
         hoverOffset: 16,
       },
@@ -61,6 +62,19 @@ const ActivityChart = () => {
         },
       },
     },
+
+    animation: { // Change to lowercase "animation"
+      easing: "linear",
+      duration: 1000, // Animation duration in milliseconds
+    },
+    responsesive: false,
+    maintainAspectRatio:true,
+    animation: {
+      // Change to lowercase "animation"
+      easing: "easeOutQuad",
+      duration: 1000, // Animation duration in milliseconds
+    },
+
     scales: {
       x: {
         ticks: {
