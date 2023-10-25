@@ -10,14 +10,34 @@ import DurationChart from "../../components/DashboardComponent/DurationChart";
 import ActivityChartHorizon from "../../components/DashboardComponent/ActivityChartHorizon";
 import DashboardData from "../../components/DashboardComponent/DashboardData";
 import toast, { Toaster } from "react-hot-toast";
+import { useDispatch } from "react-redux";
+import { currentUser } from "../../function/auth";
 
 export const Dashboard = () => {
+const idToken = localStorage.token;
+const dispatch = useDispatch();
+
+if (idToken) {
+  currentUser(idToken)
+    .then((res) => {
+      console.log("data in dashboard ", res.data);
+      dispatch({
+        type: "LOGIN",
+        payload: {
+          token: res.data.token,
+          userEmail: res.data.UserEmail,
+          userRole: res.data.UserRole,
+        },
+      });
+    })
+    .catch((err) => console.error(err));
+}
   return (
     <Layout>
     <Toaster/>
       <DashboardData>
       <div className="xl:container mx-auto px-10">
-      <div className="flex justify-center pt-[75px] px-5">
+      <div className="flex justify-center pt-[100px] px-5">
         <div className="mx-auto px-5">
           <div className="flex flex-col xl:flex-row gap-5 justify-center ">
             <div className="shadow-xl rounded-xl p-10  gradient-background-user h-auto w-full ">
@@ -45,12 +65,12 @@ export const Dashboard = () => {
             </div>
           </div>
           <div className="col-span-12 row-span-1 place-items-center ">
-            <button
+            {/* <button
               className="btn btn-primary w-fit h-[50px] text-white text-lg rounded-full scale-125 mr-10 mb-20"
               style={{ position: "fixed", bottom: "20px", right: "20px" }}
             >
               add activity +
-            </button>
+            </button> */}
           </div>
         </div>
         {/* <DashboardData/> */}

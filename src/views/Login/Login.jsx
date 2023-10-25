@@ -4,11 +4,24 @@ import "./Login.css";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 
+// redux
+import { useDispatch } from "react-redux";
+
 export const Login = () => {
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+
+  const roleBaseRedirect = (role) => {
+    if(role == "admin") {
+      navigate('/admin/activity')
+    }else{
+      navigate('/dashboard')
+    }
+  }
 
   const handleLogin = () => {
     if (userEmail == "" && userPassword == "") {
@@ -25,6 +38,15 @@ export const Login = () => {
         if (result.data.message == "login success") {
           console.log("eiei");
           navigate("/dashboard");
+          dispatch({ type: "LOGIN", payload: {
+            token:result.data.token,
+            userEmail: result.data.payload.user.UserEmail,
+            userRole: result.data.payload.user.UserRole,
+        } });
+        localStorage.setItem('token', result.data.token)
+        localStorage.setItem('userEmail', result.data.payload.user.UserEmail)
+
+        roleBaseRedirect(result.data.payload.user.UserRole)
           setTimeout(() => {
             toast.success("Login Success 🎉", {
               position: "top-right",

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Signup.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
   const [FormData, setFormData] = useState({
@@ -15,6 +16,7 @@ const SignUp = () => {
     RePassword: "",
   });
   const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate()
 
   const handleInputChange = (e) => {
     setFormData({ ...FormData, [e.target.name]: e.target.value });
@@ -32,6 +34,8 @@ const SignUp = () => {
         "https://keepfit-backend.onrender.com/auth/register",
         FormData
       );
+      navigate('/login')
+
 
       console.log("Data saved successfully:", response.data);
     } catch (error) {
@@ -110,13 +114,15 @@ const SignUp = () => {
                   <select
                     name="Gender"
                     className="select select-bordered text-gray-400 "
+                    onChange={handleInputChange}
+                    
                   >
                     <option disabled selected>
                       None
                     </option>
-                    <option>Female</option>
-                    <option>Male</option>
-                    <option>Not specified</option>
+                    <option value={"Female"}>Female</option>
+                    <option value={"Male"}>Male</option>
+                    <option value={"Not specified"}>Not specified</option>
                   </select>
                 </div>
               </div>

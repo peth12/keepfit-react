@@ -21,6 +21,21 @@ import EditWorkoutPage from "./views/Admin/WorkoutManagement/EditWorkoutPage.jsx
 import EditUserPage from "./views/Admin/UserManagement/EditUserPage.jsx";
 import EditHistory from "./views/History/EditHistory.jsx";
 
+
+// Redux
+import { Provider } from "react-redux";
+import { createStore } from "redux";
+import { composeWithDevTools } from "redux-devtools-extension";
+import rootReducer from "./reducers/index.js";
+
+
+
+const store = createStore(rootReducer, composeWithDevTools());
+
+
+
+
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -101,5 +116,7 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
+  <Provider store={store}>
   <RouterProvider router={router}></RouterProvider>
+  </Provider>
 );
