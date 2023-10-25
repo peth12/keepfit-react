@@ -229,7 +229,7 @@ export const LandingPage = () => {
                 </div>
 
                 <div className="flex flex-col justify-start bg-zinc-950 border-b-4 border-red-500 h-full">
-                  <img className="w-full h-h-56" src="historys.png" />
+                  <img className="w-full h-h-56" src="history.png" />
                   <div className="flex flex-col lg:p-6 md:p-4 p-6 gap-2 group">
                     <span className="text-amber-500 text-xl group-hover:underline font-semibold uppercase">
                       My Activity
