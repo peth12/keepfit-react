@@ -31,7 +31,7 @@ const SignUp = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3008/auth/register",
+        "https://keepfit-backend.onrender.com/auth/register",
         FormData
       );
       navigate('/login')
