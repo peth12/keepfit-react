@@ -14,8 +14,6 @@ const ActivityCard = ({ toggleFormVisibility, setDefaultType, defaultType }) => 
 
   const handleActivityClick = (activityName) => {
       setDefaultType(activityName);
-      console.log(`Clicked on activity: ${activityName}`)
-      console.log(`Clicked on activity: ${defaultType}`)
   };
 
   return (

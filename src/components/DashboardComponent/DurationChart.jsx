@@ -69,14 +69,8 @@ const DurationChart = () => {
   };
 
   return (
-    <div>
-      <Doughnut data={data} options={options} />
-      <div className="legend flex gap-3 mt-8 justify-center items-center">
-      <div>
-        {console.log(duration)}
-        {/* {console.log(dataDuration.Running)} */}
-      </div>
-      </div>
+    <div className="m-4">
+      <Doughnut data={data} options={options} width={"full"} />
     </div>
   );
 };

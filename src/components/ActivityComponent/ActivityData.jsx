@@ -12,7 +12,7 @@ const ActivityData = ({ children }) => {
     async function fetchData() {
       try {
         const response = await axios.get("https://keepfit-backend.onrender.com/activityType"); // Replace with the actual API endpoint
-        console.log(response.data)
+        // console.log(response.data)
         setActivityList(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
