@@ -8,7 +8,6 @@ const AddWorkout = () => {
   const [activityTypeName, setActivityTypeName] = useState("");
   const [activityTypeImage, setActivityTypeImage] = useState("");
   const [activityTypeDesc, setActivityTypeDesc] = useState("");
-  const navigate = useNavigate();
 
   const createActicityType = async () => {
     
@@ -20,7 +19,6 @@ const AddWorkout = () => {
       })
       .then((res) => {
         console.log(res);
-        location.reload();
       })
       .catch((err) => console.error(err));
   };

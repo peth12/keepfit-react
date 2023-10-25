@@ -42,7 +42,7 @@ function History() {
           dispatch({
             type: "LOGIN",
             payload: {
-              token: res.data.token,
+              token: idToken,
               userEmail: res.data.UserEmail,
               userRole: res.data.UserRole,
             },
