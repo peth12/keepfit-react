@@ -3,14 +3,16 @@ import { Doughnut } from "react-chartjs-2";
 import { Chart } from "chart.js";
 import { LinearScale, CategoryScale, ArcElement, Tooltip } from "chart.js";
 import { useData } from "../DashboardComponent/DashboardData";
+import { useData as ActivityData } from "../ActivityComponent/ActivityData";
 
 Chart.register(LinearScale, CategoryScale, ArcElement, Tooltip);
 
 const DurationChart = () => {
   const { duration } = useData();
+  const { activityList } = ActivityData();
 
   const data = {
-    labels: ["Yoga", "Running", "Cycling", "Swimming", "Boxing"],
+    labels: activityList.map((label) => label.ActivityTypeName),
     datasets: [
       {
         data: [

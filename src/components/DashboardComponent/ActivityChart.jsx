@@ -26,7 +26,7 @@ const ActivityChart = () => {
           "#ff9b05",
           "#53D8B9",
           "#4B9FC9",
-          "#A04FF7"
+          "#A04FF7",
 
         ],
         hoverOffset: 16,

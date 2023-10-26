@@ -10,14 +10,17 @@ import {
 } from "chart.js";
 import { useData } from "../DashboardComponent/DashboardData";
 import { Tooltip } from "chart.js";
-
+import { useData as ActivityData } from "../ActivityComponent/ActivityData";
 const DurationChart = () => {
-  const { activityList } = useData();
+  const { activityList } = ActivityData();
+  if (!activityList || activityList.length === 0) {
+    return <div>No data available.</div>;
+  }
   const { duration, running, swimming, boxing, cycling, yoga } = useData();
 
   ChartJS.register(LinearScale, CategoryScale, ArcElement, Tooltip, BarElement);
   const data = {
-    labels: ["Yoga", "Running", "Cycling", "Swimming", "Boxing"],
+    labels: activityList.map((label) => label.ActivityTypeName),
     datasets: [
       {
         label: "time(s)",

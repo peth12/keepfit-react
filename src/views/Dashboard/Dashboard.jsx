@@ -9,6 +9,7 @@ import toast, { Toaster } from "react-hot-toast";
 import AnotherBarChart from '../../components/DashboardComponent/AnotherBarChart'
 import { useSelector } from "react-redux";
 import { currentUser } from "../../function/auth";
+import ActivityData from "../../components/ActivityComponent/ActivityData";
 
 const Dashboard = () => {
   const { user } = useSelector((state) => ({ ...state }));
@@ -36,6 +37,7 @@ const Dashboard = () => {
   return (
     <Layout>
     <Toaster />
+    <ActivityData>
     <DashboardData>
 
       <div className="xl:container xl:mx-auto pt-[150px] ">
@@ -77,6 +79,7 @@ const Dashboard = () => {
         </div>
       </div>
     </DashboardData>
+    </ActivityData>
   </Layout>
   );
 };
