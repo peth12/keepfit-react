@@ -25,7 +25,7 @@ export const Login = () => {
 
   const handleLogin = () => {
     if (userEmail == "" && userPassword == "") {
-      toast.error("please input data");
+      toast.error("Please check your input data");
       return;
     }
     axios
@@ -64,7 +64,7 @@ export const Login = () => {
       .catch((err) => {
         
         console.error(err)
-        toast.error("Login fail 🟥", {
+        toast.error("Wrong email or password ❌", {
           autoClose: 5000,
           hideProgressBar: true,
           closeOnClick: false,
