@@ -5,8 +5,12 @@ import { useData } from "../DashboardComponent/DashboardData";
 
 
 const ActivityChart = () => {
+  
   const { activityList } = useData();
-  const {duration, running, swimming, boxing, cycling, yoga} = useData()
+
+  
+  const {duration, running, swimming, boxing, cycling, yoga } = useData()
+
 
   Chart.register(LinearScale, CategoryScale, BarElement, Tooltip);
 
@@ -69,11 +73,7 @@ const ActivityChart = () => {
     },
     responsesive: false,
     maintainAspectRatio:true,
-    animation: {
-      // Change to lowercase "animation"
-      easing: "easeOutQuad",
-      duration: 1000, // Animation duration in milliseconds
-    },
+
 
     scales: {
       x: {
