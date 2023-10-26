@@ -4,10 +4,7 @@
   margin: 0px;
   padding: 0px;
   font-family: "Poppins", sans-serif;
-  
-}
-body{
-  /* background-color: #f0ead6 */
+
 }
 
 .tooltip:hover .tooltip-text {
@@ -43,11 +40,4 @@ body{
   box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, 0.75);
-}
-
-
-.testNav{
-  box-shadow: -1px 21px 15px 0px rgba(255,165,0,0.75);
--webkit-box-shadow: -1px 21px 15px 0px rgba(255,165,0,0.75);
--moz-box-shadow: -1px 21px 15px 0px rgba(255,165,0,0.75);
 }

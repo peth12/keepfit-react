@@ -7,7 +7,7 @@ import { GiBodyBalance } from "react-icons/gi";
 import { GiBoxingGlove } from "react-icons/gi";
 import { FaRunning } from "react-icons/fa";
 
-export const LandingPage = () => {
+const LandingPage = () => {
   return (
     <>
       <NavbarLandingPage />
@@ -252,3 +252,4 @@ export const LandingPage = () => {
     </>
   );
 };
+export default LandingPage

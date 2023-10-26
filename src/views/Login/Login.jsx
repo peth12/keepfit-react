@@ -7,7 +7,7 @@ import toast, { Toaster } from "react-hot-toast";
 // redux
 import { useDispatch } from "react-redux";
 
-export const Login = () => {
+const Login = () => {
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const [error, setError] = useState("");
@@ -40,8 +40,8 @@ export const Login = () => {
           navigate("/dashboard");
           dispatch({ type: "LOGIN", payload: {
             token:result.data.token,
-            userEmail: result.data.payload.user.UserEmail,
-            userRole: result.data.payload.user.UserRole,
+            useremail: result.data.payload.user.UserEmail,
+            role: result.data.payload.user.UserRole,
         } });
         localStorage.setItem('token', result.data.token)
         localStorage.setItem('userEmail', result.data.payload.user.UserEmail)
@@ -135,3 +135,4 @@ export const Login = () => {
     </>
   );
 };
+export default Login
