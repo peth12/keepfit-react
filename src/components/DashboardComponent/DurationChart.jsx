@@ -21,6 +21,7 @@ const DurationChart = () => {
           duration.cycling,
           duration.swimming,
           duration.boxing,
+          duration.boxing
         ],
         backgroundColor: [
           "#EB57A2",
@@ -28,6 +29,7 @@ const DurationChart = () => {
           "#ff9b05",
           "#53D8B9",
           "#4B9FC9",
+          "#A04FF7",
         ],
         hoverOffset: 14,
       },
