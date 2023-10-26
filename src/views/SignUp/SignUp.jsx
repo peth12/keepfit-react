@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Signup.css";
 import axios from "axios";
-import {AiOutlineArrowRight, AiOutlineArrowLeft} from 'react-icons/ai'
+import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
@@ -17,7 +17,7 @@ const SignUp = () => {
     RePassword: "",
   });
   const [errorMessage, setErrorMessage] = useState("");
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     setFormData({ ...FormData, [e.target.name]: e.target.value });
@@ -35,8 +35,7 @@ const SignUp = () => {
         "https://keepfit-backend.onrender.com/auth/register",
         FormData
       );
-      navigate('/login')
-
+      navigate("/login");
 
       console.log("Data saved successfully:", response.data);
     } catch (error) {
@@ -131,7 +130,7 @@ const SignUp = () => {
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text text-primary font-semibold text-[16px] ">
-                      Weigth
+                      Weight
                     </span>
                   </label>
 
@@ -139,6 +138,7 @@ const SignUp = () => {
                     type="number"
                     name="Weight"
                     min={0}
+                    max={300}
                     placeholder="Enter Weigth"
                     value={FormData.Weight}
                     onChange={handleInputChange}
@@ -155,6 +155,7 @@ const SignUp = () => {
                     type="number"
                     name="Height"
                     min={0}
+                    max={300}
                     placeholder="Enter Height"
                     value={FormData.Height}
                     onChange={handleInputChange}
@@ -225,7 +226,7 @@ const SignUp = () => {
                   <AiOutlineArrowRight />
                 </span>
               </div>
-        
+
               {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
               {/* </Link> */}
             </div>
