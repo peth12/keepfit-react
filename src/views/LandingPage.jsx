@@ -184,18 +184,34 @@ const LandingPage = () => {
           </main>
         </section>
 
-
         {/* section4 */}
 
         <section className="w-full h-auto flex items-center bg-zinc-100">
           <main className="w-full lg:h-[900px] md:h-[800px] flex flex-col justify-start items-center gap-20 lg:gap-28 py-12 md:py-0 mt-3">
-            <div className="flex flex-col items-center relative before:absolute before:-bottom-6 before:left-30 before:w-20 before:h-1 before:rounded-lg before:bg-gradient-to-r before:from-amber-500 before:to-red-500 ">
+            <div className="flex flex-col items-center relative before:absolute before:-bottom-6 before:left-30 before:w-20 before:h-1 before:rounded-lg before:bg-gradient-to-r before:from-amber-500 before:to-red-500">
               <span className="text-black lg:text-5xl md:text-4xl text-3xl mt-10">
                 Features
               </span>
             </div>
-            <div className="w-full lg:w-3/4 grid md:grid-cols-2 lg:gap-8 md:gap-5 gap-8 px-6 md:px-4 lg:px-0 ">
+            <div className="w-full lg:w-3/4 grid md:grid-cols-3 lg:gap-8 md:gap-5 gap-8 px-6 md:px-4 lg:px-0 ">
               <Fade>
+                <div className="flex flex-col justify-start bg-zinc-950 border-b-4 border-red-500 h-full">
+                  <img className="w-full h-h-56" src="dash.png" />
+                  <div className="flex flex-col lg:p-6 md:p-4 p-6 gap-2 group">
+                    <span className="text-amber-500 text-xl group-hover:underline font-semibold uppercase">
+                      Dashboard
+                    </span>
+
+                    <p className="text-zinc-400 text-base">
+                      In the dashboard section, the system displays
+                      comprehensive usage information, providing users with a
+                      detailed overview of their exercise routines, including
+                      statistics on their workout history, progress, and
+                      performance
+                    </p>
+                  </div>
+                </div>
+
                 <div className="flex flex-col justify-start bg-zinc-950 border-b-4 border-red-500 h-full">
                   <img className="w-full h-h-56" src="admin.png" />
                   <div className="flex flex-col lg:p-6 md:p-4 p-6 gap-2 group">
@@ -236,4 +252,4 @@ const LandingPage = () => {
     </>
   );
 };
-export default LandingPage
+export default LandingPage;
