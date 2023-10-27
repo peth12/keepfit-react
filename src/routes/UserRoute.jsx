@@ -1,8 +1,6 @@
 import React from 'react'
 import {useSelector} from 'react-redux'
 import LoadingToRedirect from './LoadingToRedirect'
-import { useDispatch } from 'react-redux'
-import { currentUser } from '../function/auth'
 
 const UserRoute = ({children}) => {
 

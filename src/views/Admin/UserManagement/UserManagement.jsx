@@ -27,7 +27,7 @@ const UserManagement = () => {
         .then((res) => {
           console.log(res.data);
           navigate("/admin/user");
-          setReload(!reload);
+          location.reload();
           notify();
         })
         .catch((err) => console.error(err));
