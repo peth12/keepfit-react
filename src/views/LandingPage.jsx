@@ -31,7 +31,7 @@ const LandingPage = () => {
                   </span>
                 </Slide>
               </h1>
-              <p className="lg:text-lg text-base text-black font-bold my-4 leading-relaxed">
+              <p className="lg:text-xl text-base text-black font-bold my-4 leading-relaxed">
                 <Slide direction="left">
                   "The Only Bad Workout is the One That Didn't Happen. Commit to
                   Your Health, Fuel Your Fire, and Conquer Your Limits."
@@ -184,7 +184,6 @@ const LandingPage = () => {
           </main>
         </section>
 
-
         {/* section4 */}
 
         <section className="w-full h-auto flex items-center bg-zinc-100">
@@ -253,4 +252,4 @@ const LandingPage = () => {
     </>
   );
 };
-export default LandingPage
+export default LandingPage;
