@@ -184,6 +184,7 @@ const LandingPage = () => {
           </main>
         </section>
 
+
         {/* section4 */}
 
         <section className="w-full h-auto flex items-center bg-zinc-100">
