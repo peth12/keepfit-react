@@ -12,8 +12,6 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import rootReducer from "./reducers/index.js";
 
 // Route
-import UserRoute from "./routes/UserRoute.jsx";
-import AdminRoute from "./routes/AdminRoute.jsx";
 
 const store = createStore(rootReducer, composeWithDevTools());
 
